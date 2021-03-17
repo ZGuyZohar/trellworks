@@ -34,7 +34,8 @@
 
     .group-header {
         justify-content: space-between;
-        span{
+
+        span {
             cursor: pointer;
         }
     }
@@ -44,6 +45,7 @@
     }
 
     .task-preview {
+        width: 90%;
         background-color: white;
         margin: 5px;
         padding: 5px;
