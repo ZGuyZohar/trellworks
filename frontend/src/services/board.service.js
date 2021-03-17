@@ -1,6 +1,6 @@
-import {
-    storageService
-} from './async-storage.service'
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
+
 const BOARD_DB = 'boards'
 // const BOARD_URL = '/board'
 
@@ -10,7 +10,9 @@ export const boardService = {
     remove,
     save,
     getEmptyBoard,
-    addEmptyGroup
+    addGroup,
+    removeGroup,
+    getEmptyTask
 }
 
 async function query() {
@@ -18,17 +20,26 @@ async function query() {
     // return httpService.get(BOARD_URL)
 }
 
-async function addEmptyGroup(boardId) {
-    var board
+async function addGroup(board) {
     try {
-        board = await getById(boardId)
-        board.groups.push(_getEmptyGroup())
-        save(board)
-        console.log(board);
+        const boardCopy = JSON.parse(JSON.stringify(board));
+        const group = _getEmptyGroup();
+        boardCopy.groups.push(group);
+        save(boardCopy);
+        return boardCopy;
     } catch (err) {
         console.log(err);
     }
 }
+
+async function removeGroup(groupId, board) {
+    const boardCopy = JSON.parse(JSON.stringify(board));
+    const groupIdx = boardCopy.groups.findIndex(group => group.id === groupId);
+    boardCopy.groups.splice(groupIdx, 1);
+    save(boardCopy);
+    return boardCopy;
+}
+
 async function getById(boardId) {
     return storageService.get(BOARD_DB, boardId)
     // return httpService.get(`board/${boardId}`)
@@ -54,14 +65,22 @@ function getEmptyBoard() {
     return {
         title: '',
         createdAt: Date.now(),
-        boards: []
+        boards: [],
+        groups: []
     }
 }
 
-function _getEmptyGroup(){
+function getEmptyTask() {
     return {
-        id: 'test',
-        style:{},
+        title: ''
+        //// add more properties later here such as: description, etc. as we go!////
+    }
+}
+
+function _getEmptyGroup() {
+    return {
+        id: utilService.makeId(),
+        style: {},
         title: 'My new list',
         tasks: []
     }

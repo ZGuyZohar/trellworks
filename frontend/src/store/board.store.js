@@ -9,54 +9,59 @@ export const boardStore = {
     },
     getters: {
         boards(state) {
-            return state.boards; 
+            return state.boards;
         },
-        currBoard(state){
+        currBoard(state) {
             return state.currBoard
         },
-        currGroup(state){
+        currGroup(state) {
             return state.currGroup
         },
-        currTask(state){
+        currTask(state) {
             return state.currTask
-        }
+        },
     },
     mutations: {
-        setBoards(state, {foundBoards}){
+        setBoards(state, { foundBoards }) {
             state.boards = foundBoards
         },
-        getBoard(state, { foundBoard }) {
-            state.currBoard = foundBoard;
+        setBoard(state, { board }) {
+            state.currBoard = board;
         },
-        getGroup(state, {groupId}){
+        getGroup(state, { groupId }) {
             const currGroup = state.currBoard.groups.find(group => group.id === groupId)
             state.currGroup = currGroup
         },
-        getTask(state, {taskId}){
+        getTask(state, { taskId }) {
             state.currBoard.groups.forEach(group => {
                 const task = group.task.find(task => {
                     return task.id === taskId
                 });
-                if(task) state.currTask = task;
+                if (task) state.currTask = task;
             })
         },
     },
     actions: {
-        async loadBoards({commit}){
+        async loadBoards({ commit }) {
             const foundBoards = await boardService.query();
-            commit({type: 'setBoards', foundBoards})
+            commit({ type: 'setBoards', foundBoards })
         },
-        async getBoard({commit}, {boardId}) {
+        async getBoard({ commit }, { boardId }) {
             try {
                 const foundBoard = await boardService.getById(boardId);
-                commit({ type: 'getBoard', foundBoard })
+                commit({ type: 'setBoard', board: foundBoard })
             } catch (err) {
                 console.log('reviewStore: Error in loadReviews', err)
                 throw err
             }
         },
-            addGroup({commit},{boardId}){    
-            boardService.addEmptyGroup(boardId)       
+        async addGroup(context) {
+            const savedBoard = await boardService.addGroup(context.state.currBoard);
+            context.commit({ type: 'setBoard', board: savedBoard });
+        },
+        async removeGroup(context, { groupId }) {
+            const savedBoard = await boardService.removeGroup(groupId, context.state.currBoard);
+            context.commit({ type: 'setBoard', board: savedBoard });
         }
     }
 }

@@ -1,7 +1,8 @@
-.board{
+.board {
     overflow-y: hidden;
     min-height: 94vh;
 }
+
 .board-header {
     background-color: $clr5;
     width: 100%;
@@ -9,13 +10,16 @@
     align-items: center;
     padding: 10px 15px;
     margin-bottom: 15px;
+
     .header-container {
         align-items: center;
         flex: 1;
+
         &>* {
             margin: 1%;
         }
     }
+
     .team-member {
         border-radius: 50%;
         background-color: #fff;
@@ -28,13 +32,14 @@
     background-color: #EBECF0;
     display: inline-block;
     margin: 5px;
-    padding: 10px;
-    min-width: 300px;
+    padding: 15px;
+    width: 250px;
     min-height: 25vh;
     border-radius: 5px;
 
     .group-header {
         justify-content: space-between;
+
         span {
             cursor: pointer;
         }
@@ -53,10 +58,12 @@
         box-shadow: 0px 1px 0px 0px rgba(114, 114, 114, 0.79);
     }
 }
-.group-add{
+
+.group-add {
     background-color: rgba(245, 245, 245, 0.561);
     height: 60px;
-    &:hover { 
+
+    &:hover {
         background-color: whitesmoke;
         cursor: pointer;
     }

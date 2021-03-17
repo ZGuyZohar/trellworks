@@ -14,7 +14,7 @@
     <template v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
-        rows="3"
+        rows="2"
         cols="29"
         class="task-preview"
         v-model="taskToAdd"
@@ -23,8 +23,11 @@
       <span class="clickable" @click="closeAddTask"> X</span>
     </template>
   </section>
-</template><script>
+</template>
+
+<script>
 import taskPreview from "@/cmps/task/task-preview";
+import { boardService } from "../../services/board.service";
 
 export default {
   props: {
@@ -35,18 +38,14 @@ export default {
   data() {
     return {
       isAddingTask: false,
-      taskToAdd: "",
+      taskToAdd: boardService.getEmptyTask().title,
     };
   },
   methods: {
-    removeGroup(groupId) {
-      console.log("removing group: ", groupId);
-      // this.$store.dispatch({
-      //   type: 'removeGroup',
-      //   groupId: groupId
-      // })
+    async removeGroup(groupId) {
+      await this.$store.dispatch({ type: "removeGroup", groupId: groupId });
+      this.$emit("removeGroup");
     },
-
     openAddTask() {
       this.isAddingTask = true;
     },
@@ -55,6 +54,7 @@ export default {
     },
     addTask() {
       console.log("adding task", this.taskToAdd);
+      this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
       this.taskToAdd = "";
       this.isAddingTask = false;
     },
