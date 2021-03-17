@@ -1,16 +1,17 @@
 <template>
   <section class="container home text-center">
+    <boardHeader/>
     <h1>TRELLWORKS</h1>
     <h5 class="text-center">
       Powered up Frontend 
     </h5>
-    <img alt="Vue logo" src="../assets/logo.png">
   </section>
 
   
 </template>
 
 <script>
+import boardHeader from '../cmps/board/board-header.vue'
 export default {
   name: 'home',
   data() {
@@ -22,6 +23,9 @@ export default {
   created() {
   },
   methods: {
+  },
+  components: { 
+    boardHeader
   }
   
 }
