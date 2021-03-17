@@ -1,6 +1,5 @@
 <template>
   <section class="container home text-center">
-    <boardHeader/>
     <h1>TRELLWORKS</h1>
     <h5 class="text-center">
       Powered up Frontend 

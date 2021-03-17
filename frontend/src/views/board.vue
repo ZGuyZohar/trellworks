@@ -1,21 +1,21 @@
 <template>
     <section v-if="board" class="board">
+    <board-header/>
     <h1>Board - {{board.title}}</h1>
-    <div v-for="group in groups" :key="group.id" @click="getGroup(group)">
+    <!-- <div v-for="group in groups" :key="group.id" @click="getGroup(group)">
         {{group.title}}
-    </div>
+    </div> -->
 
     </section>
 </template>
 
 <script>
-import {boardService} from '../services/board.service.js'
-import {groupService} from '../services/group.service.js'
+import boardHeader from '@/cmps/board/board-header'
+import group from '@/cmps/board/group'
 
 export default { 
     data(){
         return {
-            board: null,
             groups: [],
         }
     },
@@ -23,12 +23,14 @@ export default {
         boardId(){
             return this.$route.params.boardId
         },
+        currBoard(){
+            return this.$store.getters.currBoard
+        }
     },    
     methods: {
         async loadBoard(){
-            const foundBoard = await boardService.getById(this.boardId);
-            this.board = foundBoard;
-            this.board.groups.forEach(group => this.groups.push(group))               
+            await this.$store.dispatch({type: 'getBoard', boardId: this.boardId})
+            this.currBoard.groups.forEach(group => this.groups.push(group))               
         },
         async getGroup(group){
 
@@ -36,6 +38,10 @@ export default {
     },
     async created() { 
         await this.loadBoard()
+    },
+    components: {
+        boardHeader,
+        group
     }
 }
 </script>
