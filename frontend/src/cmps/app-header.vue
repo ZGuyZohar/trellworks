@@ -1,19 +1,15 @@
 <template>
-  <header>
-    <nav>
-      <router-link to="/">
-        <span role="img" aria-label="logo">TRELLWORKS</span>
-      </router-link>
-      <router-link to="/boards">Gallery</router-link>
-      <router-link to="/board">Board</router-link>
+  <header class="flex">
+    <nav class="flex">
+      <router-link class="header-btn transition" to="/boards">Gallery</router-link>
+      <router-link class="header-btn transition" to="/board">Board</router-link>
+    </nav>
+    <router-link  to="/">
+    <span class="main-logo" aria-label="logo">Trellworks</span>
+    </router-link>
+    <section class="nav-side-buttons header-btn transition">
       <router-link to="/login">Login / Signup</router-link>
 
-    </nav>
-    <section className="loggedin-user" v-if="loggedInUser">
-      <router-link :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </router-link>
-      <span>{{ loggedInUser.score }}</span>
     </section>
   </header>
 </template>

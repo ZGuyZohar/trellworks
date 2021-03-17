@@ -1,0 +1,23 @@
+.board-header { 
+    background-color: $clr5;
+    width: 100vw;
+    height: 7vh;
+    align-items: center;
+    padding: 0 2%;
+    .header-container { 
+        align-items: center;
+        flex: 1;
+        &>*{
+            margin: 1%;
+        }
+    }
+
+    .team-member{
+        border-radius: 50%;
+        background-color: #fff;
+        height: 30px;
+        width: 30px;
+    }
+
+}
+

@@ -6,8 +6,8 @@ export const reviewStore = {
         currBoard: null,
     },
     getters: {
-        reviews(state) {
-            return state.reviews;
+        boards(state) {
+            return state.boards;
         },
     },
     mutations: {
