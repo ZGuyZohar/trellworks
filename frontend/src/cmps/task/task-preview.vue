@@ -15,6 +15,7 @@ export default {
   methods: {
     getDetails() {
       const currBoard = this.$store.getters.currBoard;
+      console.log(this.task);
       this.$store.commit({ type: "getTask", task: this.task });
       this.$router.push(`/board/${currBoard._id}/details/${this.task.id}`);
     },
