@@ -4,7 +4,10 @@
       <p class="group-title">{{ group.title }}</p><span @click="removeGroup(group.id)">X</span>
     </section>
     <task-preview v-for="task in group.task" :key="task.id" :task="task" />
-    <span @click="addTask">+add task</span>
+    <span v-if="!isAddingTask" @click="addTask">+add task</span>
+    <template v-if="isAddingTask" class="add-task">
+      <textarea placeholder="Your task title here..." rows="3"></textarea>
+    </template>
   </section>
 </template>
 
@@ -15,18 +18,29 @@
       group: {
         type: Object,
       },
-    },
-    methods: {
-      addTask() {
-        console.log("adding task");
+      methods: {
+        addTask() {
+          console.log("adding task");
+        },
+        removeGroup(groupId) {
+          console.log('removing group: ', groupId);
+          this.$store.dispatch({
+            type: 'removeGroup',
+            groupId: groupId
+          })
+        },
+        addTask() {
+          this.isAddingTask = true;
+        },
       },
-      removeGroup(groupId) {
-        console.log('removing group: ', groupId);
-        this.$store.dispatch({type: 'removeGroup',groupId: groupId})
-      }
-    },
-    components: {
-      taskPreview,
-    },
-  };
+      data() {
+        return {
+          isAddingTask: false,
+        };
+      },
+
+      components: {
+        taskPreview,
+      },
+    }}
 </script>
