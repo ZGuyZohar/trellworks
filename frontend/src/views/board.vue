@@ -1,7 +1,7 @@
 <template>
   <section v-if="currBoard">
     <board-header :boardTitle="currBoard.title" />
-    <div class="board">
+    <div class="flex board">
       <div class="flex group-container">
         <group
           v-for="group in groups"
