@@ -30,15 +30,11 @@ export const boardStore = {
         },
         setGroup(state, { groupId }) {
             const currGroup = state.currBoard.groups.find(group => group.id === groupId)
-            state.currGroup = currGroup
+            if (currGroup) state.currGroup = currGroup
         },
-        getTask(state, { taskId }) {
-            state.currBoard.groups.forEach(group => {
-                const task = group.task.find(task => {
-                    return task.id === taskId
-                });
-                if (task) state.currTask = task;
-            })
+        setTask(state, { taskId }) {
+            const currTask = state.currGroup.task.find(task => task.id === taskId);
+            if (currTask) state.currTask = currTask;
         },
     },
     actions: {

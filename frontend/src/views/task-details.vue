@@ -30,7 +30,7 @@ export default {
   },
   created() {
     const taskId = this.$route.params.taskId;
-    this.$store.commit({ type: "getTask", taskId });
+    this.$store.commit({ type: "setTask", taskId });
   },
 };
 </script>

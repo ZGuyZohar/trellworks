@@ -42,7 +42,7 @@ async function removeGroup(groupId, board) {
 
 async function addTask(task, board, groupId) {
     try {
-        console.log('task', task);
+        task.id = utilService.makeId()
         const boardCopy = JSON.parse(JSON.stringify(board));
         const group = boardCopy.groups.find(group => group.id === groupId);
         group.task.push(task)
@@ -90,7 +90,7 @@ function _getEmptyGroup() {
         id: utilService.makeId(),
         style: {},
         title: 'My new list',
-        tasks: []
+        task: []
     }
 
 }
