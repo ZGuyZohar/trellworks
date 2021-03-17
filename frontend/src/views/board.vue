@@ -35,8 +35,7 @@ export default {
         }
     },
     async created() { 
-        // await this.loadBoard()
-        this.$store.dispatch({type: 'loadBoards'})
+        await this.loadBoard()
     },
     components: {
         boardHeader,

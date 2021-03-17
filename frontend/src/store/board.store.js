@@ -24,7 +24,6 @@ export const boardStore = {
     actions: {
         async loadBoards({commit}){
             const foundBoards = await boardService.query();
-            console.log(foundBoards);
             commit({type: 'setBoards', foundBoards})
         },
         async getBoard({commit}, {boardId}) {
