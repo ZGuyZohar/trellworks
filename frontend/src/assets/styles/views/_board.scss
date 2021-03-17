@@ -53,5 +53,10 @@
     }
 }
 .group-add{
-    background-color: green;
+    background-color: rgba(245, 245, 245, 0.561);
+    height: 60px;
+    &:hover { 
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
 }
