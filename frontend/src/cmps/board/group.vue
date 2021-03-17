@@ -1,8 +1,10 @@
 <template>
-  <section v-if="group" class="group">
+  <section v-if="group" class=" group">
     <section class="flex group-header">
       <p class="group-title">{{ group.title }}</p>
-      <span @click="removeGroup(group.id)">X</span>
+      <span @click="removeGroup(group.id)"><i class="far fa-trash-alt"></i>
+
+</span>
     </section>
     <task-preview
       v-for="task in group.task"

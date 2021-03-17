@@ -10,8 +10,9 @@
           @removeGroup="loadBoard"
         />
         <section @click="addGroup" class="transition group group-add">
-          <section class="group-header">
-            <p class="group-title">Add New...</p>
+          <section class="flex group-header">
+            <p class="group-title"><i class="fas fa-plus"></i>Add New...</p>
+            <i class="fas fa-pencil-alt"></i>
           </section>
         </section>
       </div>

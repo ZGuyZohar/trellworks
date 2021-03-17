@@ -2,7 +2,7 @@
   <div class="flex board-header">
     <div class="flex header-container">
       <h2>{{ boardTitle }}</h2>
-      <button class="header-btn star">☆</button>
+      <button class="header-btn star"><i class="far fa-star"></i></button>
       <ul class="flex">
         <span class="team-member placeholder"></span>
         <span class="team-member placeholder"></span>
