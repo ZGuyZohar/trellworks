@@ -17,7 +17,7 @@
     props: {
       group: {
         type: Object,
-      },
+      }},
       methods: {
         addTask() {
           console.log("adding task");
@@ -42,5 +42,5 @@
       components: {
         taskPreview,
       },
-    }}
+    }
 </script>
