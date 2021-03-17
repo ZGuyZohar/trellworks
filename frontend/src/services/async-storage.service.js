@@ -195,5 +195,10 @@ const boards = [{
         }
     ]
 }]
+<<<<<<< HEAD
+ 
+// _save('boards', boards)
+=======
 
 _save('boards', boards)
+>>>>>>> 5655c080a1519df6d2fd8635949dcb16e6c29490
