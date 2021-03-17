@@ -2,6 +2,7 @@
   <section v-if="currBoard" class="board">
     <board-header :boardTitle="currBoard.title" />
     <group v-for="group in groups" :key="group.id" :group="group" />
+    <router-view/>
   </section>
 </template>
 

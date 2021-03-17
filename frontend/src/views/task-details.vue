@@ -13,7 +13,6 @@ export default {
         currTask(){
             return this.$store.getters.currTask
         },
-
     },
     methods: {
         closeModal(){
@@ -23,7 +22,7 @@ export default {
     created(){
         const taskId = this.$route.params.taskId
         this.$store.commit({ type: 'getTask', taskId })
-        this.card = this.$store.getters.currTask;
+        console.log(this.currTask);
     }
 
 }
