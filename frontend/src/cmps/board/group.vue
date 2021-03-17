@@ -56,6 +56,7 @@ export default {
     addTask() {
       console.log("adding task", this.taskToAdd);
       this.taskToAdd = "";
+      this.isAddingTask = false;
     },
   },
   components: {
