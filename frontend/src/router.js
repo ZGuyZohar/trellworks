@@ -18,6 +18,6 @@ export const router = new Router({
       path: '/login',
       name: 'loginSignup',
       component: loginSignup
-    },
+    }
   ]
 })
