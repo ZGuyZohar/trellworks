@@ -5,7 +5,6 @@ import loginSignup from './views/login-signup.vue'
 import board from './views/board.vue'
 import boardGallery from './views/board-gallery.vue'
 
-
 Vue.use(Router)
 
 export const router = new Router({
