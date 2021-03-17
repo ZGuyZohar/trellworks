@@ -1,5 +1,5 @@
 <template>
-  <section @click.self="closeModal" class="dark-screen">
+  <section @click.self="closeModal" class="task-details-modal">
     <div class="task-details">
       {{ currTask }}
     </div>
@@ -17,11 +17,10 @@ export default {
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
-  },
-  created() {
-    const taskId = this.$route.params.taskId;
-    this.$store.commit({ type: "getTask", taskId });
-    console.log(this.currTask);
+    created() {
+      const taskId = this.$route.params.taskId;
+      this.$store.commit({ type: "getTask", taskId });
+    },
   },
 };
 </script>
