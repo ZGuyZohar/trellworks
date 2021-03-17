@@ -20,24 +20,15 @@ export default {
     boardId() {
       return this.$route.params.boardId;
     },
-    computed: {
-      boardId() {
-        return this.$route.params.boardId;
-      },
-      currBoard() {
-        return this.$store.getters.currBoard;
-      },
+    currBoard() {
+      return this.$store.getters.currBoard;
     },
-    methods: {
-      async loadBoard() {
-        await this.$store.dispatch({ type: "getBoard", boardId: this.boardId });
-        this.groups = this.currBoard.groups;
-      },
+  },
+  methods: {
+    async loadBoard() {
+      await this.$store.dispatch({ type: "getBoard", boardId: this.boardId });
+      this.groups = this.currBoard.groups;
     },
-    async created() {
-      await this.loadBoard();
-    },
-    async getGroup(group) {},
   },
   async created() {
     await this.loadBoard();
