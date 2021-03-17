@@ -17,10 +17,10 @@ export default {
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
+  },
     created() {
       const taskId = this.$route.params.taskId;
       this.$store.commit({ type: "getTask", taskId });
     },
-  },
 };
 </script>
