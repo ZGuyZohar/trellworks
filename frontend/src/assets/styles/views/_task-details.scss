@@ -1,4 +1,4 @@
-.details-modal {
+.dark-screen {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -6,13 +6,14 @@
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
 
-    .details {
+    .task-details {
         background-color: #F4F5F7;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         width: 768px;
-        min-height: 800px;
+        min-height: 50vh;
+        padding: 20px;
     }
 }
