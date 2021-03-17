@@ -12,14 +12,14 @@
       :task="task"
       :groupId="group.id"
     />
-    <span v-if="!isAddingTask" @click="openAddTask">+add task</span>
+    <span v-if="!isAddingTask" @click="openAddTask(group.id)">+add task</span>
     <template v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
         rows="2"
         cols="29"
         class="task-preview"
-        v-model="taskToAdd"
+        v-model="taskToAdd.title"
       ></textarea>
       <button @click="addTask">Add</button>
       <span class="clickable" @click="closeAddTask"> X</span>
@@ -40,25 +40,31 @@ export default {
   data() {
     return {
       isAddingTask: false,
-      taskToAdd: boardService.getEmptyTask().title,
+      taskToAdd: {
+        title: "",
+      },
+
+      //// add more properties later here such as: description, etc. as we go!////
     };
   },
   methods: {
     async removeGroup(groupId) {
-      await this.$store.dispatch({ type: "removeGroup", groupId: groupId });
-      this.$emit("removeGroup");
+      await this.$store.dispatch({ type: "removeGroup", groupId });
+      this.$emit("groupChange");
     },
-    openAddTask() {
+    openAddTask(groupId) {
+      this.$store.commit({ type: "setGroup", groupId });
       this.isAddingTask = true;
     },
     closeAddTask() {
       this.isAddingTask = false;
+      this.$store.commit({ type: "setGroup", groupId: null });
     },
-    addTask() {
-      console.log("adding task", this.taskToAdd);
-      this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
+    async addTask() {
+      await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
       this.taskToAdd = "";
       this.isAddingTask = false;
+      this.$emit("groupChange");
     },
   },
   components: {
