@@ -30,7 +30,7 @@ export const boardStore = {
                 const task = group.task.find(task => {
                     return task.id === taskId
                 });
-                state.currTask = task;
+                if(task) state.currTask = task;
             })
         },
     },

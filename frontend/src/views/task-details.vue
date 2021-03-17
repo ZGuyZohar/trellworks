@@ -1,6 +1,6 @@
 <template>
-    <section @click.self="closeModal" class="details-modal">
-        <div class="details">
+    <section @click.self="closeModal" class="task-details-modal">
+        <div class="task-details">
                 {{currTask}}
         </div>
     </section>
@@ -22,7 +22,6 @@ export default {
     created(){
         const taskId = this.$route.params.taskId
         this.$store.commit({ type: 'getTask', taskId })
-        console.log(this.currTask);
     }
 
 }
