@@ -1,8 +1,6 @@
 <template>
-  <section @click="getDetails">
-      <h3> {{task.title}}</h3>
-  <section class="task-preview">
-    {{ task.title }}
+  <section @click="getDetails" class="task-preview">
+    <h3>{{ task.title }}</h3>
   </section>
 </template>
 
@@ -13,15 +11,14 @@ export default {
       type: Object,
       required: true,
     },
-    methods: {
-        getDetails(){
-            const currBoard = this.$store.getters.currBoard;
-            this.$store.commit({type: 'getTask', task: this.task})
-            this.$router.push(`/board/${currBoard._id}/details/${this.task.id}`)
-        }
+  },
+  methods: {
+    getDetails() {
+      const currBoard = this.$store.getters.currBoard;
+      this.$store.commit({ type: "getTask", task: this.task });
+      this.$router.push(`/board/${currBoard._id}/details/${this.task.id}`);
     },
-    created(){
-    }
-  }
-}
+  },
+  created() {},
+};
 </script>
