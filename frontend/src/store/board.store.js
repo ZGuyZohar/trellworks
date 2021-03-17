@@ -28,10 +28,9 @@ export const boardStore = {
         getTask(state, {taskId}){
             state.currBoard.groups.forEach(group => {
                 const task = group.task.find(task => {
-                    console.log(task);
                     return task.id === taskId
                 });
-                if (task) state.currCard = task;
+                if (task) state.currTask = task;
                 else console.log('couldnt find task');
                     
             })
