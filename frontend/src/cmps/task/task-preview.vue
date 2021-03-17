@@ -1,6 +1,6 @@
 <template>
   <section @click="getDetails" class="task-preview">
-    <h3>{{ task.title }}</h3>
+    <p>{{ task.title }}</p>
   </section>
 </template>
 

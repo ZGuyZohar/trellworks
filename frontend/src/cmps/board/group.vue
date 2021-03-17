@@ -5,16 +5,19 @@
       <span @click="removeGroup(group.id)">X</span>
     </section>
     <task-preview v-for="task in group.task" :key="task.id" :task="task" />
-    <span v-if="!isAddingTask" @click="openAddTask">+add task</span>
+    <span class="clickable" v-if="!isAddingTask" @click="openAddTask"
+      >+add task</span
+    >
     <template v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
         rows="3"
         cols="29"
         class="task-preview"
+        v-model="taskToAdd"
       ></textarea>
-      <button>Add Task</button>
-      <span>X</span>
+      <button @click="addTask">Add</button>
+      <span class="clickable" @click="closeAddTask"> X</span>
     </template>
   </section>
 </template><script>
@@ -26,7 +29,12 @@ export default {
       type: Object,
     },
   },
-
+  data() {
+    return {
+      isAddingTask: false,
+      taskToAdd: "",
+    };
+  },
   methods: {
     removeGroup(groupId) {
       console.log("removing group: ", groupId);
@@ -39,14 +47,14 @@ export default {
     openAddTask() {
       this.isAddingTask = true;
     },
+    closeAddTask() {
+      this.isAddingTask = false;
+    },
+    addTask() {
+      console.log("adding task", this.taskToAdd);
+      this.taskToAdd = "";
+    },
   },
-
-  data() {
-    return {
-      isAddingTask: false,
-    };
-  },
-
   components: {
     taskPreview,
   },

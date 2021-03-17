@@ -1,23 +1,23 @@
-.header-btn{
+.header-btn {
     background-color: rgba(245, 245, 245, 0.534);
-    padding:8px 14px;
+    padding: 8px 14px;
     font-size: 1rem;
     border-radius: 5px;
 
-    &:hover { 
+    &:hover {
         background-color: rgba(255, 255, 255, 0.781);
     }
 }
 
-.cta-btn{
+.cta-btn {
     padding: 18px 26px;
 
 }
 
-button { 
+button {
     border: none;
-    cursor: pointer;
     transition: all .2s ease;
     border-radius: 5px;
-
+    cursor: pointer;
+    background-color: white;
 }
