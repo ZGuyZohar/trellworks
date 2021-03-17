@@ -1,12 +1,14 @@
 <template>
   <section v-if="currBoard" class="board">
     <board-header :boardTitle="currBoard.title" />
-    <group v-for="group in groups" :key="group.id" :group="group" />
-    <section class="group group-add">
-      <section class=" group-header">
-        <p class="group-title">Add New...</p>
+    <div class="flex group-container">
+      <group v-for="group in groups" :key="group.id" :group="group" />
+      <section @click="addGroup" class="transition group group-add">
+        <section class=" group-header">
+          <p class="group-title">Add New...</p>
+        </section>
       </section>
-    </section>
+    </div>
     <router-view />
   </section>
 </template>
@@ -37,6 +39,12 @@
         });
         this.groups = this.currBoard.groups;
       },
+      async addGroup() {
+        await this.$store.dispatch({
+          type: "addGroup",
+          boardId: this.boardId
+        })
+      }
     },
     async created() {
       await this.loadBoard();

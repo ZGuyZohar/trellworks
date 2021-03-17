@@ -48,5 +48,8 @@ export const boardStore = {
                 throw err
             }
         },
+            addGroup({commit},{boardId}){    
+            boardService.addEmptyGroup(boardId)       
+        }
     }
 }

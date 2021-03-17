@@ -1,4 +1,6 @@
-import { storageService } from './async-storage.service'
+import {
+    storageService
+} from './async-storage.service'
 const BOARD_DB = 'boards'
 // const BOARD_URL = '/board'
 
@@ -7,15 +9,25 @@ export const boardService = {
     getById,
     remove,
     save,
-    getEmptyBoard
+    getEmptyBoard,
+    addEmptyGroup
 }
 
-async function query(){
+async function query() {
     return storageService.query(BOARD_DB)
     // return httpService.get(BOARD_URL)
 }
 
-
+async function addEmptyGroup(boardId) {
+    var board
+    try {
+        board = await getById(boardId)
+        // board.groups.push({})
+        console.log(board,'adding in progress...');
+    } catch (err) {
+        console.log(err);
+    }
+}
 async function getById(boardId) {
     return storageService.get(BOARD_DB, boardId)
     // return httpService.get(`board/${boardId}`)
@@ -43,14 +55,17 @@ function getEmptyBoard() {
         createdAt: Date.now(),
         boards: []
     }
-}  
-// async function update(board) {
-    //     return storageService.put(BOARD_DB, board)
-    //     // board = await httpService.put(`board/${board._id}`, board)
-    //     // Handle case in which admin updates other board's details
-    // }
+}
 
-    // ***** CHANGED UPDATE FUNCTION FROM STARTER TO SAVE FUNCTION,
-    // COMMENTING BECAUSE IM NOT SURE WHY IT WASNT ADDED ALREADY IN THE STARTER,
-    // MIGHT NEED TO CHANGE BACK  
-    
+function _getEmptyGroup(){
+
+}
+// async function update(board) {
+//     return storageService.put(BOARD_DB, board)
+//     // board = await httpService.put(`board/${board._id}`, board)
+//     // Handle case in which admin updates other board's details
+// }
+
+// ***** CHANGED UPDATE FUNCTION FROM STARTER TO SAVE FUNCTION,
+// COMMENTING BECAUSE IM NOT SURE WHY IT WASNT ADDED ALREADY IN THE STARTER,
+// MIGHT NEED TO CHANGE BACK  
