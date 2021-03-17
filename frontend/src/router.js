@@ -24,7 +24,13 @@ export const router = new Router({
     {
       path: '/board/:boardId',
       name: 'board',
-      component: board
+      component: board,
+      // children: [
+      //   {
+      //     path: 'profile',
+      //     component: UserProfile
+      //   },
+      // ]
     },
     {
       path: '/boards',

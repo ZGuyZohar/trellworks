@@ -27,16 +27,12 @@ export default {
     },    
     methods: {
         async loadBoard(){
-            await this.$store.dispatch({type: 'getBoard', boardId: this.boardId})
-            this.currBoard.groups.forEach(group => this.groups.push(group))               
+            await this.$store.dispatch({type: 'getBoard', boardId: this.boardId})      
+            this.groups = this.currBoard.groups       
         },
-        async getGroup(group){
-
-        }
     },
     async created() { 
-        // await this.loadBoard()
-        this.$store.dispatch({type: 'loadBoards'})
+        await this.loadBoard()
     },
     components: {
         boardHeader,
