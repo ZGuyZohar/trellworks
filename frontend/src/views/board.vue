@@ -3,7 +3,7 @@
     <board-header/>
     <h1>Board - {{currBoard.title}}</h1>
     <group v-for="group in groups" :key="group.id" :group="group" />
-
+    <router-view/>
     </section>
 </template>
 

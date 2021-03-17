@@ -4,6 +4,8 @@ export const boardStore = {
     state: {
         boards: null,
         currBoard: null,
+        currGroup: null,
+        currTask: null
     },
     getters: {
         boards(state) {
@@ -11,6 +13,9 @@ export const boardStore = {
         },
         currBoard(state){
             return state.currBoard
+        },
+        currTask(state){
+            return state.currTask
         }
     },
     mutations: {
@@ -19,6 +24,16 @@ export const boardStore = {
         },
         setCurrBoard(state, { foundBoard }) {
             state.currBoard = foundBoard;
+        },
+        getTask(state, {taskId}){
+            state.currBoard.groups.forEach(group => {
+                const task = group.tasks.find(task => {
+                    return task.id === taskId
+                });
+                if (task) {
+                    state.currCard = task;
+                }
+            })
         },
     },
     actions: {

@@ -4,6 +4,7 @@ import home from './views/home.vue'
 import loginSignup from './views/login-signup.vue'
 import board from './views/board.vue'
 import boardGallery from './views/board-gallery.vue'
+import taskDetails from './views/task-details.vue'
 
 Vue.use(Router)
 
@@ -18,19 +19,20 @@ export const router = new Router({
     },
     {
       path: '/login',
-      name: 'loginSignup',
+      name: 'login-signup',
       component: loginSignup
     },
     {
       path: '/board/:boardId',
       name: 'board',
       component: board,
-      // children: [
-      //   {
-      //     path: 'profile',
-      //     component: UserProfile
-      //   },
-      // ]
+      children: [
+        {
+          path: 'details/:taskId',
+          name: 'task-details',
+          component: taskDetails
+        },
+      ]
     },
     {
       path: '/boards',
