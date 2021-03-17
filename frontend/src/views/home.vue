@@ -4,7 +4,9 @@
     <h5 class="text-center">
       Powered up Frontend 
     </h5>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <h1>
+        <router-link to="/board/b101">Board</router-link>
+    </h1>
   </section>
 
   

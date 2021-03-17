@@ -2,7 +2,8 @@ import { reviewService } from '../services/review.service.js'
 
 export const reviewStore = {
     state: {
-        reviews: []
+        boards: null,
+        currBoard: null,
     },
     getters: {
         reviews(state) {

@@ -22,7 +22,7 @@ export const router = new Router({
       component: loginSignup
     },
     {
-      path: '/board',
+      path: '/board/:boardId',
       name: 'board',
       component: board
     },
