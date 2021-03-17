@@ -12,7 +12,7 @@ export const boardService = {
     getEmptyBoard,
     addGroup,
     removeGroup,
-    getEmptyTask
+    addTask
 }
 
 async function query() {
@@ -39,6 +39,20 @@ async function removeGroup(groupId, board) {
     save(boardCopy);
     return boardCopy;
 }
+
+async function addTask(task, board, groupId) {
+    try {
+        console.log('task', task);
+        const boardCopy = JSON.parse(JSON.stringify(board));
+        const group = boardCopy.groups.find(group => group.id === groupId);
+        group.task.push(task)
+        save(boardCopy);
+        return boardCopy;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 
 async function getById(boardId) {
     return storageService.get(BOARD_DB, boardId)
@@ -70,12 +84,6 @@ function getEmptyBoard() {
     }
 }
 
-function getEmptyTask() {
-    return {
-        title: ''
-        //// add more properties later here such as: description, etc. as we go!////
-    }
-}
 
 function _getEmptyGroup() {
     return {

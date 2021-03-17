@@ -7,7 +7,7 @@
           v-for="group in groups"
           :key="group.id"
           :group="group"
-          @removeGroup="loadBoard"
+          @groupChange="loadBoard"
         />
         <section @click="addGroup" class="transition group group-add">
           <section class="group-header">

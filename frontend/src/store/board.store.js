@@ -28,7 +28,7 @@ export const boardStore = {
         setBoard(state, { board }) {
             state.currBoard = board;
         },
-        getGroup(state, { groupId }) {
+        setGroup(state, { groupId }) {
             const currGroup = state.currBoard.groups.find(group => group.id === groupId)
             state.currGroup = currGroup
         },
@@ -62,6 +62,10 @@ export const boardStore = {
         async removeGroup(context, { groupId }) {
             const savedBoard = await boardService.removeGroup(groupId, context.state.currBoard);
             context.commit({ type: 'setBoard', board: savedBoard });
-        }
+        },
+        async addTask(context, { task }) {
+            const savedBoard = await boardService.addTask(task, context.state.currBoard, context.state.currGroup.id);
+            context.commit({ type: 'setBoard', board: savedBoard });
+        },
     }
 }
