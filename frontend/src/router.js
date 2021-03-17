@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from './views/home.vue'
 import loginSignup from './views/login-signup.vue'
+import board from './views/board.vue'
+import boardGallery from './views/board-gallery.vue'
 
 
 Vue.use(Router)
@@ -19,6 +21,16 @@ export const router = new Router({
       path: '/login',
       name: 'loginSignup',
       component: loginSignup
+    },
+    {
+      path: '/board',
+      name: 'board',
+      component: board
+    },
+    {
+      path: '/boards',
+      name: 'board-gallery',
+      component: boardGallery
     }
   ]
 })
