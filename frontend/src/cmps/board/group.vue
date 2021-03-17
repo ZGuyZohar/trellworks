@@ -38,7 +38,6 @@
           isAddingTask: false,
         };
       },
-
       components: {
         taskPreview,
       },
