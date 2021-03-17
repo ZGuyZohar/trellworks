@@ -315,4 +315,4 @@ const boards = [{
     ]
 }]
 
-// _save('boards', boards)
+_save('boards', boards)
