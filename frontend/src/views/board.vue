@@ -44,6 +44,7 @@
           type: "addGroup",
           boardId: this.boardId
         })
+        this.loadBoard()
       }
     },
     async created() {

@@ -1,3 +1,7 @@
+.board{
+    overflow-y: hidden;
+    min-height: 94vh;
+}
 .board-header {
     background-color: $clr5;
     width: 100%;
@@ -5,23 +9,19 @@
     align-items: center;
     padding: 10px 15px;
     margin-bottom: 15px;
-
     .header-container {
         align-items: center;
         flex: 1;
-
         &>* {
             margin: 1%;
         }
     }
-
     .team-member {
         border-radius: 50%;
         background-color: #fff;
         height: 30px;
         width: 30px;
     }
-
 }
 
 .group {
@@ -30,6 +30,7 @@
     margin: 5px;
     padding: 10px;
     min-width: 300px;
+    min-height: 25vh;
     border-radius: 5px;
 
     .group-header {

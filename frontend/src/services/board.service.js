@@ -22,8 +22,9 @@ async function addEmptyGroup(boardId) {
     var board
     try {
         board = await getById(boardId)
-        // board.groups.push({})
-        console.log(board,'adding in progress...');
+        board.groups.push(_getEmptyGroup())
+        save(board)
+        console.log(board);
     } catch (err) {
         console.log(err);
     }
@@ -58,6 +59,12 @@ function getEmptyBoard() {
 }
 
 function _getEmptyGroup(){
+    return {
+        id: 'test',
+        style:{},
+        title: 'My new list',
+        tasks: []
+    }
 
 }
 // async function update(board) {
