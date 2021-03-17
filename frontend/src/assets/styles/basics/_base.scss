@@ -8,16 +8,18 @@
 }
 
 html {
-    font-family: montserrat;
     line-height: 1.6;
     color: $clr2;
+    font-size: 16px;
 }
 
 body {
-    font-size: rem(18px);
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
- main, footer {
+
+main,
+footer {
     padding: 5px;
 }
 
@@ -29,4 +31,3 @@ p {
 a {
     text-decoration: none;
 }
-
