@@ -5,7 +5,7 @@
 //    instead it only sends a new activity object: {txt, boardId, listId, cardId}
 //    the backend adds this activity to the board with $push and can also emit socket notificatios
 // *. D & D Guidelines - vuedraggable 
-// *. Same model for Monday style app (do not implement a generic columns feature)
+// *. Same model for Monday style app (do not implement a generic columns feature)https://github.com/TomerPinto1986/trililo/blob/main/frontend/src/services/board.service.js
 // *. boardStore no need for list/card stores
 // *. rendering performance
 // *. we do not handle concurrent editing - needs versioning

@@ -4,13 +4,16 @@
             <h1>Gallery</h1>
             <!-- <h1>{{boards}}</h1> -->
             <div class="board-list">
-                <ul v-for="board in boards" :key="board._id">
-                    <span class="placeholder-preview">
-                <router-link :to="'/board/'+board._id">
-                        <div class="transition preview-header">{{board.title}}</div>
+                <div class="placeholder-preview add">
+                    <button class="cta-btn">Create new</button>
+                </div>
+                <router-link v-for="board in boards" :key="board._id" :to="'/board/'+board._id">
+                    <div class="placeholder-preview">
+                        <div class="transition preview-header">
+                            <h2>{{board.title}}</h2>
+                        </div>
+                    </div>
                 </router-link>
-                </span>
-</ul>
             </div>
         </div>
     </section>
@@ -19,8 +22,7 @@
 <script>
     export default {
         data() {
-            return {
-            }
+            return {}
         },
         computed: {
             boards() {
