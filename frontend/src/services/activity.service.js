@@ -1,35 +1,27 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
-import {userService} from './user.service'
+import { userService } from './user.service'
 
-export const reviewService = {
+export const activityService = {
   add,
   query,
   remove
 }
 
 
-// More ways to send query params:
-// return axios.get('api/toy/?id=1223&balance=13')
-// return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
-
 function query(filterBy) {
-  var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  return httpService.get(`review${queryStr}`)
-  // return storageService.query('review')
+  // return httpService.get('activity', filterBy)
+  return storageService.query('activity')
 }
 
-function remove(reviewId) {
-  return httpService.delete(`review/${reviewId}`)
-  // return storageService.delete('review', reviewId)
+function remove(activityId) {
+  // return httpService.delete(`review/${activityId}`)
+  return storageService.delete('activity', activityId)
+  /// can only delete comments
 
 }
-async function add(review) {
-  const addedReview = await httpService.post(`review`, review)
-
-  // review.byUser = userService.getLoggedinUser()
-  // review.aboutUser = await userService.getById(review.aboutUserId)
-  // const addedReview = storageService.post('review', review)
-
-  return addedReview
+async function add(activity) {
+  // const addedActivity = await httpService.post(`activity`, activity)
+  const addedActivity = storageService.post('activity', activityId)
+  return addedActivity
 }
