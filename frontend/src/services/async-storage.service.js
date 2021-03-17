@@ -32,7 +32,7 @@ function post(entityType, newEntity) {
 function postMany(entityType, newEntities) {
     return query(entityType)
         .then(entities => {
-            newEntities = newEntities.map(entity => ({...entity, _id: _makeId()}))
+            newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
             entities.push(...newEntities)
             _save(entityType, entities)
             return newEntity
@@ -195,5 +195,4 @@ const boards = [{
         }
     ]
 }]
- 
-_save('boards', boards)
+// _save('boards', boards)

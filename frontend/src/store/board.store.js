@@ -7,7 +7,7 @@ export const boardStore = {
     },
     getters: {
         boards(state) {
-            return state.boards;
+            return state.boards; 
         },
         currBoard(state){
             return state.currBoard

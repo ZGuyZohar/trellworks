@@ -1,13 +1,12 @@
 <template>
   <section v-if="group">
-      {{group.title}}
-      <!-- <template v-for="title in group.task" :key="group.task.id">
-          
-      </template> -->
+      <div>{{group.title}}</div>
+      <task-preview v-for="task in group.task" :key="task.id" :task="task"/>
   </section>
 </template>
 
 <script>
+import taskPreview from '@/cmps/task/task-preview'
 export default {
     props: {
         group: {
@@ -16,7 +15,9 @@ export default {
         }
     },
     created(){
-        console.log(this.group.task);
+    },
+    components: {
+        taskPreview
     }
 }
 </script>
