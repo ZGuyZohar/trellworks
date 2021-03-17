@@ -4,13 +4,16 @@
     <h5 class="text-center">
       Powered up Frontend 
     </h5>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <h1>
+        <router-link to="/board/b101">Board</router-link>
+    </h1>
   </section>
 
   
 </template>
 
 <script>
+import boardHeader from '../cmps/board/board-header.vue'
 export default {
   name: 'home',
   data() {
@@ -22,6 +25,9 @@ export default {
   created() {
   },
   methods: {
+  },
+  components: { 
+    boardHeader
   }
   
 }

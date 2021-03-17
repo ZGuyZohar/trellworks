@@ -1,0 +1,32 @@
+.board-list {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: 250px;
+}
+
+.placeholder-preview {
+    height: 200px;
+    width: 375px;
+    background-color: gray;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+
+    .preview-header {
+        background-color: #000;
+        position: relative;
+        height: 20%;
+        opacity: 25%;
+
+        &:hover {
+            opacity: 100%;
+        }
+    }
+}
+
+.gallery-container {
+    flex-direction: column;
+    text-align: center;
+}

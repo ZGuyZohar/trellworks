@@ -1,54 +1,40 @@
-import { reviewService } from '../services/review.service.js'
+import { boardService } from '../services/board.service.js'
 
-export const reviewStore = {
+export const boardStore = {
     state: {
-        reviews: []
+        boards: null,
+        currBoard: null,
     },
     getters: {
-        reviews(state) {
-            return state.reviews;
+        boards(state) {
+            return state.boards;
         },
+        currBoard(state){
+            return state.currBoard
+        }
     },
     mutations: {
-        setReviews(state, { reviews }) {
-            state.reviews = reviews;
+        setBoards(state, {foundBoards}){
+            state.boards = foundBoards
         },
-        addReview(state, { review }) {
-            state.reviews.push(review)
-        },
-        removeReview(state, { reviewId }) {
-            state.reviews = state.reviews.filter(review => review._id !== reviewId)
+        setCurrBoard(state, { foundBoard }) {
+            state.currBoard = foundBoard;
         },
     },
     actions: {
-        async addReview(context, { review }) {
-            try {
-                review = await reviewService.add(review)
-                context.commit({ type: 'addReview', review })
-                return review;
-            } catch (err) {
-                console.log('reviewStore: Error in addReview', err)
-                throw err
-            }
+        async loadBoards({commit}){
+            const foundBoards = await boardService.query();
+            console.log(foundBoards);
+            commit({type: 'setBoards', foundBoards})
         },
-        async loadReviews(context) {
+        async getBoard({commit}, {boardId}) {
             try {
-                const reviews = await reviewService.query();
-                context.commit({ type: 'setReviews', reviews })
+                const foundBoard = await boardService.getById(boardId);
+                commit({ type: 'setCurrBoard', foundBoard })
             } catch (err) {
                 console.log('reviewStore: Error in loadReviews', err)
                 throw err
             }
         },
-        async removeReview(context, { reviewId }) {
-            try {
-                await reviewService.remove(reviewId);
-                context.commit({ type: 'removeReview', reviewId })
-            } catch (err) {
-                console.log('reviewStore: Error in removeReview', err)
-                throw err
-            }
-        },
-
     }
 }
