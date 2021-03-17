@@ -1,10 +1,8 @@
 <template>
-    <section v-if="board" class="board">
+    <section v-if="currBoard" class="board">
     <board-header/>
-    <h1>Board - {{board.title}}</h1>
-    <!-- <div v-for="group in groups" :key="group.id" @click="getGroup(group)">
-        {{group.title}}
-    </div> -->
+    <h1>Board - {{currBoard.title}}</h1>
+    <group v-for="group in groups" :key="group.id" :group="group" />
 
     </section>
 </template>
@@ -37,7 +35,8 @@ export default {
         }
     },
     async created() { 
-        await this.loadBoard()
+        // await this.loadBoard()
+        this.$store.dispatch({type: 'loadBoards'})
     },
     components: {
         boardHeader,

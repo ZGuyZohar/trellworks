@@ -11,7 +11,7 @@ export const boardService = {
 }
 
 async function query(){
-    return storageService.query(BOARD_DB, id)
+    return storageService.query(BOARD_DB)
     // return httpService.get(BOARD_URL)
 }
 

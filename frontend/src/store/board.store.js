@@ -14,9 +14,8 @@ export const boardStore = {
         }
     },
     mutations: {
-        setBoards(state, {foundBoard}){
-            state.boards = foundBoard
-            console.log(state.boards);
+        setBoards(state, {foundBoards}){
+            state.boards = foundBoards
         },
         setCurrBoard(state, { foundBoard }) {
             state.currBoard = foundBoard;
@@ -24,12 +23,12 @@ export const boardStore = {
     },
     actions: {
         async loadBoards({commit}){
-            const foundBoards = boardService.query();
+            const foundBoards = await boardService.query();
+            console.log(foundBoards);
             commit({type: 'setBoards', foundBoards})
         },
         async getBoard({commit}, {boardId}) {
             try {
-                console.log('hi');
                 const foundBoard = await boardService.getById(boardId);
                 commit({ type: 'setCurrBoard', foundBoard })
             } catch (err) {
