@@ -15,5 +15,15 @@
         width: 768px;
         min-height: 50vh;
         padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 15rem;
+
+        .main {
+            grid-column: 1;
+        }
+
+        .action {
+            grid-column: 2;
+        }
     }
 }

@@ -14,6 +14,9 @@ export const boardStore = {
         currBoard(state){
             return state.currBoard
         },
+        currGroup(state){
+            return state.currGroup
+        },
         currTask(state){
             return state.currTask
         }
@@ -22,8 +25,12 @@ export const boardStore = {
         setBoards(state, {foundBoards}){
             state.boards = foundBoards
         },
-        setCurrBoard(state, { foundBoard }) {
+        getBoard(state, { foundBoard }) {
             state.currBoard = foundBoard;
+        },
+        getGroup(state, {groupId}){
+            const currGroup = state.currBoard.groups.find(group => group.id === groupId)
+            state.currGroup = currGroup
         },
         getTask(state, {taskId}){
             state.currBoard.groups.forEach(group => {
@@ -42,7 +49,7 @@ export const boardStore = {
         async getBoard({commit}, {boardId}) {
             try {
                 const foundBoard = await boardService.getById(boardId);
-                commit({ type: 'setCurrBoard', foundBoard })
+                commit({ type: 'getBoard', foundBoard })
             } catch (err) {
                 console.log('reviewStore: Error in loadReviews', err)
                 throw err
