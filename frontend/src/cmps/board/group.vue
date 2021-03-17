@@ -4,10 +4,13 @@
       <p class="group-title">{{ group.title }}</p>
       <span @click="removeGroup(group.id)">X</span>
     </section>
-    <task-preview v-for="task in group.task" :key="task.id" :task="task" />
-    <span class="clickable" v-if="!isAddingTask" @click="openAddTask"
-      >+add task</span
-    >
+    <task-preview
+      v-for="task in group.task"
+      :key="task.id"
+      :task="task"
+      :groupId="group.id"
+    />
+    <span v-if="!isAddingTask" @click="openAddTask">+add task</span>
     <template v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
