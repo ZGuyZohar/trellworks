@@ -1,7 +1,6 @@
 <template>
   <section v-if="currBoard" class="board">
-    <board-header />
-    <h1>Board - {{ currBoard.title }}</h1>
+    <board-header :boardTitle="currBoard.title" />
     <group v-for="group in groups" :key="group.id" :group="group" />
   </section>
 </template>
