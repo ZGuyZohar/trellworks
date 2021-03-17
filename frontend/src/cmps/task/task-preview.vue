@@ -1,16 +1,17 @@
 <template>
   <section @click="getDetails">
       <h3> {{task.title}}</h3>
+  <section class="task-preview">
+    {{ task.title }}
   </section>
 </template>
 
 <script>
 export default {
-    props: {
-        task: {
-            type: Object,
-            required: true
-        }
+  props: {
+    task: {
+      type: Object,
+      required: true,
     },
     methods: {
         getDetails(){
@@ -21,5 +22,6 @@ export default {
     },
     created(){
     }
+  }
 }
 </script>
