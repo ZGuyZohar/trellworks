@@ -76,7 +76,12 @@ function _makeId(length = 5) {
     return text
 }
 
-
+function getDefaultLabels(){
+    const defaultColors = ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf']
+    return defaultColors.map(color => {
+        return getEmptyLabel(color)
+    })
+}
 
 const boardsDB = [{
         "_id": "b101",
@@ -88,11 +93,38 @@ const boardsDB = [{
             "imgUrl": "http://some-img"
         },
         "style": {},
-        "labels": [{
-            "id": "l101",
-            "title": "Done",
-            "color": "#61bd4f"
-        }],
+        "labels": [
+            {
+                id: 'l101',
+                title: '',
+                color: '#61bd4f'
+            },
+            {
+                id: 'l102',
+                title: '',
+                color: '#f2d600'
+            },
+            {
+                id: 'l103',
+                title: '',
+                color: '#ff9f1a'
+            },
+            {
+                id: 'l104',
+                title: '',
+                color: '#eb5a46'
+            },
+            {
+                id: 'l105',
+                title: '',
+                color: '#c377e0'
+            },
+            {
+                id: 'l106',
+                title: '',
+                color: '#0079bf'
+            }
+        ],
         "members": [{
             "_id": "u101",
             "fullname": "Tal Tarablus",

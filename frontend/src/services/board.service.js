@@ -46,7 +46,7 @@ function getEmptyBoard() {
     return {
         title: '',
         createdAt: Date.now(),
-        boards: [],
+        labels: getDefaultLabels(),
         groups: []
     }
 }
@@ -72,7 +72,7 @@ function getEmptyTask() {
 
 function getDefaultLabels(){
     const defaultColors = ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf']
-    defaultColors.map(color => {
+    return defaultColors.map(color => {
         return getEmptyLabel(color)
     })
 }
