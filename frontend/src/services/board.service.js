@@ -11,7 +11,9 @@ export const boardService = {
     save,
     getEmptyBoard,
     getEmptyTask,
-    getEmptyGroup
+    getEmptyGroup,
+    getEmptyLabel,
+    getDefaultLabels
 }
 
 async function query() {
@@ -65,6 +67,21 @@ function getEmptyTask() {
         id: utilService.makeId(),
         title: '',
         labels: []
+    }
+}
+
+function getDefaultLabels(){
+    const defaultColors = ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf']
+    defaultColors.map(color => {
+        return getEmptyLabel(color)
+    })
+}
+
+function getEmptyLabel(color = '') {
+    return {
+        id: utilService.makeId(),
+        title: '',
+        color
     }
 }
 // async function update(board) {

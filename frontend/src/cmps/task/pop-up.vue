@@ -3,7 +3,10 @@
         <div class="pop-up-header">
             <slot name="header">  </slot><span @click.stop="closePopUp(false)">X</span>
         </div>
+        <div class="main-pop-up">
         <slot></slot>
+
+        </div>
     </section>  
 </template>
 

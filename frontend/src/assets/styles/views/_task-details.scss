@@ -72,20 +72,34 @@
     align-items: center;
 
     .pop-up-header {
+        width: 100%;
         line-height: 40px;
         border-bottom: 1px solid rgba(9, 30, 66, .13);
         margin: 0 12px;
         padding: 0 32px;
-    }
-    
-}
+        display: flex;
+        justify-content: center;
 
-.task-labels {
-    width: 100%;
-    padding: 0 12px 12px;
+    }
+
+    .pop-up-title {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: .04em;
+        line-height: 16px;
+        margin-top: 16px;
+        text-transform: uppercase;
+    }
 
     input {
         width: 100%;
-        margin: 4px 0 12px;
+        margin: 10px 0 12px;
     }
+
+}
+
+.main-pop-up {
+    width: 100%;
+    padding: 0 12px 12px;
+
 }
