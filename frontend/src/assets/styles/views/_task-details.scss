@@ -67,4 +67,25 @@
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
     position: absolute;
     right: -115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pop-up-header {
+        line-height: 40px;
+        border-bottom: 1px solid rgba(9, 30, 66, .13);
+        margin: 0 12px;
+        padding: 0 32px;
+    }
+    
+}
+
+.task-labels {
+    width: 100%;
+    padding: 0 12px 12px;
+
+    input {
+        width: 100%;
+        margin: 4px 0 12px;
+    }
 }
