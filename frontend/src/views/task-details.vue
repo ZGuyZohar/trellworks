@@ -3,26 +3,47 @@
     <div @click="togglePopUp(false)" class="task-details">
       <main class="main">
         <h2>{{ currTask.title }}</h2>
-        <p>in <span>{{ currGroup.title }}</span></p>
+        <p>
+          in <span>{{ currGroup.title }}</span>
+        </p>
         <section class="members-labels">
-          <div class="members-preview"> <!--HERE WILL BE MEMBERS PREVIEW--></div>
-          <div class="labels-preview flex" v-if="currTask.labelIds" >
+          <div class="members-preview"><!--HERE WILL BE MEMBERS PREVIEW--></div>
+          <div class="labels-preview flex" v-if="currTask.labelIds">
             <span class="label-preview-title">labels</span>
-          <span class="flex">
-            <labels-preview v-for="(label, idx) in currTask.labelIds" :key="idx" :label="label" :currBoard="currBoard"/>
-          </span>
-
+            <span class="flex">
+              <labels-preview
+                v-for="labelId in currTask.labelIds"
+                :key="labelId"
+                :label="labelId"
+                :currBoard="currBoard"
+              />
+            </span>
           </div>
         </section>
       </main>
       <div class="action-bar">
         <ul>
           <h3 class="action-bar-title">add to task</h3>
-          <li v-for="(action, idx) in actions" :key="idx" @click.stop="togglePopUp(true)" class="action">{{action}}</li>
+          <li
+            v-for="(action, idx) in actions"
+            :key="idx"
+            @click.stop="togglePopUp(true)"
+            class="action"
+          >
+            {{ action }}
+          </li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-            <template v-slot:header>here will be the header </template>
-            <task-labels @updateTaskLabels="updateTaskLabels" @removeTaskLabels="removeTaskLabels" :labelIds="currTask.labelIds"/>
+            <template v-slot:header>here will be the header</template>
+            <task-labels
+              @addLabel="addLabel"
+              @removeLabel="removeLabel"
+              :labelIds="currTask.labelIds"
+            />
           </pop-up>
+        </ul>
+        <ul>
+          <h3 class="action-bar-title">Actions</h3>
+          <li class="action" @click="removeTask()">Delete Task</li>
         </ul>
       </div>
     </div>
@@ -30,20 +51,20 @@
 </template>
 
 <script>
-import { boardService } from '@/services/board.service.js'
-import taskLabels from '@/cmps/task/edit-cmps/task-labels'
-import popUp from '@/cmps/task/pop-up'
-import labelsPreview from '../cmps/task-details/labels-preview.vue';
+import { boardService } from "@/services/board.service.js";
+import taskLabels from "@/cmps/task/edit-cmps/task-labels";
+import popUp from "@/cmps/task/pop-up";
+import labelsPreview from "../cmps/task-details/labels-preview.vue";
 export default {
-  data(){
+  data() {
     return {
-      actions: ['Members', 'Labels', 'Checklist', 'Attachment', 'Cover'],
-      openPopUp: false
-    }
+      actions: ["Members", "Labels", "Checklist", "Attachment", "Cover"],
+      openPopUp: false,
+    };
   },
   computed: {
-    currBoard(){
-      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+    currBoard() {
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
     },
     currTask() {
       return this.$store.getters.currTask;
@@ -51,40 +72,58 @@ export default {
     currGroup() {
       return this.$store.getters.currGroup;
     },
-    taskId(){
+    taskId() {
       return this.$route.params.taskId;
     },
   },
   methods: {
+    getTask(board) {
+      const group = board.groups.find(
+        (group) => group.id === this.currGroup.id
+      );
+      const task = group.task.find((task) => task.id === this.currTask.id);
+      return task;
+    },
     async updateBoard(board) {
       await this.$store.dispatch({
         type: "saveBoardChanges",
         editedBoard: board,
       });
+      this.$store.commit({ type: "setTask", taskId: this.taskId });
     },
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
-    togglePopUp(boolean){
+    togglePopUp(boolean) {
       this.openPopUp = boolean;
     },
-    updateTaskLabels(labelId){
+    addLabel(labelId) {
       const board = this.currBoard;
-      const group = board.groups.find(group => group.id === this.currGroup.id)
-      const task = group.task.find(task => task.id === this.currTask.id)
+      const task = this.getTask(board);
       task.labelIds.push(labelId);
-      this.updateBoard(board)
-      this.$store.commit({ type: "setTask", taskId: this.taskId });
+      this.updateBoard(board);
     },
-    removeTaskLabels(labelId){
+    removeLabel(labelId) {
       const board = this.currBoard;
-      const group = board.groups.find(group => group.id === this.currGroup.id)
-      const task = group.task.find(task => task.id === this.currTask.id)
-      const foundIdx = task.labelIds.findIndex(currLabelId => currLabelId === labelId)
-      task.labelIds.splice(foundIdx, 1)
-      this.updateBoard(board)
-      this.$store.commit({ type: "setTask", taskId: this.taskId });
-    }
+      const task = this.getTask(board);
+      const foundIdx = task.labelIds.findIndex(
+        (currLabelId) => currLabelId === labelId
+      );
+      task.labelIds.splice(foundIdx, 1);
+      this.updateBoard(board);
+    },
+    removeTask() {
+      const board = this.currBoard;
+      const group = board.groups.find(
+        (group) => group.id === this.currGroup.id
+      );
+      const taskIdx = group.task.findIndex(
+        (task) => task.id === this.currTask.id
+      );
+      group.task.splice(taskIdx, 1);
+      this.updateBoard(board);
+      this.$router.push("../");
+    },
   },
   created() {
     this.$store.commit({ type: "setTask", taskId: this.taskId });
@@ -92,7 +131,7 @@ export default {
   components: {
     popUp,
     taskLabels,
-    labelsPreview
-  }
+    labelsPreview,
+  },
 };
 </script>
