@@ -58,6 +58,14 @@ export const boardStore = {
         async saveBoardChanges(context, { editedBoard }) {
             context.commit({ type: 'setBoard', board: editedBoard });
             await boardService.save(editedBoard)
-        }
+        },
+        async newBoard({ commit }) {
+            try{
+            
+            }
+            catch(err){
+                console.log('Adding new board: Error',err);
+            }
+         }
     }
 }

@@ -8,6 +8,8 @@
           class="flex"
           animation="300"
           @end="draggingEnd"
+          ghostClass="group-ghost"
+          handle=".handle"
         >
           <group
             v-for="group in currBoard.groups"

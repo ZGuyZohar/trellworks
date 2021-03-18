@@ -1,17 +1,18 @@
 <template>
-  <section v-if="group" class="group">
-    <section class="flex group-header">
-      <!-- <p class="group-title">{{ group.title }}</p> -->
-      <input
-        class="clean-input group-title"
-        type="text"
-        v-model="group.title"
-        @input="titleChange(group.id)"
-      />
-      <span @click="removeGroup(group.id)"
-        ><i class="far fa-trash-alt"></i>
-      </span>
-    </section>
+  <section v-if="group">
+    <div  class="group handle">
+        <section class="flex group-header ">
+          <!-- <p class="group-title">{{ group.title }}</p> -->
+          <input
+            class="clean-input group-title"
+            type="text"
+            v-model="group.title"
+            @input="titleChange(group.id)"
+          />
+          <span @click="removeGroup(group.id)"
+            ><i class="far fa-trash-alt "></i>
+          </span>
+        </section>
     <draggable
       @end="itemsDragged"
       group="task"
@@ -26,7 +27,7 @@
       />
     </draggable>
     <span v-if="!isAddingTask" @click="openAddTask(group.id)">+add task</span>
-    <template v-if="isAddingTask">
+    <div v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
         rows="2"
@@ -36,7 +37,8 @@
       ></textarea>
       <button @click="addTask(group.id)">Add</button>
       <span class="clickable" @click="closeAddTask"> X</span>
-    </template>
+    </div>
+  </div>
   </section>
 </template>
 

@@ -80,3 +80,23 @@
         cursor: pointer;
     }
 }
+
+.group-ghost {
+    transition: transform 0.18s ease;
+    opacity: 100%;
+
+}
+
+.sortable-chosen {
+    cursor: grab;
+    opacity: 100%;
+    transition: transform 0.18s ease;
+
+}
+
+.sortable-drag {
+    cursor: grabbing;
+    transition: transform 0.18s ease;
+    transform: rotateZ(5deg);
+
+}
