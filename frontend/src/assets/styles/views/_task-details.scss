@@ -121,3 +121,37 @@
         position: relative;
     }
 }
+
+.members-labels {
+
+    .labels-preview {
+        flex-direction: column;
+
+        label-preview-title {
+            color: #5e6c84;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            line-height: 16px;
+            margin-top: 16px;
+            text-transform: uppercase;
+            line-height: 20px;
+            margin: 0 8px 4px 0;
+        }
+
+        div {
+            border-radius: 3px;
+            box-sizing: border-box;
+            display: block;
+            float: left;
+            font-weight: 600;
+            height: 32px;
+            line-height: 32px;
+            margin: 0 4px 4px 0;
+            min-width: 40px;
+            padding: 0 12px;
+            width: auto;
+
+        }
+    }
+}

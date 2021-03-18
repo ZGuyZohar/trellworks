@@ -1,44 +1,49 @@
 <template>
-  <section v-if="group" class="group">
-    <section class="flex group-header">
-      <!-- <p class="group-title">{{ group.title }}</p> -->
-      <input
-        class="clean-input group-title"
-        type="text"
-        v-model="group.title"
-        @input="titleChange(group.id)"
-      />
-      <span @click="removeGroup(group.id)"
-        ><i class="far fa-trash-alt"></i>
-      </span>
-    </section>
-    <draggable
-      @end="itemsDragged"
-      group="task"
-      animation="400"
-      v-model="group.task"
-    >
-      <task-preview
-        v-for="task in group.task"
-        :key="task.id"
-        :task="task"
-        :groupId="group.id"
-      />
-    </draggable>
-    <span v-if="!isAddingTask" @click="openAddTask(group.id)" class="clickable"
-      >+add task</span
-    >
-    <template v-if="isAddingTask">
-      <textarea
-        placeholder="Your task title here..."
-        rows="2"
-        cols="29"
-        class="task-preview add-task"
-        v-model="taskToAdd.title"
-      ></textarea>
-      <button @click="addTask(group.id)">Add</button>
-      <span class="clickable" @click="closeAddTask"> X</span>
-    </template>
+  <section v-if="group">
+    <div class="group handle">
+      <section class="flex group-header">
+        <!-- <p class="group-title">{{ group.title }}</p> -->
+        <input
+          class="clean-input group-title"
+          type="text"
+          v-model="group.title"
+          @input="titleChange(group.id)"
+        />
+        <span @click="removeGroup(group.id)"
+          ><i class="far fa-trash-alt"></i>
+        </span>
+      </section>
+      <draggable
+        @end="itemsDragged"
+        group="task"
+        animation="400"
+        v-model="group.task"
+      >
+        <task-preview
+          v-for="task in group.task"
+          :key="task.id"
+          :task="task"
+          :groupId="group.id"
+        />
+      </draggable>
+      <span
+        v-if="!isAddingTask"
+        @click="openAddTask(group.id)"
+        class="clickable"
+        >+add task</span
+      >
+      <div v-if="isAddingTask">
+        <textarea
+          placeholder="Your task title here..."
+          rows="2"
+          cols="29"
+          class="task-preview add-task"
+          v-model="taskToAdd.title"
+        ></textarea>
+        <button @click="addTask(group.id)">Add</button>
+        <span class="clickable" @click="closeAddTask"> X</span>
+      </div>
+    </div>
   </section>
 </template>
 

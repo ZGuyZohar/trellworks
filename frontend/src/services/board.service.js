@@ -13,7 +13,8 @@ export const boardService = {
     getEmptyTask,
     getEmptyGroup,
     getEmptyLabel,
-    getDefaultLabels
+    getDefaultLabels,
+    getLabelColorById
 }
 
 async function query() {
@@ -68,6 +69,10 @@ function getEmptyTask() {
         title: '',
         labelIds: []
     }
+}
+
+function getLabelColorById(board, labelId){
+    return board.labels.find(label => label.id === labelId)
 }
 
 function getDefaultLabels(){
