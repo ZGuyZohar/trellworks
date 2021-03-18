@@ -7,7 +7,7 @@
         v-for="label in labels" 
         :key="label.id" class="label" 
         :style="{ backgroundColor: label.color }" 
-        @click="addLabelToTask(label.id)">{{label.title}}</li>
+        @click="updateLabelToTask(label.id)">{{label.title}}</li>
       </ul>
   </section>
 </template>
@@ -15,6 +15,7 @@
 <script>
 import { boardService } from '@/services/board.service.js'
 export default {
+  props: ['labelIds'],
   data(){
     return {
       labels: [],
@@ -30,7 +31,12 @@ export default {
     }
   },
   methods: {
-    addLabelToTask(labelId){
+    updateLabelToTask(labelId){
+        for(let i = 0; i<this.labelIds.length; i++){
+          if(labelId === this.labelIds[i]) {
+            return this.$emit('removeTaskLabels', labelId)
+          }
+      }
       this.$emit('updateTaskLabels', labelId);
     }
   },

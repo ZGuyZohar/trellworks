@@ -151,7 +151,8 @@ const boardsDB = [{
                 "title": "list 2",
                 "task": [{
                         "id": "c103",
-                        "title": "Do that"
+                        "title": "Do that",
+                        "labelIds": []
                     },
                     {
                         "id": "c104",
@@ -182,7 +183,7 @@ const boardsDB = [{
                             "fullname": "Tal Tarablus",
                             "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                         }],
-                        "labelIds": ["101"],
+                        "labelIds": [],
                         "createdAt": 1590999730348,
                         "dueDate": 16156215211,
                         "byMember": {
@@ -239,11 +240,13 @@ const boardsDB = [{
                 "title": "list 1",
                 "task": [{
                         "id": "c101",
-                        "title": "Replace logo"
+                        "title": "Replace logo",
+                        "labelIds": []
                     },
                     {
                         "id": "c102",
-                        "title": "Add Samples"
+                        "title": "Add Samples",
+                        "labelIds": []
                     }
                 ],
                 "style": {}
@@ -253,7 +256,8 @@ const boardsDB = [{
                 "title": "list 2",
                 "task": [{
                         "id": "c103",
-                        "title": "Do that"
+                        "title": "Do that",
+                        "labelIds": []
                     },
                     {
                         "id": "c104",
@@ -284,7 +288,7 @@ const boardsDB = [{
                             "fullname": "Tal Tarablus",
                             "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                         }],
-                        "labelIds": ["101"],
+                        "labelIds": [],
                         "createdAt": 1590999730348,
                         "dueDate": 16156215211,
                         "byMember": {

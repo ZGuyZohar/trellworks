@@ -56,6 +56,7 @@ export const boardStore = {
             }
         },
         async saveBoardChanges(context, { editedBoard }) {
+            console.log(editedBoard, 'here');
             context.commit({ type: 'setBoard', board: editedBoard });
             await boardService.save(editedBoard)
         },
