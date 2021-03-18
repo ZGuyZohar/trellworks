@@ -2,12 +2,16 @@
   <section v-if="group" class="group">
     <section class="flex group-header">
       <p class="group-title">{{ group.title }}</p>
-      <!-- TODO: make editable ^ -->
       <span @click="removeGroup(group.id)"
         ><i class="far fa-trash-alt"></i>
       </span>
     </section>
-    <draggable group="group" @end="itemsDragged" animation="400">
+    <draggable
+      @end="itemsDragged"
+      group="task"
+      animation="400"
+      v-model="group.task"
+    >
       <task-preview
         v-for="task in group.task"
         :key="task.id"
@@ -22,7 +26,6 @@
         rows="2"
         cols="29"
         class="task-preview"
-        v-model="taskToAdd.title"
       ></textarea>
       <button @click="addTask">Add</button>
       <span class="clickable" @click="closeAddTask"> X</span>
@@ -40,6 +43,9 @@ export default {
     group: {
       type: Object,
     },
+    		board: {
+			type: Object
+		}
   },
   data() {
     return {
@@ -66,9 +72,10 @@ export default {
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
-    itemsDragged() {
-      this.$emit("taskDragged");
-    },
+   itemsDragged() {
+			console.log('currBoard in gruop.vue:', this.board);
+			this.$emit('taskDragged', this.board)
+		},
   },
   components: {
     taskPreview,

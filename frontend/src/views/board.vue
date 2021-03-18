@@ -13,7 +13,8 @@
             v-for="group in groups"
             :key="group.id"
             :group="group"
-            @taskDragged="draggingEnd"
+            :board="currBoard"
+            @taskDragged="draggedTask"
             @removeGroup="removeGroup"
           />
         </draggable>
@@ -72,9 +73,15 @@ export default {
         editedBoard: board,
       });
     },
-    async draggingEnd() {
-      console.log("happening");
+    draggingEnd() {
       this.currBoard.groups = this.groups;
+      this.saveChanges();
+    },
+    draggedTask(board) {
+      console.log(board, "from group.vue got new group");
+      this.saveChanges();
+    },
+    async saveChanges() {
       await this.$store.dispatch({
         type: "saveBoardChanges",
         editedBoard: this.currBoard,
