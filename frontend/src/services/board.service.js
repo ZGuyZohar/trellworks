@@ -20,6 +20,20 @@ async function query() {
     // return httpService.get(BOARD_URL)
 }
 
+async function addTask(task, board, groupId) {
+    try {
+        task.id = utilService.makeId()
+        const boardCopy = JSON.parse(JSON.stringify(board));
+        const group = boardCopy.groups.find(group => group.id === groupId);
+        group.task.push(task)
+        save(boardCopy);
+        return boardCopy;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 async function addGroup(board) {
     try {
         const boardCopy = JSON.parse(JSON.stringify(board));
@@ -38,19 +52,6 @@ async function removeGroup(groupId, board) {
     boardCopy.groups.splice(groupIdx, 1);
     save(boardCopy);
     return boardCopy;
-}
-
-async function addTask(task, board, groupId) {
-    try {
-        task.id = utilService.makeId()
-        const boardCopy = JSON.parse(JSON.stringify(board));
-        const group = boardCopy.groups.find(group => group.id === groupId);
-        group.task.push(task)
-        save(boardCopy);
-        return boardCopy;
-    } catch (err) {
-        console.log(err);
-    }
 }
 
 
@@ -94,9 +95,9 @@ function _getEmptyGroup() {
     }
 }
 
-function getEmptyTask(){
+function getEmptyTask() {
     return {
-        
+
     }
 }
 // async function update(board) {

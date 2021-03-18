@@ -2,17 +2,18 @@
   <section v-if="group" class="group">
     <section class="flex group-header">
       <p class="group-title">{{ group.title }}</p>
+      <!-- TODO: make editable ^ -->
       <span @click="removeGroup(group.id)"
         ><i class="far fa-trash-alt"></i>
       </span>
     </section>
     <draggable group="group" @change="itemsDragged" animation="400">
-    <task-preview
-      v-for="task in group.task"
-      :key="task.id"
-      :task="task"
-      :groupId="group.id"
-    />
+      <task-preview
+        v-for="task in group.task"
+        :key="task.id"
+        :task="task"
+        :groupId="group.id"
+      />
     </draggable>
     <span v-if="!isAddingTask" @click="openAddTask(group.id)">+add task</span>
     <template v-if="isAddingTask">
@@ -32,7 +33,7 @@
 <script>
 import taskPreview from "@/cmps/task/task-preview";
 import { boardService } from "../../services/board.service";
-import draggable from 'vuedraggable'
+import draggable from "vuedraggable";
 
 export default {
   props: {
@@ -64,7 +65,7 @@ export default {
       this.$store.commit({ type: "setGroup", groupId: null });
     },
     async addTask() {
-      if(this.taskToAdd.title === '') return
+      if (this.taskToAdd.title === "") return;
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
       this.taskToAdd = {
         title: "",
@@ -72,13 +73,13 @@ export default {
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
-    itemsDragged(){
-      console.log('items were dragged');
-    }
+    itemsDragged() {
+      console.log("items were dragged");
+    },
   },
   components: {
     taskPreview,
-    draggable
+    draggable,
   },
 };
 </script>

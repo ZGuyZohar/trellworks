@@ -1,13 +1,22 @@
 <template>
-  <section @mouseover="toggleEditPen(true)" @mouseleave="toggleEditPen(false)" @click="getDetails" class="task-preview">
+  <section
+    @mouseover="toggleEditPen(true)"
+    @mouseleave="toggleEditPen(false)"
+    @click="getDetails"
+    class="task-preview"
+  >
     <p>{{ task.title }}</p>
-    <i v-if="isEditPenShown" :class="penToggler" @click.stop="toggleEdit(true)"></i>
+    <i
+      v-if="isEditPenShown"
+      :class="penToggler"
+      @click.stop="toggleEdit(true)"
+    ></i>
     <!-- <quick-edit @toggleEdit="toggleEdit" v-if="showEdit"/> -->
   </section>
 </template>
 
 <script>
-import quickEdit from './task-quick-edit'
+import quickEdit from "./task-quick-edit";
 export default {
   props: {
     task: {
@@ -19,35 +28,37 @@ export default {
       required: true,
     },
   },
-  data(){
+  data() {
     return {
       isEditPenShown: false,
-      showEdit: false
-    }
+      showEdit: false,
+    };
   },
   methods: {
     getDetails() {
-      const currBoard = this.$store.getters.currBoard;
+      const currBoard = JSON.parse(
+        JSON.stringify(this.$store.getters.currBoard)
+      );
       this.$store.commit({ type: "setGroup", groupId: this.groupId });
       this.$store.commit({ type: "setTask", task: this.task });
       this.$router.push(`/board/${currBoard._id}/details/${this.task.id}`);
     },
-    toggleEditPen(boolean){
-      this.isEditPenShown = boolean
+    toggleEditPen(boolean) {
+      this.isEditPenShown = boolean;
     },
-    toggleEdit(boolean){
-      this.isEditPenShown = false
-      this.showEdit = boolean
-    }
+    toggleEdit(boolean) {
+      this.isEditPenShown = false;
+      this.showEdit = boolean;
+    },
   },
   computed: {
-    penToggler(){
-      return { 'fas fa-pencil-alt edit-pen': this.isEditPenShown  }
-    }
+    penToggler() {
+      return { "fas fa-pencil-alt edit-pen": this.isEditPenShown };
+    },
   },
   created() {},
   components: {
-    quickEdit
-  }
+    quickEdit,
+  },
 };
 </script>
