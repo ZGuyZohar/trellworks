@@ -92,7 +92,12 @@ function _getEmptyGroup() {
         title: 'My new list',
         task: []
     }
+}
 
+function getEmptyTask(){
+    return {
+        
+    }
 }
 // async function update(board) {
 //     return storageService.put(BOARD_DB, board)

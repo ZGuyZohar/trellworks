@@ -61,6 +61,7 @@ export default {
       this.$store.commit({ type: "setGroup", groupId: null });
     },
     async addTask() {
+      if(this.taskToAdd.title === '') return
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
       this.taskToAdd = {
         title: "",
