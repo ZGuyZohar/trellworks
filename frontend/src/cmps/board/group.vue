@@ -1,7 +1,13 @@
 <template>
   <section v-if="group" class="group">
     <section class="flex group-header">
-      <p class="group-title">{{ group.title }}</p>
+      <!-- <p class="group-title">{{ group.title }}</p> -->
+      <input
+        class="clean-input group-title"
+        type="text"
+        v-model="group.title"
+        @input="titleChange(group.id)"
+      />
       <span @click="removeGroup(group.id)"
         ><i class="far fa-trash-alt"></i>
       </span>
@@ -55,16 +61,18 @@ export default {
     };
   },
   methods: {
-    async removeGroup(groupId) {
+    removeGroup(groupId) {
       this.$emit("removeGroup", groupId);
     },
-    openAddTask(groupId) {
-      this.$store.commit({ type: "setGroup", groupId });
+    titleChange(groupId) {
+      console.log("inputting");
+      this.$emit("titleChange", this.group.title, groupId);
+    },
+    openAddTask() {
       this.isAddingTask = true;
     },
     closeAddTask() {
       this.isAddingTask = false;
-      this.$store.commit({ type: "setGroup", groupId: null });
     },
     async addTask(groupId) {
       if (this.taskToAdd.title === "") return;

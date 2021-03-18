@@ -17,6 +17,7 @@
             @taskDragged="draggedTask"
             @removeGroup="removeGroup"
             @addTask="addTask"
+            @titleChange="changeTitle"
           />
         </draggable>
         <section @click="addGroup" class="transition group group-add">
@@ -90,6 +91,12 @@ export default {
       this.updateBoard(board);
     },
     draggedTask(board) {
+      this.updateBoard(board);
+    },
+    changeTitle(newTitle, groupId) {
+      const board = this.currBoard;
+      const group = board.groups.find((group) => group.id === groupId);
+      group.title = newTitle;
       this.updateBoard(board);
     },
   },
