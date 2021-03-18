@@ -10,50 +10,14 @@ export const boardService = {
     remove,
     save,
     getEmptyBoard,
-    addGroup,
-    addTask,
-    getEmptyTask
+    getEmptyTask,
+    getEmptyGroup
 }
 
 async function query() {
     return storageService.query(BOARD_DB)
     // return httpService.get(BOARD_URL)
 }
-
-async function addTask(task, board, groupId) {
-    try {
-        task.id = utilService.makeId()
-        const boardCopy = JSON.parse(JSON.stringify(board));
-        const group = boardCopy.groups.find(group => group.id === groupId);
-        group.task.push(task)
-        save(boardCopy);
-        return boardCopy;
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-
-async function addGroup(board) {
-    try {
-        const boardCopy = JSON.parse(JSON.stringify(board));
-        const group = _getEmptyGroup();
-        boardCopy.groups.push(group);
-        save(boardCopy);
-        return boardCopy;
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-// async function removeGroup(groupId, board) {
-//     const boardCopy = JSON.parse(JSON.stringify(board));
-//     const groupIdx = boardCopy.groups.findIndex(group => group.id === groupId);
-//     boardCopy.groups.splice(groupIdx, 1);
-//     save(boardCopy);
-//     return boardCopy;
-// }
-
 
 async function getById(boardId) {
     return storageService.get(BOARD_DB, boardId)
@@ -86,7 +50,7 @@ function getEmptyBoard() {
 }
 
 
-function _getEmptyGroup() {
+function getEmptyGroup() {
     return {
         id: utilService.makeId(),
         style: {},

@@ -35,7 +35,7 @@ export const boardStore = {
         setTask(state, { taskId }) {
             state.currBoard.groups.forEach(group => {
                 let task = group.task.find(currTask => currTask.id === taskId)
-                if(task) state.currGroup = group
+                if (task) state.currGroup = group
             })
             const currTask = state.currGroup.task.find(task => task.id === taskId);
             if (currTask) state.currTask = currTask;
@@ -54,14 +54,6 @@ export const boardStore = {
                 console.log('reviewStore: Error in loadReviews', err)
                 throw err
             }
-        },
-        async addGroup(context) {
-            const savedBoard = await boardService.addGroup(context.state.currBoard);
-            context.commit({ type: 'setBoard', board: savedBoard });
-        },
-        async addTask(context, { task }) {
-            const savedBoard = await boardService.addTask(task, context.state.currBoard, context.state.currGroup.id);
-            context.commit({ type: 'setBoard', board: savedBoard });
         },
         async saveBoardChanges(context, { editedBoard }) {
             context.commit({ type: 'setBoard', board: editedBoard });
