@@ -12,7 +12,8 @@ export const boardService = {
     getEmptyBoard,
     addGroup,
     removeGroup,
-    addTask
+    addTask,
+    getEmptyTask
 }
 
 async function query() {
@@ -97,7 +98,9 @@ function _getEmptyGroup() {
 
 function getEmptyTask() {
     return {
-
+        id: utilService.makeId(),
+        title: '',
+        labels: []
     }
 }
 // async function update(board) {

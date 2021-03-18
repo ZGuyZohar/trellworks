@@ -7,7 +7,7 @@
         ><i class="far fa-trash-alt"></i>
       </span>
     </section>
-    <draggable group="group" @change="itemsDragged" animation="400">
+    <draggable group="group" @end="itemsDragged" animation="400">
       <task-preview
         v-for="task in group.task"
         :key="task.id"
@@ -44,9 +44,7 @@ export default {
   data() {
     return {
       isAddingTask: false,
-      taskToAdd: {
-        title: "",
-      },
+      taskToAdd: boardService.getEmptyTask()
 
       //// add more properties later here such as: description, etc. as we go!////
     };
@@ -67,15 +65,13 @@ export default {
     async addTask() {
       if (this.taskToAdd.title === "") return;
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
-      this.taskToAdd = {
-        title: "",
-      };
+      this.taskToAdd = boardService.getEmptyTask()
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
-    itemsDragged() {
-      console.log("items were dragged");
-    },
+    itemsDragged(){
+      this.$emit('taskDragged')
+    }
   },
   components: {
     taskPreview,
