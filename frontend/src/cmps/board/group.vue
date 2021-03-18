@@ -6,12 +6,14 @@
         ><i class="far fa-trash-alt"></i>
       </span>
     </section>
+    <draggable group="group" @change="itemsDragged" animation="400">
     <task-preview
       v-for="task in group.task"
       :key="task.id"
       :task="task"
       :groupId="group.id"
     />
+    </draggable>
     <span v-if="!isAddingTask" @click="openAddTask(group.id)">+add task</span>
     <template v-if="isAddingTask">
       <textarea
@@ -30,6 +32,7 @@
 <script>
 import taskPreview from "@/cmps/task/task-preview";
 import { boardService } from "../../services/board.service";
+import draggable from 'vuedraggable'
 
 export default {
   props: {
@@ -69,9 +72,13 @@ export default {
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
+    itemsDragged(){
+      console.log('items were dragged');
+    }
   },
   components: {
     taskPreview,
+    draggable
   },
 };
 </script>
