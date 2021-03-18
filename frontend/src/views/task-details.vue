@@ -1,6 +1,6 @@
 <template>
   <section @click.self="closeModal" class="task-details-modal">
-    <div class="task-details">
+    <div @click="togglePopUp(false)" class="task-details">
       <main class="main">
         <h2>{{ currTask.title }}</h2>
         <p>in <span>{{ currGroup.title }}</span></p>
@@ -8,8 +8,10 @@
       <div class="action-bar">
         <ul>
           <h3 class="action-bar-title">add to task</h3>
-          <li v-for="(action, idx) in actions" :key="idx" class="action">{{action}}</li>
-          <pop-up></pop-up>
+          <li v-for="(action, idx) in actions" :key="idx" @click.stop="togglePopUp(true)" class="action">{{action}}</li>
+          <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
+
+          </pop-up>
         </ul>
       </div>
     </div>
@@ -21,7 +23,8 @@ import popUp from '@/cmps/task/pop-up'
 export default {
   data(){
     return {
-      actions: ['Members', 'Labels', 'Checklist', 'Attachment', 'Cover']
+      actions: ['Members', 'Labels', 'Checklist', 'Attachment', 'Cover'],
+      openPopUp: false
     }
   },
   computed: {
@@ -36,11 +39,13 @@ export default {
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
+    togglePopUp(boolean){
+      this.openPopUp = boolean;
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
     this.$store.commit({ type: "setTask", taskId });
-      console.log(this.currTask);
   },
   components: {
     popUp
