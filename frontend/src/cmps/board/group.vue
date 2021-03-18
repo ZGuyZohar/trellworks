@@ -44,15 +44,12 @@ export default {
   data() {
     return {
       isAddingTask: false,
-      taskToAdd: boardService.getEmptyTask()
-
-      //// add more properties later here such as: description, etc. as we go!////
+      taskToAdd: boardService.getEmptyTask(),
     };
   },
   methods: {
     async removeGroup(groupId) {
-      await this.$store.dispatch({ type: "removeGroup", groupId });
-      this.$emit("groupChange");
+      this.$emit("removeGroup", groupId);
     },
     openAddTask(groupId) {
       this.$store.commit({ type: "setGroup", groupId });
@@ -65,13 +62,13 @@ export default {
     async addTask() {
       if (this.taskToAdd.title === "") return;
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
-      this.taskToAdd = boardService.getEmptyTask()
+      this.taskToAdd = boardService.getEmptyTask();
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
-    itemsDragged(){
-      this.$emit('taskDragged')
-    }
+    itemsDragged() {
+      this.$emit("taskDragged");
+    },
   },
   components: {
     taskPreview,

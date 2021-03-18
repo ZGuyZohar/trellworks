@@ -14,6 +14,7 @@
             :key="group.id"
             :group="group"
             @taskDragged="draggingEnd"
+            @removeGroup="removeGroup"
           />
         </draggable>
         <section @click="addGroup" class="transition group group-add">
@@ -61,6 +62,15 @@ export default {
         boardId: this.boardId,
       });
       await this.loadBoard();
+    },
+    async removeGroup(groupId) {
+      const board = this.currBoard;
+      const groupIdx = board.groups.findIndex((group) => group.id === groupId);
+      board.groups.splice(groupIdx, 1);
+      await this.$store.dispatch({
+        type: "saveBoardChanges",
+        editedBoard: board,
+      });
     },
     async draggingEnd() {
       console.log("happening");

@@ -55,17 +55,13 @@ export const boardStore = {
             const savedBoard = await boardService.addGroup(context.state.currBoard);
             context.commit({ type: 'setBoard', board: savedBoard });
         },
-        async removeGroup(context, { groupId }) {
-            const savedBoard = await boardService.removeGroup(groupId, context.state.currBoard);
-            context.commit({ type: 'setBoard', board: savedBoard });
-        },
         async addTask(context, { task }) {
             const savedBoard = await boardService.addTask(task, context.state.currBoard, context.state.currGroup.id);
             context.commit({ type: 'setBoard', board: savedBoard });
         },
         async saveBoardChanges(context, { editedBoard }) {
-            await boardService.save(editedBoard)
             context.commit({ type: 'setBoard', board: editedBoard });
+            await boardService.save(editedBoard)
         }
     }
 }

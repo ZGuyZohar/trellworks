@@ -11,7 +11,6 @@ export const boardService = {
     save,
     getEmptyBoard,
     addGroup,
-    removeGroup,
     addTask,
     getEmptyTask
 }
@@ -47,13 +46,13 @@ async function addGroup(board) {
     }
 }
 
-async function removeGroup(groupId, board) {
-    const boardCopy = JSON.parse(JSON.stringify(board));
-    const groupIdx = boardCopy.groups.findIndex(group => group.id === groupId);
-    boardCopy.groups.splice(groupIdx, 1);
-    save(boardCopy);
-    return boardCopy;
-}
+// async function removeGroup(groupId, board) {
+//     const boardCopy = JSON.parse(JSON.stringify(board));
+//     const groupIdx = boardCopy.groups.findIndex(group => group.id === groupId);
+//     boardCopy.groups.splice(groupIdx, 1);
+//     save(boardCopy);
+//     return boardCopy;
+// }
 
 
 async function getById(boardId) {
@@ -97,6 +96,7 @@ function _getEmptyGroup() {
 }
 
 function getEmptyTask() {
+    //// add more properties later here such as: description, etc. as we go!////
     return {
         id: utilService.makeId(),
         title: '',
