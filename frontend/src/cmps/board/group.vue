@@ -26,8 +26,9 @@
         rows="2"
         cols="29"
         class="task-preview"
+        v-model="taskToAdd.title"
       ></textarea>
-      <button @click="addTask">Add</button>
+      <button @click="addTask(group.id)">Add</button>
       <span class="clickable" @click="closeAddTask"> X</span>
     </template>
   </section>
@@ -43,9 +44,9 @@ export default {
     group: {
       type: Object,
     },
-    		board: {
-			type: Object
-		}
+    board: {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -65,17 +66,15 @@ export default {
       this.isAddingTask = false;
       this.$store.commit({ type: "setGroup", groupId: null });
     },
-    async addTask() {
+    async addTask(groupId) {
       if (this.taskToAdd.title === "") return;
-      await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
+      this.$emit("addTask", this.taskToAdd, groupId);
       this.taskToAdd = boardService.getEmptyTask();
       this.isAddingTask = false;
-      this.$emit("groupChange");
     },
-   itemsDragged() {
-			console.log('currBoard in gruop.vue:', this.board);
-			this.$emit('taskDragged', this.board)
-		},
+    itemsDragged() {
+      this.$emit("taskDragged", this.board);
+    },
   },
   components: {
     taskPreview,

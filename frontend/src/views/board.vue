@@ -16,6 +16,7 @@
             :board="currBoard"
             @taskDragged="draggedTask"
             @removeGroup="removeGroup"
+            @addTask="addTask"
           />
         </draggable>
         <section @click="addGroup" class="transition group group-add">
@@ -34,6 +35,7 @@
 import boardHeader from "@/cmps/board/board-header";
 import group from "@/cmps/board/group";
 import draggable from "vuedraggable";
+import { boardService } from "../services/board.service.js";
 
 export default {
   data() {
@@ -50,6 +52,13 @@ export default {
     },
   },
   methods: {
+    async updateBoard(board) {
+      await this.$store.dispatch({
+        type: "saveBoardChanges",
+        editedBoard: board,
+      });
+      this.groups = this.currBoard.groups;
+    },
     async loadBoard() {
       await this.$store.dispatch({
         type: "getBoard",
@@ -58,35 +67,30 @@ export default {
       this.groups = this.currBoard.groups;
     },
     async addGroup() {
-      await this.$store.dispatch({
-        type: "addGroup",
-        boardId: this.boardId,
-      });
-      await this.loadBoard();
+      const board = this.currBoard;
+      const group = await boardService.getEmptyGroup();
+      board.groups.push(group);
+      this.updateBoard(board);
     },
     async removeGroup(groupId) {
       const board = this.currBoard;
       const groupIdx = board.groups.findIndex((group) => group.id === groupId);
       board.groups.splice(groupIdx, 1);
-      await this.$store.dispatch({
-        type: "saveBoardChanges",
-        editedBoard: board,
-      });
+      this.updateBoard(board);
+    },
+    addTask(task, groupId) {
+      const board = this.currBoard;
+      const group = board.groups.find((group) => group.id === groupId);
+      group.task.push(task);
+      this.updateBoard(board);
     },
     draggingEnd() {
-      this.currBoard.groups = this.groups;
-      this.saveChanges();
+      const board = this.currBoard;
+      board.groups = this.groups;
+      this.updateBoard(board);
     },
     draggedTask(board) {
-      console.log(board, "from group.vue got new group");
-      this.saveChanges();
-    },
-    async saveChanges() {
-      await this.$store.dispatch({
-        type: "saveBoardChanges",
-        editedBoard: this.currBoard,
-      });
-      await this.loadBoard();
+      this.updateBoard(board);
     },
   },
   async created() {
