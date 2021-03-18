@@ -10,7 +10,8 @@
           <h3 class="action-bar-title">add to task</h3>
           <li v-for="(action, idx) in actions" :key="idx" @click.stop="togglePopUp(true)" class="action">{{action}}</li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-
+            <template v-slot:header>here will be the header </template>
+            <task-labels/>
           </pop-up>
         </ul>
       </div>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import taskLabels from '@/cmps/task/edit-cmps/task-labels'
 import popUp from '@/cmps/task/pop-up'
 export default {
   data(){
@@ -48,7 +50,8 @@ export default {
     this.$store.commit({ type: "setTask", taskId });
   },
   components: {
-    popUp
+    popUp,
+    taskLabels
   }
 };
 </script>
