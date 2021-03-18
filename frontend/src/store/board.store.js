@@ -63,5 +63,11 @@ export const boardStore = {
             const savedBoard = await boardService.addTask(task, context.state.currBoard, context.state.currGroup.id);
             context.commit({ type: 'setBoard', board: savedBoard });
         },
+        async saveBoardChanges(context, {boardId}){
+                console.log('still in progress');
+            // const foundBoard = await boardService.getById(boardId);
+            // const savedBoard = await boardService.save(foundBoard)
+            // context.commit({ type: 'setBoard', board: savedBoard });
+        }
     }
 }
