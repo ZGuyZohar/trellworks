@@ -1,14 +1,14 @@
 <template>
-	<section v-if="currBoard">
+	<section v-if="currBoard" :board="currBoard">
 		<board-header :boardTitle="currBoard.title" />
 		<div class="flex board">
 			<div class="flex group-container">
-				<draggable class="flex" animation="300" @end="droppedItem" >
+				<draggable v-model="groups" class="flex" animation="300" @end="draggingEnd" >
 					<group
 						v-for="group in groups"
 						:key="group.id"
 						:group="group"
-						@groupChange="loadBoard"
+						@taskDragged="draggingEnd"
 					/>
 				</draggable>
 				<section @click="addGroup" class="transition group group-add">
@@ -32,7 +32,7 @@ import draggable from 'vuedraggable'
 export default {
 	data() {
 		return {
-			groups: [],
+			groups: null,
 		};
 	},
 	computed: {
@@ -40,7 +40,7 @@ export default {
 			return this.$route.params.boardId;
 		},
 		currBoard() {
-			return this.$store.getters.currBoard;
+			return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
 		},
 	},
 	methods: {
@@ -58,12 +58,14 @@ export default {
 			});
 			await this.loadBoard();
 		},
-		async droppedItem() {
-			// await this.$store.dispatch({
-			// 	type: "saveBoardChanges",
-			// 	boardId: this.boardId,
-			// });
-			// await this.loadBoard();
+		async draggingEnd() {
+      console.log('happening');
+      this.currBoard.groups = this.groups
+			await this.$store.dispatch({
+				type: "saveBoardChanges",
+				editedBoard: this.currBoard,
+			});
+			await this.loadBoard();
 
 		}
 	},
