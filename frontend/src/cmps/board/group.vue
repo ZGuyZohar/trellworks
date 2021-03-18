@@ -1,10 +1,10 @@
 <template>
-  <section v-if="group" class=" group">
+  <section v-if="group" class="group">
     <section class="flex group-header">
       <p class="group-title">{{ group.title }}</p>
-      <span @click="removeGroup(group.id)"><i class="far fa-trash-alt"></i>
-
-</span>
+      <span @click="removeGroup(group.id)"
+        ><i class="far fa-trash-alt"></i>
+      </span>
     </section>
     <task-preview
       v-for="task in group.task"
@@ -62,7 +62,9 @@ export default {
     },
     async addTask() {
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
-      this.taskToAdd = "";
+      this.taskToAdd = {
+        title: "",
+      };
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
