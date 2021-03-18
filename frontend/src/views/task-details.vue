@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { boardService } from '@/services/board.service'
 import taskLabels from '@/cmps/task/edit-cmps/task-labels'
 import popUp from '@/cmps/task/pop-up'
 export default {
