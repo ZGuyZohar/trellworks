@@ -4,13 +4,13 @@
     <div class="flex board">
       <div class="flex group-container">
         <draggable
-          v-model="groups"
+          v-model="currBoard.groups"
           class="flex"
           animation="300"
           @end="draggingEnd"
         >
           <group
-            v-for="group in groups"
+            v-for="group in currBoard.groups"
             :key="group.id"
             :group="group"
             :board="currBoard"
@@ -39,11 +39,6 @@ import draggable from "vuedraggable";
 import { boardService } from "../services/board.service.js";
 
 export default {
-  data() {
-    return {
-      groups: null,
-    };
-  },
   computed: {
     boardId() {
       return this.$route.params.boardId;
@@ -58,14 +53,12 @@ export default {
         type: "saveBoardChanges",
         editedBoard: board,
       });
-      this.groups = this.currBoard.groups;
     },
     async loadBoard() {
       await this.$store.dispatch({
         type: "getBoard",
         boardId: this.boardId,
       });
-      this.groups = this.currBoard.groups;
     },
     async addGroup() {
       const board = this.currBoard;
@@ -87,7 +80,7 @@ export default {
     },
     draggingEnd() {
       const board = this.currBoard;
-      board.groups = this.groups;
+      board.groups = this.currBoard.groups;
       this.updateBoard(board);
     },
     draggedTask(board) {
