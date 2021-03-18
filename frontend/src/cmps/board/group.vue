@@ -43,9 +43,7 @@ export default {
   data() {
     return {
       isAddingTask: false,
-      taskToAdd: {
-        title: "",
-      },
+      taskToAdd: boardService.getEmptyTask()
 
       //// add more properties later here such as: description, etc. as we go!////
     };
@@ -66,9 +64,7 @@ export default {
     async addTask() {
       if(this.taskToAdd.title === '') return
       await this.$store.dispatch({ type: "addTask", task: this.taskToAdd });
-      this.taskToAdd = {
-        title: "",
-      };
+      this.taskToAdd = boardService.getEmptyTask()
       this.isAddingTask = false;
       this.$emit("groupChange");
     },
