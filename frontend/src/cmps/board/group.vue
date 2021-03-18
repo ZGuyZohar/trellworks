@@ -6,7 +6,7 @@
         ><i class="far fa-trash-alt"></i>
       </span>
     </section>
-    <draggable group="group" @change="itemsDragged" animation="400">
+    <draggable group="group" @end="itemsDragged" animation="400">
     <task-preview
       v-for="task in group.task"
       :key="task.id"
@@ -73,7 +73,7 @@ export default {
       this.$emit("groupChange");
     },
     itemsDragged(){
-      console.log('items were dragged');
+      this.$emit('taskDragged')
     }
   },
   components: {
