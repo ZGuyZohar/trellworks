@@ -1,3 +1,4 @@
+import { activityService } from '../services/activity.service';
 import { userService } from '../services/user.service'
 
 // var localLoggedinUser = null;
@@ -28,7 +29,7 @@ export const userStore = {
         },
     },
     actions: {
-        async login({commit}, { userCred }) {
+        async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred);
                 commit({ type: 'setUser', user })
@@ -38,7 +39,7 @@ export const userStore = {
                 throw err
             }
         },
-        async signup({commit}, { userCred }) {
+        async signup({ commit }, { userCred }) {
             try {
                 const user = await userService.signup(userCred)
                 commit({ type: 'setUser', user })
@@ -58,7 +59,7 @@ export const userStore = {
                 throw err
             }
         },
-        async loadUsers({commit}) {
+        async loadUsers({ commit }) {
             // TODO: loading
             try {
                 const users = await userService.getUsers();
@@ -68,7 +69,7 @@ export const userStore = {
                 throw err
             }
         },
-        async removeUser({commit}, { userId }) {
+        async removeUser({ commit }, { userId }) {
             try {
                 await userService.remove(userId);
                 commit({ type: 'removeUser', userId })
@@ -77,7 +78,7 @@ export const userStore = {
                 throw err
             }
         },
-        async updateUser({commit}, { user }) {
+        async updateUser({ commit }, { user }) {
             try {
                 user = await userService.update(user);
                 commit({ type: 'setUser', user })
@@ -85,7 +86,9 @@ export const userStore = {
                 console.log('userStore: Error in updateUser', err)
                 throw err
             }
-
+        },
+        saveActivity({ commit }, payload) {
+            activityService.add(payload)
         }
     }
 }

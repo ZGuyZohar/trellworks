@@ -1,6 +1,7 @@
 import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 import { userService } from './user.service'
+import { utilService } from './util.service'
 
 export const activityService = {
   add,
@@ -20,8 +21,17 @@ function remove(activityId) {
   /// can only delete comments
 
 }
-async function add(activity) {
+async function add(activityPayload) {
+  //TEMPORARY FUNCTION FOR NOW- UPDATE WHEN DONE WORKING WITH LOCAL STORAGE
   // const addedActivity = await httpService.post(`activity`, activity)
-  const addedActivity = storageService.post('activity', activityId)
-  return addedActivity
+  // const addedActivity = storageService.post('activity', activityId)
+  console.log(activityPayload);
+  activityPayload.board.activities.push({
+    byMember: 'Guest',
+    title: activityPayload.activity,
+    createdAt: new Date(),
+    id: utilService.makeId(),
+    task: { id: activityPayload.task.id, title: activityPayload.task.title }
+  })
+  // return addedActivity
 }
