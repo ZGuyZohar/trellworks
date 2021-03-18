@@ -25,13 +25,15 @@
         :groupId="group.id"
       />
     </draggable>
-    <span v-if="!isAddingTask" @click="openAddTask(group.id)">+add task</span>
+    <span v-if="!isAddingTask" @click="openAddTask(group.id)" class="clickable"
+      >+add task</span
+    >
     <template v-if="isAddingTask">
       <textarea
         placeholder="Your task title here..."
         rows="2"
         cols="29"
-        class="task-preview"
+        class="task-preview add-task"
         v-model="taskToAdd.title"
       ></textarea>
       <button @click="addTask(group.id)">Add</button>
@@ -65,7 +67,6 @@ export default {
       this.$emit("removeGroup", groupId);
     },
     titleChange(groupId) {
-      console.log("inputting");
       this.$emit("titleChange", this.group.title, groupId);
     },
     openAddTask() {

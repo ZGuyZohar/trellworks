@@ -3,7 +3,7 @@
     @mouseover="toggleEditPen(true)"
     @mouseleave="toggleEditPen(false)"
     @click="getDetails"
-    class="task-preview"
+    class="task-preview clickable"
   >
     <p>{{ task.title }}</p>
     <i
