@@ -11,7 +11,7 @@
           <li v-for="(action, idx) in actions" :key="idx" @click.stop="togglePopUp(true)" class="action">{{action}}</li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
             <template v-slot:header>here will be the header </template>
-            <task-labels/>
+            <task-labels @updateTaskLabels="updateTaskLabels"/>
           </pop-up>
         </ul>
       </div>
@@ -31,6 +31,9 @@ export default {
     }
   },
   computed: {
+    currBoard(){
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+    },
     currTask() {
       return this.$store.getters.currTask;
     },
@@ -44,6 +47,12 @@ export default {
     },
     togglePopUp(boolean){
       this.openPopUp = boolean;
+    },
+    updateTaskLabels(labelId){
+      const board = this.currBoard;
+      const group = board.find(group => group.id === this.currGroup.id)
+      task = group.find(task => task.id === this.getters.currTask.id)
+      task.labelIds.push(labelId)
     }
   },
   created() {

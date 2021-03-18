@@ -135,11 +135,13 @@ const boardsDB = [{
                 "title": "list 1",
                 "task": [{
                         "id": "c101",
-                        "title": "Replace logo"
+                        "title": "Replace logo",
+                        "labelIds": []
                     },
                     {
                         "id": "c102",
-                        "title": "Add Samples"
+                        "title": "Add Samples",
+                        "labelIds": []
                     }
                 ],
                 "style": {}

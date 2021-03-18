@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     addLabelToTask(labelId){
-      console.log(labelId);
+      this.$emit('updateTaskLabels', labelId);
     }
   },
   created(){
