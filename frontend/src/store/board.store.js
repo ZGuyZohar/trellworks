@@ -33,6 +33,10 @@ export const boardStore = {
             if (currGroup) state.currGroup = currGroup
         },
         setTask(state, { taskId }) {
+            state.currBoard.groups.forEach(group => {
+                let task = group.task.find(currTask => currTask.id === taskId)
+                if(task) state.currGroup = group
+            })
             const currTask = state.currGroup.task.find(task => task.id === taskId);
             if (currTask) state.currTask = currTask;
         },
