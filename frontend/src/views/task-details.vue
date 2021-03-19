@@ -23,7 +23,11 @@
 							/>
 						</span>
 					</div>
-					<task-description :task="currTask" @updateTask="updateTask" />
+					<task-description
+						:task="currTask"
+						@updateTask="updateTask"
+						@changeMade="changeTaskDetails"
+					/>
 					<activityLog
 						class="task-details-activity"
 						:activities="getTaskActivity()"
@@ -43,11 +47,7 @@
 					</li>
 					<pop-up @closePopUp="togglePopUp" v-if="openPopUp">
 						<template v-slot:header>{{ currAction.txt }}</template>
-						<component
-							:is="currAction.type"
-							@changeMade="changeTaskDetails"
-							@updateBoard="updateBoard"
-						/>
+						<component :is="currAction.type" @updateBoard="updateBoard" />
 					</pop-up>
 				</ul>
 				<ul>
@@ -118,11 +118,7 @@ export default {
 		},
 	},
 	methods: {
-		changeTaskDetails(activityTitle) {
-			console.log(activityTitle, 'from inner comp');
-		},
 		saveActivity(activityTitle) {
-			console.log(activityTitle);
 			this.$store.dispatch({
 				type: "saveActivity",
 				activity: activityTitle,
@@ -184,6 +180,9 @@ export default {
 			);
 			return filteredActivities;
 		},
+		changeTaskDetails(activityTitle) {
+			this.saveActivity(activityTitle)
+		}
 	},
 	created() {
 		this.$store.commit({ type: "setTask", taskId: this.taskId });

@@ -55,8 +55,8 @@ export default {
       }, 0);
     },
     setDescription() {
-      this.$emit("updateTask", this.taskToEdit);
       this.$emit("changeMade", 'changed the description');
+      this.$emit("updateTask", this.taskToEdit);
       this.isEditing = false;
     },
   },
