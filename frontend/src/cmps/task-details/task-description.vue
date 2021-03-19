@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import { utilService } from "@/services/util.service.js";
 export default {
   props: {
     task: Object,
@@ -36,7 +35,7 @@ export default {
   data() {
     return {
       isEditing: false,
-      taskToEdit: utilService.deepCopy(this.task),
+      taskToEdit: JSON.parse(JSON.stringify(this.task)),
     };
   },
   methods: {
