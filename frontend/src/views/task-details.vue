@@ -19,22 +19,10 @@
               />
             </span>
           </div>
-          <div class="description">
-            <div v-if="!currTask.description" class="description-edit">
-              <form @submit.prevent="setDescription">
-                <textarea
-                  class="description-input clean-input"
-                  rows="6"
-                  placeholder="Add a more detailed description.."
-                ></textarea>
-                <div>
-                  <button type="submit">Save</button>
-                  <span class="clickable">X</span>
-                </div>
-              </form>
-            </div>
-            <p v-else>{{ currTask.description }}</p>
-          </div>
+          <task-description
+            :description="currTask.description"
+            @setDescription="setDescription"
+          />
         </section>
       </main>
       <div class="action-bar">
@@ -67,6 +55,7 @@ import { boardService } from "@/services/board.service.js";
 import taskLabels from "@/cmps/task/edit-cmps/task-labels";
 import popUp from "@/cmps/task/pop-up";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
+import taskDescription from "../cmps/task-details/task-description.vue";
 export default {
   data() {
     return {
@@ -152,8 +141,11 @@ export default {
       this.updateBoard(board);
       this.$router.push("../");
     },
-    setDescription() {
-      console.log("setting description");
+    setDescription(description) {
+      const board = this.currBoard;
+      const task = this.getTask(board);
+      task.description = description;
+      this.updateBoard(board);
     },
   },
   created() {
@@ -163,6 +155,7 @@ export default {
     popUp,
     taskLabels,
     labelsPreview,
+    taskDescription,
   },
 };
 </script>
