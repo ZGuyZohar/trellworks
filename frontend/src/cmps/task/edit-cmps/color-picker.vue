@@ -1,43 +1,24 @@
 <template>
-  <section class="task-color-picker">
-
-  </section>
+  <section class="task-color-picker"></section>
 </template>
 
+
 <script>
-import { boardService } from "@/services/board.service.js";
+import { utilService } from "@/services/util.service.js";
 export default {
+  props: {
+    task: Object,
+  },
   data() {
     return {
-
+      taskToEdit: utilService.deepCopy(this.task),
     };
   },
   computed: {
     currBoard() {
-      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-    },
-    currGroup(){
-      return this.$store.getters.currGroup
-    },
-    currTask() {
-      return this.$store.getters.currTask
+      return utilService.deepCopy(this.$store.getters.currBoard);
     },
   },
-  methods: {
-    getTask(){
-      const group = this.currBoard.groups.find(
-        (group) => group.id === this.currGroup.id
-      );
-      const task = group.task.find((task) => task.id === this.currTask.id);
-      return task;
-    },
-    addColor() {
-      const task = this.getTask()
-      return this.$emit('updateBoard', this.currBoard)
-    },
-  },
-  created() {
-
-  },
+  methods: {},
 };
 </script>
