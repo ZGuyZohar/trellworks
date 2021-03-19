@@ -111,6 +111,16 @@
     .labels-list {
         padding-right: 36px;
         position: relative;
+
+        .edit-pen {
+            right: -33px;
+            position: absolute;
+
+            &:hover {
+                background-color: rgba(9, 30, 66, .08);
+                
+            }
+        }
     }
 
     .label {
