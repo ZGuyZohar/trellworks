@@ -20,6 +20,9 @@ export const boardStore = {
         currTask(state) {
             return state.currTask
         },
+        activityLog(state) {
+            return state.currBoard.activities
+        },
     },
     mutations: {
         setBoards(state, { foundBoards }) {
