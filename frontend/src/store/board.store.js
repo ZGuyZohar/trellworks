@@ -17,6 +17,9 @@ export const boardStore = {
         currGroup(state) {
             return state.currGroup
         },
+        currBoardMembers(state) {
+            return state.currBoard.members
+        },
         currTask(state) {
             return state.currTask
         },
@@ -29,6 +32,7 @@ export const boardStore = {
             state.boards = foundBoards
         },
         setBoard(state, { board }) {
+            console.log(board.groups[1].task);
             state.currBoard = board;
         },
         setGroup(state, { groupId }) {

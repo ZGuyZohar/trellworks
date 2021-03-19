@@ -20,13 +20,14 @@
             margin: 1%;
         }
     }
-
-    .team-member {
-        border-radius: 50%;
-        background-color: #fff;
-        height: 30px;
-        width: 30px;
+    .board-header-avatar{
+        margin-left: -15%;
+        &:hover{
+            transform: scale(1.1);
+            cursor:pointer;
+        }
     }
+
 }
 
 .group {
@@ -138,5 +139,6 @@
         padding: 0;
         width: 48px;
         border-radius: 4px;
+        cursor: pointer;
     }
 }

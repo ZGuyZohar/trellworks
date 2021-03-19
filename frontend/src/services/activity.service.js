@@ -25,12 +25,11 @@ async function add(activityPayload) {
   //TEMPORARY FUNCTION FOR NOW- UPDATE WHEN DONE WORKING WITH LOCAL STORAGE
   // const addedActivity = await httpService.post(`activity`, activity)
   // const addedActivity = storageService.post('activity', activityId)
-  console.log(activityPayload);
   const date = Date.now()
-  activityPayload.board.activities.push({
+  activityPayload.board.activities.unshift({
     byMember: { fullname: 'Guest' },
     title: activityPayload.activity,
-    createdAt: moment(date),
+    createdAt: date,
     group: activityPayload.group.title,
     id: utilService.makeId(),
     task: { id: activityPayload.task.id, title: activityPayload.task.title }

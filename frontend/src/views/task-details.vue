@@ -24,6 +24,10 @@
             </span>
           </div>
           <task-description :task="currTask" @updateTask="updateTask" />
+          <activityLog
+            class="task-details-activity"
+            :activities="getTaskActivity()"
+          />
         </section>
       </main>
       <div class="action-bar">
@@ -55,9 +59,11 @@
 
 <script>
 import taskLabels from "@/cmps/task/edit-cmps/task-labels";
+import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
+
 export default {
   data() {
     return {
@@ -158,6 +164,15 @@ export default {
       group.task.splice(taskIdx, 1, updatedTask);
       this.updateBoard(board);
     },
+    getTaskActivity() {
+      const filteredActivities = this.currBoard.activities.filter(
+        (activity) => {
+          return activity.task.id === this.currTask.id;
+        }
+      );
+      console.log(filteredActivities);
+      return filteredActivities;
+    },
   },
   created() {
     this.$store.commit({ type: "setTask", taskId: this.taskId });
@@ -168,6 +183,7 @@ export default {
     taskLabels,
     labelsPreview,
     taskDescription,
+    activityLog,
   },
 };
 </script>

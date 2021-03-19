@@ -1,10 +1,11 @@
 .board-menu{
 background-color: whitesmoke;
-height: 80vh;
+max-height: 90vh;
 width: 400px;
 position: absolute;
 right: 0;
 top: 12vh;
 padding: 25px 35px;
+overflow: scroll;
 }
 
