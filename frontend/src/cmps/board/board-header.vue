@@ -13,7 +13,9 @@
 		<button @click="menuShown = !menuShown" class="header-btn">
 			Show Menu
 		</button>
+		    <transition name="slide-from-right" >
 		<boardMenu class="board-menu" v-if="menuShown"></boardMenu>
+			</transition>
 	</div>
 </template>
 <script>

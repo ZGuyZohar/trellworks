@@ -1,11 +1,27 @@
-.board-menu{
-background-color: whitesmoke;
-max-height: 90vh;
-width: 400px;
-position: absolute;
-right: 0;
-top: 12vh;
-padding: 25px 35px;
-overflow: scroll;
+.board-menu {
+    background-color: whitesmoke;
+    max-height: 90vh;
+    width: 400px;
+    position: absolute;
+    right: 0;
+    top: 12vh;
+    padding: 25px 35px;
+    overflow: scroll;
 }
 
+.slide-from-right-enter-active {
+    transition: all 0.2s ease-in;
+}
+
+.slide-from-right-leave-active {
+    transition: all 0.2s ease-in;
+}
+
+.slide-from-right-leave-to {
+    right:-350px
+
+}
+
+.slide-from-right-enter {
+    right:-300px
+}
