@@ -59,6 +59,14 @@ export default {
           return `${activity.byMember.fullname} ${activity.title} "${activity.task.title}" from "${activity.group}" `;
           break;
         }
+        case "changed the description":{
+          return `${activity.byMember.fullname} ${activity.title} of "${activity.task.title}"`
+
+          break;
+        }
+        default: {
+          return `${activity.byMember.fullname} ${activity.title}`
+        }
       }
     },
   },
