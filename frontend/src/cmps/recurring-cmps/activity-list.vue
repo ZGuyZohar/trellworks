@@ -1,16 +1,30 @@
 <template>
-	<section>
+	<section class="activity-log">
 		<h1>Activity Log</h1>
-		<section v-for="activity in activities" :key="activity.id">
-			<!-- <p>{{ activity.byMember.fullname }} {{ activity.title }} {{time(activity.createdAt)}}</p> -->
-			{{ renderTask(activity) }}
-			<span class="muted-txt">{{ time(activity.createdAt) }}</span>
+		<section
+			v-for="activity in activities"
+			:key="activity.id"
+			class="activity-container"
+		>
+			<section class="flex activity">
+				<span class="avatar"
+					><avatar  :size="40" :username="activity.byMember.fullname"></avatar>
+				</span>
+				<span class="flex activity-details">
+					{{ renderTask(activity) }}
+					<span class="muted-txt activity-time">{{
+						time(activity.createdAt)
+					}}</span>
+				</span>
+			</section>
 		</section>
 	</section>
 </template>
 
 <script>
 import moment from 'moment'
+import Avatar from 'vue-avatar'
+
 export default {
 	props: {
 		activities: Array
@@ -46,7 +60,8 @@ export default {
 					break;
 				}
 			}
-		}
+		},
 	},
+	components: { Avatar }
 }
 </script>

@@ -17,6 +17,9 @@ export const boardStore = {
         currGroup(state) {
             return state.currGroup
         },
+        currBoardMembers(state) {
+            return state.currBoard.members
+        },
         currTask(state) {
             return state.currTask
         },

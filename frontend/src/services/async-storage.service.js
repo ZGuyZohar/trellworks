@@ -265,11 +265,22 @@ const boardsDB = [{
         "title": "Done",
         "color": "#61bd4f"
     }],
-    "members": [{
-        "_id": "u101",
-        "fullname": "Tal Tarablus",
-        "imgUrl": "https://www.google.com"
-    }],
+    "members": [
+        {
+            "_id": "u102",
+            "fullname": "Almog Lemberg",
+            "imgUrl": "https://www.google.com"
+        },
+        {
+            "_id": "u103",
+            "fullname": "Gali Nickel",
+            "imgUrl": "https://www.google.com"
+        },
+        {
+            "_id": "u101",
+            "fullname": "Guy Zohar",
+            "imgUrl": "https://www.google.com"
+        }],
     "groups": [{
         "id": "g101",
         "title": "list 1",
