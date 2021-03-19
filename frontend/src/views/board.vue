@@ -100,11 +100,15 @@ export default {
 		draggedTask(board) {
 			this.updateBoard(board);
 		},
-		changeTitle(newTitle, groupId) {
+		async changeTitle(newTitle, groupId) {
+			//FIXME: cant get through async in this function. 'group' is supposed to save old group name and 'task' is supposed to save new 
+			//but both of them get the name of the new group.
 			const board = this.currBoard;
 			const group = board.groups.find((group) => group.id === groupId);
+			const groupCopy = JSON.parse(JSON.stringify(group))
+			// await this.saveActivity('changed the title of the list',board,groupCopy,{title:newTitle})
+			this.saveActivity('renamed a group',board,groupCopy)
 			group.title = newTitle;
-			// this.saveActivity('Changed a list`s title',board,group) FIXME: currently sends a new activity log for each character input...
 			this.updateBoard(board);
 		},
 
