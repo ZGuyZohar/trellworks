@@ -19,13 +19,22 @@
               />
             </span>
           </div>
-          <textarea
-            v-if="!currTask.description"
-            class="description-input clean-input"
-            rows="6"
-            placeholder="Add a more detailed description.."
-          ></textarea>
-          <p v-else>{{ currTask.description }}</p>
+          <div class="description">
+            <div v-if="!currTask.description" class="description-edit">
+              <form @submit.prevent="setDescription">
+                <textarea
+                  class="description-input clean-input"
+                  rows="6"
+                  placeholder="Add a more detailed description.."
+                ></textarea>
+                <div>
+                  <button type="submit">Save</button>
+                  <span class="clickable">X</span>
+                </div>
+              </form>
+            </div>
+            <p v-else>{{ currTask.description }}</p>
+          </div>
         </section>
       </main>
       <div class="action-bar">
@@ -102,11 +111,20 @@ export default {
     },
   },
   methods: {
+    saveActivity(activityTitle) {
+      this.$store.dispatch({
+        type: "saveActivity",
+        activity: activityTitle,
+        group: this.currGroup,
+        board: this.currBoard,
+        task: this.getTask(this.currBoard),
+      });
+    },
     getTask(board) {
       const group = board.groups.find(
         (group) => group.id === this.currGroup.id
       );
-      const task = group.task.find((task) => task.id === this.currTask.id);
+      const task = group.task.find((task) => task.id === this.taskId);
       return task;
     },
     async updateBoard(board) {
@@ -128,12 +146,14 @@ export default {
       const group = board.groups.find(
         (group) => group.id === this.currGroup.id
       );
-      const taskIdx = group.task.findIndex(
-        (task) => task.id === this.currTask.id
-      );
+      const taskIdx = group.task.findIndex((task) => task.id === this.taskId);
+      this.saveActivity("removed the task");
       group.task.splice(taskIdx, 1);
       this.updateBoard(board);
       this.$router.push("../");
+    },
+    setDescription() {
+      console.log("setting description");
     },
   },
   created() {

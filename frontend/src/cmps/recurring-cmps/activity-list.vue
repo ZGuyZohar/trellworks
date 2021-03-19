@@ -3,7 +3,8 @@
 		<h1>Activity Log</h1>
 		<section v-for="activity in activities" :key="activity.id">
 			<!-- <p>{{ activity.byMember.fullname }} {{ activity.title }} {{time(activity.createdAt)}}</p> -->
-			{{ renderTask(activity) }} <span class="muted-txt">{{time(activity.createdAt)}}</span>
+			{{ renderTask(activity) }}
+			<span class="muted-txt">{{ time(activity.createdAt) }}</span>
 		</section>
 	</section>
 </template>
@@ -34,6 +35,14 @@ export default {
 				}
 				case "removed the group": {
 					return `${activity.byMember.fullname} ${activity.title} "${activity.group}" from the board `
+					break;
+				}
+				case "renamed a group": {
+					return `${activity.byMember.fullname} ${activity.title} "${activity.group}" `
+					break;
+				}
+				case "removed the task": {
+					return `${activity.byMember.fullname} ${activity.title} "${activity.task.title}" from "${activity.group}" `
 					break;
 				}
 			}

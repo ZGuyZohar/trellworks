@@ -7,7 +7,7 @@
           class="clean-input group-title"
           type="text"
           v-model="group.title"
-          @input="titleChange(group.id)"
+          @change="titleChange(group.id)"
         />
         <span @click="removeGroup(group.id)"
           ><i class="far fa-trash-alt"></i>
