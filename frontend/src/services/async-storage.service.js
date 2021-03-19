@@ -201,19 +201,54 @@ const boardsDB = [{
     }
     ],
     "activities": [{
-        "id": "a101",
-        "title": "Changed Color",
-        "createdAt": 154514,
-        "byMember": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
-        },
-        "task": {
-            "id": "c101",
-            "title": "Replace Logo"
-        }
-    }]
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:24:07.695Z",
+        group: "list 2",
+        id: "yIblp",
+        task: { id: "PTbnQ", title: "Test task" },
+        title: "added the task"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:25:10.956Z",
+        group: "My new list",
+        id: "1NFLT",
+        task: {},
+        title: "added the group"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:00.555Z",
+        group: "My new list",
+        id: "Vr0Y4",
+        task: {},
+        title: "added the group"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:02.921Z",
+        group: "My new list",
+        id: "68Z5V",
+        task: {},
+        title: "added the group",
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:18.200Z",
+        group: "My new list",
+        id: "Gug1T",
+        task: { id: "hwe7X", title: "Change label description" },
+        title: "added the task"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:42:04.397Z",
+        group: "list 1",
+        id: "0qwBa",
+        task: {},
+        title: "removed the group"
+    }
+    ]
 },
 {
     "_id": "b102",
@@ -246,7 +281,7 @@ const boardsDB = [{
         {
             "id": "c102",
             "title": "Add Samples",
-            "labelIds": ["l101", "l102"]
+            "labelIds": []
         }
         ],
         "style": {}
@@ -306,19 +341,54 @@ const boardsDB = [{
     }
     ],
     "activities": [{
-        "id": "a101",
-        "title": "Changed Color",
-        "createdAt": 154514,
-        "byMember": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
-        },
-        "task": {
-            "id": "c101",
-            "title": "Replace Logo"
-        }
-    }]
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:24:07.695Z",
+        group: "list 2",
+        id: "yIblp",
+        task: { id: "PTbnQ", title: "Test task" },
+        title: "added the task"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:25:10.956Z",
+        group: "My new list",
+        id: "1NFLT",
+        task: {},
+        title: "added the group"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:00.555Z",
+        group: "My new list",
+        id: "Vr0Y4",
+        task: {},
+        title: "added the group"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:02.921Z",
+        group: "My new list",
+        id: "68Z5V",
+        task: {},
+        title: "added the group",
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:41:18.200Z",
+        group: "My new list",
+        id: "Gug1T",
+        task: { id: "hwe7X", title: "Change label description" },
+        title: "added the task"
+    },
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:42:04.397Z",
+        group: "list 1",
+        id: "0qwBa",
+        task: {},
+        title: "removed the group"
+    }
+    ]
 }
 ]
 
