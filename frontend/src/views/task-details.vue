@@ -27,14 +27,14 @@
           <li
             v-for="(action, idx) in actions"
             :key="idx"
-            @click.stop="togglePopUp(true, action.type)"
+            @click.stop="togglePopUp(true, action)"
             class="action"
           >
             {{ action.txt }}
           </li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-            <template v-slot:header>here will be the header</template>
-            <component :is="currAction" @updateBoard="updateBoard"/>
+            <template v-slot:header>{{currAction.txt}}</template>
+            <component :is="currAction.type" @updateBoard="updateBoard"/>
           </pop-up>
         </ul>
         <ul>
