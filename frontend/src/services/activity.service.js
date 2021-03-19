@@ -2,7 +2,7 @@ import { httpService } from './http.service'
 import { storageService } from './async-storage.service'
 import { userService } from './user.service'
 import { utilService } from './util.service'
-
+import moment from 'moment'
 export const activityService = {
   add,
   query,
@@ -26,10 +26,12 @@ async function add(activityPayload) {
   // const addedActivity = await httpService.post(`activity`, activity)
   // const addedActivity = storageService.post('activity', activityId)
   console.log(activityPayload);
+  const date = Date.now()
   activityPayload.board.activities.push({
-    byMember: 'Guest',
+    byMember: { fullname: 'Guest' },
     title: activityPayload.activity,
-    createdAt: new Date(),
+    createdAt: moment(date),
+    group: activityPayload.group.title,
     id: utilService.makeId(),
     task: { id: activityPayload.task.id, title: activityPayload.task.title }
   })

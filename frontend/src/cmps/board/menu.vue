@@ -1,15 +1,12 @@
 <template>
 	<section>
-		<h1>Activity Log</h1>
-		<section v-for="activity in activities" :key="activity.id">
-			<p>{{ activity.byMember }} {{ activity.title }} {{moment().fromNow(activity.createdAt)}}</p>
-		</section>
-		<pre>{{ activities }}</pre>
+		<h1>Controls</h1>
+<activityLog :activities="activities"/>
 	</section>
 </template>
 
 <script>
-import moment from 'moment'
+import activityLog from '../recurring-cmps/activity-list.vue'
 export default {
 	computed: {
 		activities() {
@@ -20,7 +17,11 @@ export default {
 	methods: {
 		moment: function () {
 			return moment();
+		},
+		time(date) {
+			return moment(date).fromNow()
 		}
 	},
+	components: { activityLog }
 }
 </script>
