@@ -17,9 +17,14 @@ export default {
             this.color = color
         }
     },
+    watch: {
+        currBoard(){
+            this.getColorByLabelId()
+        }
+    },
     created(){
         this.getColorByLabelId(this.currBoard, this.label);
     }
 }
-// 
+
 </script>

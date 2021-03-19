@@ -1,5 +1,5 @@
 <template>
-  <section class="task-labels" v-if="!labelEditToggler">
+  <section class="task-labels" v-if="!labelEditToggler.isOpen">
     <input type="text" class="pop-up-input" placeholder="Search labels..." />
     <h3 class="pop-up-title">Labels</h3>
     <ul class="labels-list">
@@ -29,7 +29,10 @@
       @click="setColor(color)"
       ></div>
     </div>
-    <button @click="addLabelToBoard" class="btn-success">Create</button>
+    <div class="label-buttons">
+      <button @click="addLabelToBoard" class="btn-success">Create</button>
+      <button v-if="labelEditToggler.type === 'edit'" class="btn-danger">Delete</button>
+    </div>
   </section>
 </template>
 
@@ -41,7 +44,10 @@ export default {
     return {
       labels: [],
       newLabel: boardService.getEmptyLabel(),
-      labelEditToggler: false,
+      labelEditToggler: {
+        type: '',
+        isOpen: false
+      },
       colorsToAdd: this.getColorsToAdd()
     };
   },
@@ -76,16 +82,18 @@ export default {
           this.labelIds.splice(foundIdx, 1);
           task.labelIds = this.labelIds
           return this.$emit('updateBoard', this.currBoard)
-          
         }
       }
           this.labelIds.push(labelId);
           task.labelIds = this.labelIds  
-          return this.$emit('updateBoard', this.currBoard)
+          this.$emit('updateBoard', this.currBoard)
     },
     setEditToggler(toggle, label){
-      this.labelEditToggler = toggle
-      if(label) this.newLabel = label
+      this.labelEditToggler.isOpen = toggle
+      if(label) {
+        this.newLabel = JSON.parse(JSON.stringify(label))
+        this.labelEditToggler.type = 'edit'
+      } else this.labelEditToggler.type = 'add'
     },
     getColorsToAdd(){
       return ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf', '#00c2e0', '#51e898', '#ff78cb', '#344563'];    
@@ -101,22 +109,18 @@ export default {
         task.labelIds = this.labelIds;
         this.currBoard.labels.push(this.newLabel)
       } else {
-        const foundIdxTask = this.labelIds.findIndex(labelId => labelId === this.newLabel.id);
-        const foundIdxBoard = this.labels.findIndex(label => label.id === this.newLabel.id);
-        if(foundIdxTask<0) return 'couldnt find id for task';
-        if(foundIdxBoard<0) return 'couldnt find id for board';
-        console.log(this.labelIds, 'before');
-        this.labelIds.splice(foundIdxTask, 1, this.newLabel.id)
-        task.labelIds = this.labelIds
-        this.currBoard.labels.splice(foundIdxBoard, 1, this.newLabel)
-        console.log(this.labelIds, 'after');
+        const foundIdx = this.labels.findIndex(label => label.id === this.newLabel.id);
+        if(foundIdx<0) return 'couldnt find id for board';
+        this.currBoard.labels.splice(foundIdx, 1, this.newLabel)
       }
-      return this.$emit('updateBoard', this.currBoard)
+      this.labelEditToggler.isOpen = false;
+      this.labels = this.currBoard.labels;
+      this.$emit('updateBoard', this.currBoard)
+      this.newLabel = boardService.getEmptyLabel()
     }
   },
   created() {
     this.labels = this.currBoard.labels;
-    console.log(this.currBoard);
   },
 };
 </script>

@@ -81,6 +81,15 @@
         padding: 0 32px;
         display: flex;
         justify-content: center;
+        position: relative;
+        color: #5e6c84;
+
+        i {
+            position: absolute;
+            right: 14px;
+            top: 12px;
+            cursor: pointer;
+        }
 
     }
 
@@ -118,8 +127,39 @@
 
             &:hover {
                 background-color: rgba(9, 30, 66, .08);
-                
+
             }
+        }
+
+        .label {
+            color: white;
+
+            i {
+                color: #42526e;
+            }
+        }
+
+    }
+
+    button {
+        background-color: rgba(9, 30, 66, .06);
+        box-shadow: none;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 3px;
+        border: none;
+        display: inline-block;
+        line-height: 20px;
+        margin: 10px 4px 0 0;
+        padding: 6px 12px;
+        text-decoration: none;
+        position: relative;
+        width: 100%;
+        font-size: 14px;
+        color: #172b4d;
+
+        &:hover {
+            background-color: rgba(9, 30, 66, .08);
         }
     }
 
@@ -161,9 +201,14 @@
             min-width: 40px;
             padding: 0 12px;
             width: auto;
-
+            color: white;
         }
     }
+}
+
+.label-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .description-input {
@@ -171,3 +216,4 @@
     width: 100%;
     padding-bottom: 50px;
 }
+
