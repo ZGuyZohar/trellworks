@@ -21,3 +21,23 @@ button {
     cursor: pointer;
     background-color: white;
 }
+
+.btn-success {
+    background-color: #5aac44;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 8px 4px 0 0;
+}
+
+.btn-danger {
+    background-color: #cf513d;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 8px 4px 0 0;
+}
