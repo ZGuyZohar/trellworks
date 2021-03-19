@@ -5,15 +5,17 @@
     @click="getDetails"
     class="task-preview clickable"
   >
-  <div class="task-preview-labels" v-if="task.labelIds.length && currBoard">
-  <labels-preview 
-    v-for="labelId in task.labelIds"
-    :key="labelId"
-    :label="labelId"
-    :currBoard="currBoard"
-    :fromPreview="true"/>
-  </div>
+    <div class="task-preview-labels" v-if="task.labelIds.length && currBoard">
+      <labels-preview
+        v-for="labelId in task.labelIds"
+        :key="labelId"
+        :label="labelId"
+        :currBoard="currBoard"
+        :fromPreview="true"
+      />
+    </div>
     <p>{{ task.title }}</p>
+    <i v-if="task.description" class="fas fa-align-left fa-sm"></i>
     <i
       v-if="isEditPenShown"
       :class="penToggler"
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-import labelsPreview from '../task-details/labels-preview.vue';
+import labelsPreview from "../task-details/labels-preview.vue";
 import quickEdit from "./task-quick-edit";
 export default {
   props: {
@@ -44,9 +46,9 @@ export default {
     };
   },
   computed: {
-    currBoard(){
-      return this.$store.getters.currBoard
-    }
+    currBoard() {
+      return this.$store.getters.currBoard;
+    },
   },
   methods: {
     getDetails() {
@@ -76,7 +78,7 @@ export default {
   },
   components: {
     quickEdit,
-    labelsPreview
+    labelsPreview,
   },
 };
 </script>

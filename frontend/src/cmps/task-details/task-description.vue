@@ -1,5 +1,14 @@
   <template>
   <div class="description">
+    <i class="fas fa-align-left fa-lg"></i>
+    <h1 class="details-title">Description</h1>
+    <button
+      v-if="!isEditing && taskToEdit.description"
+      @click="isEditing = true"
+      class="btn-gray"
+    >
+      Edit
+    </button>
     <div
       v-if="!isEditing && !taskToEdit.description"
       @click="openEdit()"
@@ -18,8 +27,8 @@
           placeholder="Add a more detailed description..."
         ></textarea>
         <div>
-          <button type="submit">Save</button>
-          <span @click="isEditing = false" class="clickable">X</span>
+          <button type="submit" class="btn-success">Save</button>
+          <span @click="isEditing = false" class="clickable"> X</span>
         </div>
       </form>
     </div>
@@ -28,7 +37,6 @@
 </template>
 
 <script>
-import { utilService } from "@/services/util.service.js";
 export default {
   props: {
     task: Object,
@@ -36,7 +44,7 @@ export default {
   data() {
     return {
       isEditing: false,
-      taskToEdit: utilService.deepCopy(this.task),
+      taskToEdit: JSON.parse(JSON.stringify(this.task)),
     };
   },
   methods: {

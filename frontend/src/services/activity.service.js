@@ -29,7 +29,7 @@ async function add(activityPayload) {
   activityPayload.board.activities.unshift({
     byMember: { fullname: 'Guest' },
     title: activityPayload.activity,
-    createdAt: moment(date),
+    createdAt: date,
     group: activityPayload.group.title,
     id: utilService.makeId(),
     task: { id: activityPayload.task.id, title: activityPayload.task.title }
