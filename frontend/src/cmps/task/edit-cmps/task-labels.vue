@@ -12,9 +12,10 @@
       >
         {{ label.title }}
         <!-- <i class="fas fa-check"></i> -->
-        <i @click="labelEditToggler=true" class="fas fa-pencil-alt edit-pen"></i>
+        <i @click.stop="setEditToggler(true, label)" class="fas fa-pencil-alt edit-pen"></i>
       </li>
     </ul>
+    <button @click="setEditToggler(true)">Create a new label</button>
   </section>
   <section v-else>
     <h5>Name</h5>
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import {utilService} from '@/services/util.service.js'
 import { boardService } from "@/services/board.service.js";
 export default {
   data() {
@@ -81,6 +83,10 @@ export default {
           task.labelIds = this.labelIds  
           return this.$emit('updateBoard', this.currBoard)
     },
+    setEditToggler(toggle, label){
+      this.labelEditToggler = toggle
+      if(label) this.newLabel = label
+    },
     getColorsToAdd(){
       return ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf', '#00c2e0', '#51e898', '#ff78cb', '#344563'];    
     },
@@ -88,10 +94,22 @@ export default {
       this.newLabel.color = color
     },
     addLabelToBoard(){
-      const task = this.getTask()
-      this.labelIds.push(this.newLabel.id);
-      task.labelIds = this.labelIds;
-      this.currBoard.labels.push(this.newLabel)
+      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      const task = JSON.parse(JSON.stringify(this.getTask()))
+      if(!this.newLabel.id){
+        this.newLabel.id = utilService.makeId()
+        this.labelIds.push(this.newLabel.id);
+        task.labelIds = this.labelIds;
+        board.labels.push(this.newLabel)
+      } else {
+        const foundIdxTask = this.labelIds.findIndex(labelId => labelId === this.newLabel.id);
+        const foundIdxBoard = this.labels.findIndex(label => label.id === this.newLabel.id);
+        if(foundIdxTask<0 || foundIdxBoard<0) return 'couldnt find id';
+        this.labelIds.splice(foundIdxTask, 1, this.newLabel.id)
+        task.labelIds = this.labelIds
+        board.labels.splice(foundIdxBoard, 1, this.newLabel)
+      }
+      this.labelEditToggler = false
       return this.$emit('updateBoard', this.currBoard)
     }
   },

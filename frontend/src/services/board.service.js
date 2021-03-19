@@ -85,7 +85,6 @@ function getDefaultLabels() {
 
 function getEmptyLabel(color = '') {
     return {
-        id: utilService.makeId(),
         title: '',
         color
     }
