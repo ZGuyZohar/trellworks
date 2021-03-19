@@ -11,7 +11,7 @@
         @click="addLabel(label.id)"
       >
         {{ label.title }}
-        <i v-if="" class="fas fa-check"></i>
+        <!-- <i v-if="" class="fas fa-check"></i> -->
       </li>
     </ul>
   </section>
@@ -66,28 +66,7 @@ export default {
           return this.$emit('updateBoard', this.currBoard)
     },
     checkLabelIds(){
-      let right = this.labels.length-1;
-      let left = 0
-      const checkedLabelIds = []
-      while(left<right){
-        if(left === right){
-          console.log(left, this.labelIds);
-          checkedLabelIds.push(-1)
-          left++
-          right = this.labelIds.length-1
-          if(left === this.labelIds.length-1) break
-        }
-        if(this.labelIds[left] === this.labels[right].id) {
-          checkedLabelIds.push(this.labelIds[left])
-          left++
-          right = this.labelIds.length-1
-        } else {
-          console.log(left,right);
-          console.log('hi3s');
-          right--
-        }
-      }
-      console.log(checkedLabelIds);
+      
     }
   },
   created() {
