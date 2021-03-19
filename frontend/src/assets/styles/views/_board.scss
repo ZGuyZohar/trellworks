@@ -63,6 +63,7 @@
 
         &:hover {
             background-color: rgb(245, 245, 245);
+
         }
 
         .edit-pen {
@@ -111,4 +112,17 @@
     transition: transform 0.18s ease;
     transform: rotateZ(5deg);
 
+}
+
+.task-preview-labels {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+
+    div {
+        height: 8px;
+        width: 40px;
+        border-radius: 4px;
+        margin: 0 4px 4px 0;
+    }
 }

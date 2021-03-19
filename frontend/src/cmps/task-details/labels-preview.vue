@@ -1,11 +1,11 @@
 <template>
-  <div v-if="color" :style="{ backgroundColor: color.color }" ></div>
+  <div v-if="color" :style="{ backgroundColor: color.color }" ><span v-if="!fromPreview">{{color.title}}</span></div>
 </template>
 
 <script>
 import { boardService } from '@/services/board.service.js'
 export default {
-    props: ['label', 'currBoard'],
+    props: ['label', 'currBoard', 'fromPreview'],
     data(){
         return {
             color: ''

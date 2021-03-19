@@ -5,6 +5,14 @@
     @click="getDetails"
     class="task-preview clickable"
   >
+  <div class="task-preview-labels" v-if="task.labelIds.length && currBoard">
+  <labels-preview 
+    v-for="labelId in task.labelIds"
+    :key="labelId"
+    :label="labelId"
+    :currBoard="currBoard"
+    :fromPreview="true"/>
+  </div>
     <p>{{ task.title }}</p>
     <i
       v-if="isEditPenShown"
@@ -16,6 +24,7 @@
 </template>
 
 <script>
+import labelsPreview from '../task-details/labels-preview.vue';
 import quickEdit from "./task-quick-edit";
 export default {
   props: {
@@ -33,6 +42,11 @@ export default {
       isEditPenShown: false,
       showEdit: false,
     };
+  },
+  computed: {
+    currBoard(){
+      return this.$store.getters.currBoard
+    }
   },
   methods: {
     getDetails() {
@@ -56,9 +70,15 @@ export default {
       return { "fas fa-pencil-alt edit-pen": this.isEditPenShown };
     },
   },
-  created() {},
+  created() {
+    this.currBoard = this.$store.getters.currBoard;
+    // console.log(this.currBoard);
+  },
   components: {
     quickEdit,
+    labelsPreview
   },
 };
 </script>
+
+    
