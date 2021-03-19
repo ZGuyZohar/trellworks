@@ -10,10 +10,12 @@
       </ul>
       <button class="header-btn">Invite to Board</button>
     </div>
-    <button class="header-btn">Show Menu</button>
+    <button @click="menuShown = !menuShown" class="header-btn">Show Menu</button>
+  <boardMenu class ="board-menu" v-if="menuShown"></boardMenu>
   </div>
 </template>
 <script>
+import boardMenu from './menu.vue'
 export default {
   props: {
     boardTitle: {
@@ -21,5 +23,11 @@ export default {
       required: true,
     },
   },
+  data(){
+    return{
+      menuShown: false
+    }
+  },
+  components: {boardMenu}
 };
 </script>
