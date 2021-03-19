@@ -141,7 +141,7 @@ const boardsDB = [{
         {
             "id": "c102",
             "title": "Add Samples",
-            "labelIds": []
+            "labelIds": ["l101", "l102"]
         }
         ],
         "style": {}
@@ -152,7 +152,7 @@ const boardsDB = [{
         "task": [{
             "id": "c103",
             "title": "Do that",
-            "labelIds": []
+            "labelIds": ["l103", "l104"]
         },
         {
             "id": "c104",
@@ -240,12 +240,14 @@ const boardsDB = [{
         task: { id: "hwe7X", title: "Change label description" },
         title: "added the task"
     },
-    {byMember: {fullname: "Guest"},
-    createdAt: "2021-03-19T10:42:04.397Z",
-    group: "list 1",
-    id: "0qwBa",
-    task: {},
-    title: "removed the group"}
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:42:04.397Z",
+        group: "list 1",
+        id: "0qwBa",
+        task: {},
+        title: "removed the group"
+    }
     ]
 },
 {
@@ -378,12 +380,14 @@ const boardsDB = [{
         task: { id: "hwe7X", title: "Change label description" },
         title: "added the task"
     },
-    {byMember: {fullname: "Guest"},
-    createdAt: "2021-03-19T10:42:04.397Z",
-    group: "list 1",
-    id: "0qwBa",
-    task: {},
-    title: "removed the group"}
+    {
+        byMember: { fullname: "Guest" },
+        createdAt: "2021-03-19T10:42:04.397Z",
+        group: "list 1",
+        id: "0qwBa",
+        task: {},
+        title: "removed the group"
+    }
     ]
 }
 ]
