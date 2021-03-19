@@ -43,7 +43,7 @@
     }
 
     .action {
-        background-color: rgba(9, 30, 66, .04);
+        background-color: $lightgray;
         box-shadow: none;
         border: none;
         border-radius: 3px;
@@ -128,17 +128,15 @@
 
     .labels-preview {
         flex-direction: column;
+        margin-bottom: 10px;
 
-        label-preview-title {
+        .label-preview-title {
             color: #5e6c84;
-            font-size: 12px;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: bolder;
             letter-spacing: .04em;
-            line-height: 16px;
-            margin-top: 16px;
             text-transform: uppercase;
-            line-height: 20px;
-            margin: 0 8px 4px 0;
+            margin-bottom: 3px;
         }
 
         div {
@@ -156,4 +154,9 @@
 
         }
     }
+}
+
+.description-input {
+    background-color: $lightgray;
+    width: 100%;
 }

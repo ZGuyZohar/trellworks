@@ -67,15 +67,16 @@ function getEmptyTask() {
     return {
         id: utilService.makeId(),
         title: '',
-        labelIds: []
+        labelIds: [],
+        description: ''
     }
 }
 
-function getLabelColorById(board, labelId){
+function getLabelColorById(board, labelId) {
     return board.labels.find(label => label.id === labelId)
 }
 
-function getDefaultLabels(){
+function getDefaultLabels() {
     const defaultColors = ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf']
     return defaultColors.map(color => {
         return getEmptyLabel(color)

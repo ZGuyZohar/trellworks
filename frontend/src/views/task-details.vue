@@ -8,7 +8,7 @@
         </p>
         <section class="members-labels">
           <div class="members-preview"><!--HERE WILL BE MEMBERS PREVIEW--></div>
-          <div class="labels-preview flex" v-if="currTask.labelIds">
+          <div class="labels-preview flex" v-if="currTask.labelIds.length">
             <span class="label-preview-title">labels</span>
             <span class="flex">
               <labels-preview
@@ -19,6 +19,13 @@
               />
             </span>
           </div>
+          <textarea
+            v-if="!currTask.description"
+            class="description-input clean-input"
+            rows="6"
+            placeholder="Add a more detailed description..."
+          ></textarea>
+          <p v-else>{{ currTask.description }}</p>
         </section>
       </main>
       <div class="action-bar">
@@ -33,8 +40,8 @@
             {{ action.txt }}
           </li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-            <template v-slot:header>{{currAction.txt}}</template>
-            <component :is="currAction.type" @updateBoard="updateBoard"/>
+            <template v-slot:header>{{ currAction.txt }}</template>
+            <component :is="currAction.type" @updateBoard="updateBoard" />
           </pop-up>
         </ul>
         <ul>
@@ -56,25 +63,25 @@ export default {
     return {
       actions: [
         {
-          txt: 'Members',
-          type: 'taskMembers'
+          txt: "Members",
+          type: "taskMembers",
         },
         {
-          txt: 'Labels',
-          type: 'taskLabels'
+          txt: "Labels",
+          type: "taskLabels",
         },
         {
-          txt: 'Checklist',
-          type: 'taskChecklist'
+          txt: "Checklist",
+          type: "taskChecklist",
         },
         {
-          txt: 'Attachment',
-          type: 'taskAttachment'
+          txt: "Attachment",
+          type: "taskAttachment",
         },
         {
-          txt: 'Cover',
-          type: 'taskCover'
-        }
+          txt: "Cover",
+          type: "taskCover",
+        },
       ],
       currAction: null,
       openPopUp: false,
@@ -114,7 +121,7 @@ export default {
     },
     togglePopUp(boolean, actionType) {
       this.openPopUp = boolean;
-      this.currAction = actionType
+      this.currAction = actionType;
     },
     removeTask() {
       const board = this.currBoard;
