@@ -2,7 +2,8 @@
 export const utilService = {
     delay,
     getRandomInt,
-    makeId
+    makeId,
+    deepCopy
 }
 
 function delay(ms = 1500) {
@@ -24,4 +25,15 @@ function makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function deepCopy(object) {
+    let objectCopy, value, key;
+    if (typeof object !== "object" || object === null) return object;
+    objectCopy = Array.isArray(object) ? [] : {};
+    for (key in object) {
+        value = object[key];
+        objectCopy[key] = deepCopy(value);
+    }
+    return objectCopy;
 }
