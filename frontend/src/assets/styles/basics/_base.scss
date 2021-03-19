@@ -8,15 +8,15 @@
 }
 
 html {
-    color: $clr2;
-    font-family: Helvetica;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
+    font-size: 16px;
 }
 
 body {
     margin: 0;
+    font-family: Helvetica;
+    color: $clr2;
+    line-height: 20px;
+    font-weight: 400;
 }
 
 main,
@@ -54,4 +54,9 @@ input {
     line-height: 20px;
     margin-bottom: 12px;
     padding: 8px 12px;
+    color: $clr2;
+
+    &:focus {
+        background-color: white;
+    }
 }

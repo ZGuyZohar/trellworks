@@ -23,11 +23,22 @@
             grid-column: 1;
         }
 
-    }
-    .task-details-activity{
-        h1{
+        .main-title {
+            margin: 0;
+            padding: 0;
+            font-size: 1.5rem;
+        }
+
+        .sub-title {
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .details-title {
+            margin-left: 7px;
             font-size: 1rem;
         }
+
     }
 }
 
@@ -124,7 +135,7 @@
 
             &:hover {
                 background-color: rgba(9, 30, 66, .08);
-                
+
             }
         }
     }
@@ -146,15 +157,6 @@
         flex-direction: column;
         margin-bottom: 10px;
 
-        .label-preview-title {
-            color: #5e6c84;
-            font-size: 0.8rem;
-            font-weight: bolder;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-
         div {
             border-radius: 3px;
             box-sizing: border-box;
@@ -175,5 +177,20 @@
 .description-input {
     background-color: $lightgray;
     width: 100%;
-    padding-bottom: 50px;
+    padding: 10px 0 0 10px;
+}
+
+.uppercase-title {
+    color: #5e6c84;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.description {
+    h1 {
+        display: inline-block;
+    }
 }
