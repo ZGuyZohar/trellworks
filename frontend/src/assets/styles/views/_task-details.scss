@@ -5,6 +5,7 @@
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    overflow: scroll;
 
     .task-details {
         background-color: #F4F5F7;
@@ -22,6 +23,11 @@
             grid-column: 1;
         }
 
+    }
+    .task-details-activity{
+        h1{
+            font-size: 1rem;
+        }
     }
 }
 
