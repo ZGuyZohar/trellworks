@@ -23,7 +23,7 @@
             v-if="!currTask.description"
             class="description-input clean-input"
             rows="6"
-            placeholder="Add a more detailed description..."
+            placeholder="Add a more detailed description.."
           ></textarea>
           <p v-else>{{ currTask.description }}</p>
         </section>
