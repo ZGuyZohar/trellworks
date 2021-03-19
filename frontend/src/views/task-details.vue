@@ -111,6 +111,15 @@ export default {
     },
   },
   methods: {
+    saveActivity(activityTitle) {
+      this.$store.dispatch({
+        type: "saveActivity",
+        activity: activityTitle,
+        group: this.currGroup,
+        board: this.currBoard,
+        task: this.getTask(this.currBoard),
+      });
+    },
     getTask(board) {
       const group = board.groups.find(
         (group) => group.id === this.currGroup.id
@@ -138,6 +147,7 @@ export default {
         (group) => group.id === this.currGroup.id
       );
       const taskIdx = group.task.findIndex((task) => task.id === this.taskId);
+      this.saveActivity("removed the task");
       group.task.splice(taskIdx, 1);
       this.updateBoard(board);
       this.$router.push("../");
