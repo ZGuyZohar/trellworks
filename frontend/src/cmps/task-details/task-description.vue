@@ -1,7 +1,7 @@
   <template>
   <div class="description">
     <div
-      v-if="!isEditing && !description"
+      v-if="!isEditing && !taskToEdit.description"
       @click="openEdit()"
       class="description-input clickable"
     >
@@ -10,7 +10,7 @@
     <div v-if="isEditing" class="description-edit">
       <form @submit.prevent="setDescription">
         <textarea
-          v-model="descToEdit"
+          v-model="taskToEdit.description"
           ref="descriptionEdit"
           autofocus
           class="description-input clean-input"
@@ -23,19 +23,20 @@
         </div>
       </form>
     </div>
-    <p v-else>{{ description }}</p>
+    <p v-else>{{ taskToEdit.description }}</p>
   </div>
 </template>
 
 <script>
+import { utilService } from "@/services/util.service.js";
 export default {
   props: {
-    description: String,
+    task: Object,
   },
   data() {
     return {
       isEditing: false,
-      descToEdit: this.description,
+      taskToEdit: utilService.deepCopy(this.task),
     };
   },
   methods: {
@@ -46,7 +47,7 @@ export default {
       }, 0);
     },
     setDescription() {
-      this.$emit("setDescription", this.descToEdit);
+      this.$emit("updateTask", this.taskToEdit);
       this.isEditing = false;
     },
   },

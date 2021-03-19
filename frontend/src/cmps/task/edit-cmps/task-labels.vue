@@ -12,7 +12,10 @@
       >
         {{ label.title }}
         <!-- <i class="fas fa-check"></i> -->
-        <i @click="labelEditToggler=true" class="fas fa-pencil-alt edit-pen"></i>
+        <i
+          @click="labelEditToggler = true"
+          class="fas fa-pencil-alt edit-pen"
+        ></i>
       </li>
     </ul>
   </section>
@@ -21,11 +24,12 @@
     <input type="text" v-model="newLabel.title" class="pop-up-input" />
     <h5>Select a color</h5>
     <div class="colors">
-      <div v-for="color in colorsToAdd" 
-      :style="{backgroundColor: color}" 
-      :key="color" 
-      class="color-picker"
-      @click="setColor(color)"
+      <div
+        v-for="color in colorsToAdd"
+        :style="{ backgroundColor: color }"
+        :key="color"
+        class="color-picker"
+        @click="setColor(color)"
       ></div>
     </div>
     <button @click="addLabelToBoard" class="btn-success">Create</button>
@@ -34,66 +38,65 @@
 
 <script>
 import { boardService } from "@/services/board.service.js";
+import { utilService } from "@/services/util.service.js";
 export default {
+  props: {
+    task: Object,
+  },
   data() {
     return {
       labels: [],
       newLabel: boardService.getEmptyLabel(),
       labelEditToggler: false,
-      colorsToAdd: this.getColorsToAdd()
+      colorsToAdd: this.getColorsToAdd(),
+      taskToEdit: utilService.deepCopy(this.task),
     };
   },
   computed: {
     currBoard() {
-      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-    },
-    currGroup(){
-      return this.$store.getters.currGroup
-    },
-    currTask() {
-      return this.$store.getters.currTask
-    },
-    labelIds(){
-      return JSON.parse(JSON.stringify(this.currTask.labelIds))
+      return utilService.deepCopy(this.$store.getters.currBoard);
     },
   },
   methods: {
-    getTask(){
-      const group = this.currBoard.groups.find(
-        (group) => group.id === this.currGroup.id
-      );
-      const task = group.task.find((task) => task.id === this.currTask.id);
-      return task;
-    },
     addLabel(labelId) {
-      const task = this.getTask()
-      for (let i = 0; i < this.labelIds.length; i++) {
-        if (labelId === this.labelIds[i]) {
-          const foundIdx = this.labelIds.findIndex(
-            (currLabelId) => currLabelId === labelId );
-          this.labelIds.splice(foundIdx, 1);
-          task.labelIds = this.labelIds
-          return this.$emit('updateBoard', this.currBoard)
-          
+      const task = this.taskToEdit;
+      for (let i = 0; i < task.labelIds.length; i++) {
+        if (labelId === task.labelIds[i]) {
+          const foundIdx = task.labelIds.findIndex(
+            (currLabelId) => currLabelId === labelId
+          );
+          task.labelIds.splice(foundIdx, 1);
+          this.$emit("updateTask", task);
+          return;
         }
       }
-          this.labelIds.push(labelId);
-          task.labelIds = this.labelIds  
-          return this.$emit('updateBoard', this.currBoard)
+      task.labelIds.push(labelId);
+      this.$emit("updateTask", task);
     },
-    getColorsToAdd(){
-      return ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf', '#00c2e0', '#51e898', '#ff78cb', '#344563'];    
+    getColorsToAdd() {
+      return [
+        "#61bd4f",
+        "#f2d600",
+        "#ff9f1a",
+        "#eb5a46",
+        "#c377e0",
+        "#0079bf",
+        "#00c2e0",
+        "#51e898",
+        "#ff78cb",
+        "#344563",
+      ];
     },
-    setColor(color){
-      this.newLabel.color = color
+    setColor(color) {
+      this.newLabel.color = color;
     },
-    addLabelToBoard(){
-      const task = this.getTask()
-      this.labelIds.push(this.newLabel.id);
-      task.labelIds = this.labelIds;
-      this.currBoard.labels.push(this.newLabel)
-      return this.$emit('updateBoard', this.currBoard)
-    }
+    addLabelToBoard() {
+      const task = this.taskToEdit;
+      task.labelIds.push(this.newLabel.id);
+      this.$emit("updateTask", task);
+      this.currBoard.labels.push(this.newLabel);
+      this.$emit("updateBoard", this.currBoard);
+    },
   },
   created() {
     this.labels = this.currBoard.labels;

@@ -19,10 +19,7 @@
               />
             </span>
           </div>
-          <task-description
-            :description="currTask.description"
-            @setDescription="setDescription"
-          />
+          <task-description :task="currTask" @updateTask="updateTask" />
         </section>
       </main>
       <div class="action-bar">
@@ -38,7 +35,12 @@
           </li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
             <template v-slot:header>{{ currAction.txt }}</template>
-            <component :is="currAction.type" @updateBoard="updateBoard" />
+            <component
+              :is="currAction.type"
+              @updateTask="updateTask"
+              @updateBoard="updateBoard"
+              :task="currTask"
+            />
           </pop-up>
         </ul>
         <ul>
@@ -51,7 +53,7 @@
 </template>
 
 <script>
-import { boardService } from "@/services/board.service.js";
+import { utilService } from "@/services/util.service.js";
 import taskLabels from "@/cmps/task/edit-cmps/task-labels";
 import popUp from "@/cmps/task/pop-up";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
@@ -87,7 +89,7 @@ export default {
   },
   computed: {
     currBoard() {
-      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
+      return utilService.deepCopy(this.$store.getters.currBoard);
     },
     currTask() {
       return this.$store.getters.currTask;
@@ -123,6 +125,16 @@ export default {
       });
       this.$store.commit({ type: "setTask", taskId: this.taskId });
     },
+    updateTask(task) {
+      const updatedTask = utilService.deepCopy(task);
+      const board = this.currBoard;
+      const group = board.groups.find(
+        (group) => group.id === this.currGroup.id
+      );
+      const taskIdx = group.task.findIndex((task) => task.id === this.taskId);
+      group.task.splice(taskIdx, 1, updatedTask);
+      this.updateBoard(board);
+    },
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
@@ -140,12 +152,6 @@ export default {
       group.task.splice(taskIdx, 1);
       this.updateBoard(board);
       this.$router.push("../");
-    },
-    setDescription(description) {
-      const board = this.currBoard;
-      const task = this.getTask(board);
-      task.description = description;
-      this.updateBoard(board);
     },
   },
   created() {
