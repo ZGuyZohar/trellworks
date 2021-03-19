@@ -27,18 +27,14 @@
           <li
             v-for="(action, idx) in actions"
             :key="idx"
-            @click.stop="togglePopUp(true)"
+            @click.stop="togglePopUp(true, action.type)"
             class="action"
           >
-            {{ action }}
+            {{ action.txt }}
           </li>
           <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
             <template v-slot:header>here will be the header</template>
-            <task-labels
-              @addLabel="addLabel"
-              @removeLabel="removeLabel"
-              :labelIds="currTask.labelIds"
-            />
+            <component :is="currAction" @updateBoard="updateBoard"/>
           </pop-up>
         </ul>
         <ul>
@@ -58,7 +54,29 @@ import labelsPreview from "../cmps/task-details/labels-preview.vue";
 export default {
   data() {
     return {
-      actions: ["Members", "Labels", "Checklist", "Attachment", "Cover"],
+      actions: [
+        {
+          txt: 'Members',
+          type: 'taskMembers'
+        },
+        {
+          txt: 'Labels',
+          type: 'taskLabels'
+        },
+        {
+          txt: 'Checklist',
+          type: 'taskChecklist'
+        },
+        {
+          txt: 'Attachment',
+          type: 'taskAttachment'
+        },
+        {
+          txt: 'Cover',
+          type: 'taskCover'
+        }
+      ],
+      currAction: null,
       openPopUp: false,
     };
   },
@@ -94,23 +112,9 @@ export default {
     closeModal() {
       this.$router.push(`/board/${this.$route.params.boardId}`);
     },
-    togglePopUp(boolean) {
+    togglePopUp(boolean, actionType) {
       this.openPopUp = boolean;
-    },
-    addLabel(labelId) {
-      const board = this.currBoard;
-      const task = this.getTask(board);
-      task.labelIds.push(labelId);
-      this.updateBoard(board);
-    },
-    removeLabel(labelId) {
-      const board = this.currBoard;
-      const task = this.getTask(board);
-      const foundIdx = task.labelIds.findIndex(
-        (currLabelId) => currLabelId === labelId
-      );
-      task.labelIds.splice(foundIdx, 1);
-      this.updateBoard(board);
+      this.currAction = actionType
     },
     removeTask() {
       const board = this.currBoard;

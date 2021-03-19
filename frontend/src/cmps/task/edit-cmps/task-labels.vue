@@ -19,7 +19,6 @@
 <script>
 import { boardService } from "@/services/board.service.js";
 export default {
-  props: ["labelIds"],
   data() {
     return {
       labels: [],
@@ -28,20 +27,41 @@ export default {
   },
   computed: {
     currBoard() {
-      return this.$store.getters.currBoard;
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
+    },
+    currGroup(){
+      return this.$store.getters.currGroup
     },
     currTask() {
-      return this.$store.getters.currTask;
+      return this.$store.getters.currTask
     },
+    labelIds(){
+      return JSON.parse(JSON.stringify(this.currTask.labelIds))
+    }
   },
   methods: {
+    getTask(){
+      const group = this.currBoard.groups.find(
+        (group) => group.id === this.currGroup.id
+      );
+      const task = group.task.find((task) => task.id === this.currTask.id);
+      return task;
+    },
     addLabel(labelId) {
+      const task = this.getTask()
       for (let i = 0; i < this.labelIds.length; i++) {
         if (labelId === this.labelIds[i]) {
-          return this.$emit("removeLabel", labelId);
+          const foundIdx = this.labelIds.findIndex(
+          (currLabelId) => currLabelId === labelId );
+          this.labelIds.splice(foundIdx, 1);
+            task.labelIds = this.labelIds
+          return this.$emit('updateBoard', this.currBoard)
+          
         }
       }
-      this.$emit("addLabel", labelId);
+          this.labelIds.push(labelId);
+          task.labelIds = this.labelIds
+          return this.$emit('updateBoard', this.currBoard)
     },
   },
   created() {
