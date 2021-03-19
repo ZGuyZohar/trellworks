@@ -39,7 +39,7 @@ export default {
 			return this.$store.getters.currBoardMembers
 		}
 	},
-  created(){console.log(this.boardMembers);},
+  created(){},
 	components: { boardMenu, Avatar }
 };
 </script>

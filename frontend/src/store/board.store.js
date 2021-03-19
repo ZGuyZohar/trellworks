@@ -32,7 +32,6 @@ export const boardStore = {
             state.boards = foundBoards
         },
         setBoard(state, { board }) {
-            console.log(board.groups[1].task);
             state.currBoard = board;
         },
         setGroup(state, { groupId }) {
