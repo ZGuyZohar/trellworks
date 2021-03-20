@@ -14,18 +14,20 @@
 			/>
 		</div>
 		<p class="task-preview-title">{{ task.title }}</p>
-		<div v-if="task.members.length" class="flex preview-avatar-container">
-			<span class="avatar" v-for="member in task.members" :key="member.id">
-				<avatar :size="20" :username="member.fullname"></avatar>
-			</span>
-		</div>
+    <div class="preview-footer-container flex">
+    
 		<i v-if="task.description" class="fas fa-align-left fa-sm"></i>
 		<i
 			v-if="isEditPenShown"
 			:class="penToggler"
 			@click.stop="toggleEdit(true)"
 		></i>
-
+    <span class="flex preview-avatar-container">
+			<span  class=" avatar" v-for="member in task.members" :key="member.id">
+				<avatar  v-if="task.members.length" :size="20" :username="member.fullname"></avatar>
+        </span>
+		</span>
+</div>
 		<!-- <quick-edit @toggleEdit="toggleEdit" v-if="showEdit"/> -->
 	</section>
 </template>
