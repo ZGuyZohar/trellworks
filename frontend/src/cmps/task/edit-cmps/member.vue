@@ -11,7 +11,7 @@
 			v-for="member in membersToShow"
 			:key="member.id"
 			class="flex"
-			@click="addMember(member._id)"
+			@click="addMember(member)"
 		>
 			<avatar :size="40" :username="member.fullname"></avatar>
 			<p>{{ member.fullname }}</p>
@@ -35,7 +35,7 @@ export default {
 			return this.$store.getters.currGroup
 		},
 		currTask() {
-			return this.$store.getters.currTask
+			return JSON.parse(JSON.stringify(this.$store.getters.currTask))
 		},
 		membersToShow() {
 			return this.$store.getters.boardMembersForShow
@@ -43,9 +43,9 @@ export default {
 		taskMembers() {
 			return JSON.parse(JSON.stringify(this.currTask.taskMembers))
 		},
-    boardMembers(){
-      return this.$store.getters.currBoardMembers
-    }
+		boardMembers() {
+			return this.$store.getters.currBoardMembers
+		}
 	},
 	methods: {
 		getTask() {
@@ -58,20 +58,21 @@ export default {
 		filterMembers() {
 			this.$store.commit({ type: 'setMembersFilter', filterTxt: this.filterTxt })
 		},
-		addMember(memberId) {
-			const task = this.getTask()
-			for (let i = 0; i < this.members.length; i++) {
-				if (memberId === this.members[i]) {
-					const foundIdx = this.labelIds.findIndex(
-						(currLabelId) => currLabelId === labelId);
-					this.labelIds.splice(foundIdx, 1);
-					task.labelIds = this.labelIds
-					return this.$emit('updateBoard', this.currBoard)
-				}
-			}
-			this.labelIds.push(labelId);
-			task.labelIds = this.labelIds
-			this.$emit('updateBoard', this.currBoard)
+		addMember(member) {
+				this.currTask.members.push(member)
+			// for (let i = 0; i < this.members.length; i++) {
+			// 	if (memberId === this.members[i]) {
+			// 		const foundIdx = this.labelIds.findIndex(
+			// 			(currLabelId) => currLabelId === labelId);
+			// 		this.labelIds.splice(foundIdx, 1);
+			// 		task.labelIds = this.labelIds
+			// 		return this.$emit('updateBoard', this.currBoard)
+			// 	}
+			// }
+			// this.labelIds.push(labelId);
+			// task.labelIds = this.labelIds
+			// this.$emit('updateBoard', this.currBoard)
+      console.log(this.currTask);
 		}
 	},
 	created() {

@@ -85,7 +85,7 @@ export default {
 			this.saveActivity('added the task', board, group, task)
 			this.updateBoard(board);
 		},
-		saveActivity(activityTitle, board, group, task = {}) {
+		saveActivity(activityTitle, board, group, task = {id:'',title:''}) {
 			this.$store.dispatch({
 				type: "saveActivity",
 				activity: activityTitle,
