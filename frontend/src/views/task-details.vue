@@ -1,5 +1,5 @@
 <template>
-	<section @click.self="closeModal" class="task-details-modal">
+	<section @mousedown.self="closeModal" class="task-details-modal">
 		<div @click="togglePopUp(false)" class="task-details">
 			<main class="main">
 				<input

@@ -1,10 +1,13 @@
 header {
     justify-content: space-between;
     align-items: center;
-    background-color: $clr4;
-    height: 5vh;
-    padding: 20px;
-
+    background-color: rgba(0, 0, 0, .15);
+    padding: 5px 10px;
+    
+    // color: white;
+    a {
+        color: white;
+    }
     .main-logo {
         font-family: 'Megrim-Regular';
         font-size: 2rem;
