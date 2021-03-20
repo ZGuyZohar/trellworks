@@ -18,6 +18,7 @@
         padding: 20px;
         display: grid;
         grid-template-columns: 1fr 15rem;
+        border-radius: 2px;
 
         .main {
             grid-column: 1;
@@ -252,5 +253,12 @@
         position: absolute;
         top: -52px;
         cursor: pointer;
+    }
+}
+
+.task-members-edit .flex {
+    align-items: baseline;
+    p{
+        margin-left: 15px;
     }
 }

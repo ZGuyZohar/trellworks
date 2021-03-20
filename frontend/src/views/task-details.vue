@@ -1,5 +1,5 @@
 <template>
-	<section @click.self="closeModal" class="task-details-modal">
+	<section @mousedown.self="closeModal" class="task-details-modal">
 		<div @click="togglePopUp(false)" class="task-details">
 			<main class="main">
 				<input
@@ -63,6 +63,7 @@
 
 <script>
 import taskLabels from "@/cmps/task/edit-cmps/task-labels";
+import taskMembers from "@/cmps/task/edit-cmps/member";
 import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
@@ -194,6 +195,7 @@ export default {
 		labelsPreview,
 		taskDescription,
 		activityLog,
+		taskMembers
 	},
 };
 </script>
