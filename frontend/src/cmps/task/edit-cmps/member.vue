@@ -1,8 +1,8 @@
 <template>
 	<section class="task-members-edit">
-		<input class="pop-up-input" placeholder="Search members..."/>
+		<input class="pop-up-input" v-model="filterTxt" @input="filterMembers" placeholder="Search members..."/>
         <h3 class="pop-up-title">Members</h3>
-		<span v-for="member in currBoard.members" :key="member.id" class="flex">
+		<span v-for="member in members" :key="member.id" class="flex">
 			<avatar :size="40" :username="member.fullname"></avatar>
       <p>{{ member.fullname }}</p>
 		</span>
@@ -14,7 +14,10 @@
 import Avatar from "vue-avatar";
 
 export default {
-
+data(){
+  return{      filterTxt: ''
+}
+},
 	computed: {
 		currBoard() {
 			return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
@@ -25,14 +28,9 @@ export default {
 		currTask() {
 			return this.$store.getters.currTask
 		},
-		labelIds() {
-			return JSON.parse(JSON.stringify(this.currTask.labelIds))
-		},
-		btnSuccessTxtToShow() {
-			return this.labelEditToggler.type === 'edit' ? 'Save' : 'Create'
-		},
-		labels() {
-			return this.$store.getters.boardLabelsForShow
+
+		members() {
+			return this.$store.getters.boardMembersForShow
 		}
 	},
 	methods: {
@@ -42,8 +40,16 @@ export default {
 			);
 			const task = group.task.find((task) => task.id === this.currTask.id);
 			return task;
-		}
+		},
+    filterMembers(){
+      this.$store.commit({type: 'setMembersFilter', filterTxt: this.filterTxt})
+    }
 	},
+  created(){
+    this.filterTxt = ''
+    this.filterMembers()
+
+  },
   components: {Avatar}
 }
 </script>
