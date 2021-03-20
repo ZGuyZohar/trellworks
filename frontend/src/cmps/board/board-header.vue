@@ -6,7 +6,7 @@
 			</form>
 			<h2 v-else @click="isEditing =!isEditing">{{ boardTitle }}</h2>
 			<button class="header-btn star"><i class="far fa-star"></i></button>
-			<ul class="flex">
+			<ul class="flex avatars-show">
 				<span
 					v-for="member in boardMembers"
 					:key="member._id"
@@ -14,7 +14,7 @@
 					><avatar :size="40" :username="member.fullname"></avatar>
 				</span>
 			</ul>
-			<button class="header-btn">Invite to Board</button>
+			<button class="header-btn invite">Invite to Board</button>
 		</div>
 		<button @click="menuShown = !menuShown" class="header-btn">
 			Show Menu

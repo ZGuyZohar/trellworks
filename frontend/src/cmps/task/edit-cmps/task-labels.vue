@@ -122,7 +122,6 @@ export default {
         this.currBoard.labels.splice(foundIdx, 1, this.newLabel)
       }
       this.labelEditToggler.isOpen = false;
-      // this.labels = this.currBoard.labels;
       this.$emit('updateBoard', this.currBoard)
       this.newLabel = boardService.getEmptyLabel()
     },

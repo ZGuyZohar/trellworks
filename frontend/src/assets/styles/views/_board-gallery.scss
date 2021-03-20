@@ -1,51 +1,60 @@
-.board-list {
-    width: 70%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-    grid-auto-rows: 300px;
-    color: #fff;
-    h2,
-    h3,
-    h4 {
-        margin: 0;
-        padding: 14px;
-        color: #fff;
-        font-weight: 400;
+.gallery {
+    h1 {
+        margin: 30px auto;
+        color: white;
     }
-    .add {
+
+    .board-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-auto-rows: 150px;
+        gap: 15px;
+
+    }
+
+    .placeholder-preview {
+
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
-        button {
-            width: unset
+        justify-content: center;
+
+        &:hover {
+            opacity: 80%;
+            cursor: pointer;
         }
+
+        .vertical {
+            height: 141px;
+            width: 40px;
+            border-radius: 1em;
+            background-color: lightblue;
+            position: relative;
+
+            .horizontal {
+                position: absolute;
+                width: 152px;
+                top: 50px;
+                left: -57px;
+                height: 40px;
+                border-radius: 1em;
+                background-color: lightblue;
+            }
+        }
+
     }
 }
 
-
-
-.placeholder-preview {
-    height: 250px;
-    width: 300px;
-    background-color: #EBECF0;
-    border-radius: 15px;
-    overflow: hidden;
+.board-preview {
+    background-color: rgb(75, 191, 107);
+    border-radius: 10px;
     cursor: pointer;
-    border: 1px solid rgb(195, 195, 195);
-    &:hover .preview-header {
+    color: white;
+
+    &:hover {
         opacity: 80%;
     }
-    .preview-header {
-        background-color: rgb(146, 146, 146);
-        position: relative;
-        height: 20%;
-        opacity: 25%;
-    }
-}
 
-.gallery-container {
-    flex-direction: column;
-    text-align: center;
+    h2 {
+        margin: 10px 0 0 5px;
+    }
 }

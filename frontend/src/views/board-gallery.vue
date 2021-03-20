@@ -1,15 +1,17 @@
 <template>
 	<section>
-		<div class="flex gallery-container">
-			<h1>Gallery</h1>
+		<div class="flex main-container gallery">
+			<h1>Your boards</h1>
 			<div class="board-list">
-				<div class="placeholder-preview add">
-					<button @click="createBoard" class="btn-success">Create new</button>
+				<div @click="createBoard" class="placeholder-preview add">
+					<div class="vertical"><div class="horizontal"></div></div>
+					
 				</div>
 				<router-link
+					class="board-preview"
 					v-for="board in boards"
 					:key="board._id"
-					:to="'/board/' + board._id"
+					:to="'/board/' + board._id"	
 				>
 					<div class="placeholder-preview">
 						<div class="transition preview-header">
@@ -44,7 +46,7 @@ export default {
 				type: 'newBoard'
 			})
 			this.loadBoards()
-		}
+		},
 	},
 	async created() {
 		await this.loadBoards()
