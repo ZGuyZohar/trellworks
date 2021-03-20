@@ -1,16 +1,18 @@
 <template>
 	<section @mousedown.self="closeModal" class="task-details-modal">
 		<div @click="togglePopUp(false)" class="task-details">
-			<main class="main">
+			<div class="details-header">
 				<input
 					v-model="taskCopy.title"
 					@change="updateTask(taskCopy)"
 					class="clean-input main-title"
 				/>
 				<p class="sub-title">
-					In <span>{{ currGroup.title }}</span>
+					In list <span>{{ currGroup.title }}</span>
 				</p>
-				<section class="members-labels">
+			</div>
+			<main class="details-body"> <!--add here grid -->
+				<section class="main-details"> 
 					<div class="members-preview"><!--HERE WILL BE MEMBERS PREVIEW--></div>
 					<div class="labels-preview flex" v-if="currTask.labelIds.length">
 						<span class="uppercase-title">labels</span>
@@ -33,30 +35,30 @@
 						:activities="getTaskActivity()"
 					/>
 				</section>
+				<div class="action-bar">
+					<ul>
+						<h3 class="uppercase-title">add to task</h3>
+						<li
+							v-for="(action, idx) in actions"
+							:key="idx"
+							@click.stop="togglePopUp(true, action)"
+							class="action"
+						>
+							<i :class="action.iconClass"></i> {{ action.txt }}
+						</li>
+						<pop-up @closePopUp="togglePopUp" v-if="openPopUp">
+							<template v-slot:header>{{ currAction.txt }}</template>
+							<component :is="currAction.type" @updateBoard="updateBoard" />
+						</pop-up>
+					</ul>
+					<ul>
+						<h3 class="uppercase-title">Actions</h3>
+						<li class="action" @click="removeTask()">
+							<i class="far fa-trash-alt"></i> Delete Task
+						</li>
+					</ul>
+				</div>
 			</main>
-			<div class="action-bar">
-				<ul>
-					<h3 class="uppercase-title">add to task</h3>
-					<li
-						v-for="(action, idx) in actions"
-						:key="idx"
-						@click.stop="togglePopUp(true, action)"
-						class="action"
-					>
-						<i :class="action.iconClass"></i> {{ action.txt }}
-					</li>
-					<pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-						<template v-slot:header>{{ currAction.txt }}</template>
-						<component :is="currAction.type" @updateBoard="updateBoard" />
-					</pop-up>
-				</ul>
-				<ul>
-					<h3 class="uppercase-title">Actions</h3>
-					<li class="action" @click="removeTask()">
-						<i class="far fa-trash-alt"></i> Delete Task
-					</li>
-				</ul>
-			</div>
 		</div>
 	</section>
 </template>
@@ -188,6 +190,7 @@ export default {
 	created() {
 		this.$store.commit({ type: "setTask", taskId: this.taskId });
 		this.taskCopy = JSON.parse(JSON.stringify(this.currTask));
+		console.log(this.currTask, 'currtask');
 	},
 	components: {
 		popUp,
