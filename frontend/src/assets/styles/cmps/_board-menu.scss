@@ -7,8 +7,10 @@
     top: 12vh;
     padding: 25px 35px;
     overflow-y: auto;
+    z-index: 1;
 }
-.board-header .clean-input{
+
+.board-header .clean-input {
     display: block;
     font-size: 1.5em;
     margin-block-start: 0.83em;
@@ -17,6 +19,7 @@
     margin-inline-end: 0px;
     font-weight: bold;
 }
+
 .slide-from-right-enter-active {
     transition: all 0.2s ease-in;
 }
@@ -26,10 +29,9 @@
 }
 
 .slide-from-right-leave-to {
-    right:-350px
-
+    right: -350px
 }
 
 .slide-from-right-enter {
-    right:-300px
+    right: -300px
 }
