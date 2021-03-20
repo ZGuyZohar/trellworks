@@ -1,5 +1,5 @@
 <template>
-  <div v-if="color" :style="{ backgroundColor: color.color }" ><span v-if="!fromPreview">{{color.title}}</span></div>
+  <div v-if="color" class="label-preview" :style="{ backgroundColor: color.color }" ><span v-if="!fromPreview">{{color.title}}</span></div>
 </template>
 
 <script>

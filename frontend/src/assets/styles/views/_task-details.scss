@@ -4,7 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     overflow: scroll;
 
     .task-details {
@@ -14,32 +14,40 @@
         top: 50%;
         transform: translate(-50%, -50%);
         width: 768px;
-        min-height: 50vh;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr 15rem;
+        height: 85%;
+        padding: 20px 7px 20px 33px;
         border-radius: 2px;
 
-        .main {
-            grid-column: 1;
+
+        .details-header {
+
+            .main-title {
+                margin: 0;
+                padding: 0;
+                font-size: 1.5rem;
+                width: 100%;
+            }
+
+            .sub-title {
+                margin-bottom: 30px;
+                font-size: 0.9rem;
+
+                span {
+                    text-decoration: underline;
+                }
+            }
+
         }
 
-        .main-title {
-            margin: 0;
-            padding: 0;
-            font-size: 1.5rem;
-        }
+        .details-body {
+            display: grid;
+            grid-template-columns: 1fr 13rem;
 
-        .sub-title {
-            margin-bottom: 30px;
-            font-size: 0.9rem;
+            .main-details {
+                grid-column: 1;
+                margin-top: 12px;
+            }
         }
-
-        .details-title {
-            margin-left: 7px;
-            font-size: 1rem;
-        }
-
     }
 }
 
@@ -49,6 +57,10 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+
+    ul:first-child {
+        margin: 0;
+    }
 
     .action-bar-title {
         color: #5e6c84;
@@ -130,10 +142,12 @@
 .main-pop-up {
     width: 100%;
     padding: 0 12px 12px;
+    margin-top: 13px;
 
 }
 
 .task-labels {
+
 
     .labels-list {
         padding-right: 36px;
@@ -192,32 +206,32 @@
     }
 }
 
-.members-labels {
 
-    .labels-preview {
-        flex-direction: column;
-        margin-bottom: 10px;
+.labels-preview {
+    flex-direction: column;
+    margin-bottom: 10px;
 
-        div {
-            border-radius: 3px;
-            box-sizing: border-box;
-            display: block;
-            float: left;
-            font-weight: 600;
-            height: 32px;
-            line-height: 32px;
-            margin: 0 4px 4px 0;
-            min-width: 40px;
-            padding: 0 12px;
-            width: auto;
-            color: white;
-        }
+    .label-preview {
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        font-weight: 600;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 4px 4px 0;
+        min-width: 40px;
+        padding: 0 12px;
+        width: auto;
+        color: white;
+    }
 
-        span {
-            flex-wrap: wrap;
-        }
+    span {
+        flex-wrap: wrap;
     }
 }
+
+
 
 .label-buttons {
     display: flex;
@@ -255,7 +269,7 @@
 
     i {
         position: absolute;
-        top: -52px;
+        top: -64px;
         cursor: pointer;
     }
 }

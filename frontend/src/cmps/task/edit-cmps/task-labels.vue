@@ -94,6 +94,7 @@ export default {
       }
           this.labelIds.push(labelId);
           task.labelIds = this.labelIds  
+          console.log(labelId);
           this.$emit('updateBoard', this.currBoard)
     },
     setEditToggler(toggle, label){

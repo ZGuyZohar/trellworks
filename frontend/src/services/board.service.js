@@ -81,7 +81,8 @@ function getEmptyTask() {
         title: '',
         labelIds: [],
         description: '',
-        checklists: []
+        checklists: [],
+        members: []
     }
 }
 
