@@ -23,6 +23,7 @@
           ref="descriptionEdit"
           autofocus
           class="description-input clean-input"
+          rows="6"
           placeholder="Add a more detailed description..."
         ></textarea>
         <div>
@@ -54,7 +55,7 @@ export default {
       }, 0);
     },
     setDescription() {
-      this.$emit("changeMade", "changed the description");
+      this.$emit("changeMade", 'changed the description');
       this.$emit("updateTask", this.taskToEdit);
       this.isEditing = false;
     },
