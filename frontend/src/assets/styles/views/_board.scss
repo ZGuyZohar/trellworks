@@ -24,6 +24,11 @@
         h2 {
             color: white;
         }
+
+        input {
+            width: 200px;
+            color: white;
+        }
     }
 
     .board-header-avatar {
@@ -63,6 +68,7 @@
             right: 9px;
             top: 8px;
         }
+
     }
 
     .group-title {
@@ -138,12 +144,29 @@
 }
 
 .group-add {
-    background-color: rgba(245, 245, 245, 0.561);
+    background-color: hsla(0, 0%, 100%, .24);
     height: 60px;
+    color: white;
+    font-family: Opensans;
+    height: 34px;
 
     &:hover {
-        background-color: whitesmoke;
+        background-color: hsla(0, 0%, 100%, .32);
         cursor: pointer;
+    }
+
+    .group-header {
+        height: 100%;
+        align-items: center;
+
+        p {
+            padding: 0 0 0 10px;
+            margin: 0;
+
+            i{
+                padding: 0 5px 0 0;
+            }
+        }
     }
 }
 

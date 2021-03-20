@@ -27,8 +27,7 @@
 				</draggable>
 				<section @click="addGroup" class="transition group group-add">
 					<section class="flex group-header">
-						<p class="group-title"><i class="fas fa-plus"></i>Add New...</p>
-						<i class="fas fa-pencil-alt"></i>
+						<p class="group-title"><i class="fas fa-plus"></i>Add another list</p>
 					</section>
 				</section>
 			</div>
