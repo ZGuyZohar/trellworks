@@ -9,8 +9,7 @@
       <labels-preview
         v-for="labelId in task.labelIds"
         :key="labelId"
-        :label="labelId"
-        :currBoard="currBoard"
+        :labelId="labelId"
         :fromPreview="true"
       />
     </div>

@@ -221,6 +221,7 @@
 .label-buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .description-input {
@@ -241,5 +242,15 @@
 .description {
     h1 {
         display: inline-block;
+    }
+}
+
+.label-edit {
+    position: relative;
+
+    i {
+        position: absolute;
+        top: -52px;
+        cursor: pointer;
     }
 }

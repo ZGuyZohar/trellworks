@@ -18,7 +18,7 @@
 							<labels-preview
 								v-for="labelId in currTask.labelIds"
 								:key="labelId"
-								:label="labelId"
+								:labelId="labelId"
 								:currBoard="currBoard"
 							/>
 						</span>

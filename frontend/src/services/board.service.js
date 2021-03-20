@@ -14,7 +14,8 @@ export const boardService = {
     getEmptyGroup,
     getEmptyLabel,
     getDefaultLabels,
-    getLabelColorById
+    getLabelColorById,
+    getAllColors
 }
 
 async function query() {
@@ -77,16 +78,85 @@ function getLabelColorById(board, labelId) {
 }
 
 function getDefaultLabels() {
-    const defaultColors = ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf']
+    const defaultColors = [      
+        {
+            color: '#61bd4f',
+            colorName: 'green'
+        },
+        {
+            color: '#f2d600',
+            colorName: 'yellow'
+        },
+        {
+            color: '#ff9f1a',
+            colorName: 'orange'
+        },
+        {
+            color: '#eb5a46',
+            colorName: 'red'
+        },
+        {
+            color: '#c377e0',
+            colorName: 'purple'
+        },
+        {
+            color: '#0079bf',
+            colorName: 'blue'
+        }
+    ]
     return defaultColors.map(color => {
-        return getEmptyLabel(color)
+        return getEmptyLabel(color.color, color.colorName)
     })
 }
 
-function getEmptyLabel(color = '') {
+function getAllColors(){
+        return [{
+            color: '#61bd4f',
+            colorName: 'green'
+        },
+        {
+            color: '#f2d600',
+            colorName: 'yellow'
+        },
+        {
+            color: '#ff9f1a',
+            colorName: 'orange'
+        },
+        {
+            color: '#eb5a46',
+            colorName: 'red'
+        },
+        {
+            color: '#c377e0',
+            colorName: 'purple'
+        },
+        {
+            color: '#0079bf',
+            colorName: 'blue'
+        },
+        {
+            color: '#00c2e0',
+            colorName: 'skyblue'
+        },
+        {
+            color: '#51e898',
+            colorName: 'lime'
+        },
+        {
+            color: '#ff78cb',
+            colorName: 'pink'
+        },
+        {
+            color: '#344563',
+            colorName: 'black'
+        }];
+}
+
+function getEmptyLabel(color = '', colorName) {
     return {
         title: '',
-        color
+        color,
+        colorName
     }
 }
 // async function update(board) {

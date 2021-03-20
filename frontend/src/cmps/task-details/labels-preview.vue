@@ -5,15 +5,20 @@
 <script>
 import { boardService } from '@/services/board.service.js'
 export default {
-    props: ['label', 'currBoard', 'fromPreview'],
+    props: ['labelId', 'fromPreview'],
     data(){
         return {
             color: ''
         }
     },
+    computed: {
+        currBoard(){
+            return this.$store.getters.currBoard
+        }
+    },
     methods: {
         getColorByLabelId(){
-            const color = boardService.getLabelColorById(this.currBoard, this.label)
+            const color = boardService.getLabelColorById(this.currBoard, this.labelId)
             this.color = color
         }
     },
@@ -23,7 +28,7 @@ export default {
         }
     },
     created(){
-        this.getColorByLabelId(this.currBoard, this.label);
+        this.getColorByLabelId(this.currBoard, this.labelId);
     }
 }
 

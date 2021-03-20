@@ -20,11 +20,13 @@
             margin: 1%;
         }
     }
-    .board-header-avatar{
+
+    .board-header-avatar {
         margin-left: -15%;
-        &:hover{
+
+        &:hover {
             transform: scale(1.1);
-            cursor:pointer;
+            cursor: pointer;
         }
     }
 
@@ -33,11 +35,11 @@
 .group {
     background-color: #EBECF0;
     display: inline-block;
-    margin: 5px;
+    margin: 0 4px;
     padding: 10px;
-    width: 250px;
+    width: 272px;
     height: fit-content;
-    border-radius: 5px;
+    border-radius: 3px;
 
 
     .group-header {
@@ -140,5 +142,9 @@
         width: 48px;
         border-radius: 4px;
         cursor: pointer;
+
+        &:hover {
+            opacity: .8
+        }
     }
 }

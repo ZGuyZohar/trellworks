@@ -97,32 +97,38 @@ const boardsDB = [{
         {
             id: 'l101',
             title: '',
-            color: '#61bd4f'
+            color: '#61bd4f',
+            colorName: 'green'
         },
         {
             id: 'l102',
             title: '',
-            color: '#f2d600'
+            color: '#f2d600',
+            colorName: 'yellow'
         },
         {
             id: 'l103',
             title: '',
-            color: '#ff9f1a'
+            color: '#ff9f1a',
+            colorName: 'orange'
         },
         {
             id: 'l104',
             title: '',
-            color: '#eb5a46'
+            color: '#eb5a46',
+            colorName: 'red'
         },
         {
             id: 'l105',
             title: '',
-            color: '#c377e0'
+            color: '#c377e0',
+            colorName: 'purple'
         },
         {
             id: 'l106',
             title: '',
-            color: '#0079bf'
+            color: '#0079bf',
+            colorName: 'blue'
         }
     ],
     "members": [{
@@ -256,36 +262,42 @@ const boardsDB = [{
         "imgUrl": "http://some-img"
     },
     "style": {},
-    "labels": [{
-        id: 'l101',
-        title: '',
-        color: '#61bd4f'
-    },
-    {
-        id: 'l102',
-        title: '',
-        color: '#f2d600'
-    },
-    {
-        id: 'l103',
-        title: '',
-        color: '#ff9f1a'
-    },
-    {
-        id: 'l104',
-        title: '',
-        color: '#eb5a46'
-    },
-    {
-        id: 'l105',
-        title: '',
-        color: '#c377e0'
-    },
-    {
-        id: 'l106',
-        title: '',
-        color: '#0079bf'
-    }],
+    "labels": [        {
+            id: 'l101',
+            title: '',
+            color: '#61bd4f',
+            colorName: 'green'
+        },
+        {
+            id: 'l102',
+            title: '',
+            color: '#f2d600',
+            colorName: 'yellow'
+        },
+        {
+            id: 'l103',
+            title: '',
+            color: '#ff9f1a',
+            colorName: 'orange'
+        },
+        {
+            id: 'l104',
+            title: '',
+            color: '#eb5a46',
+            colorName: 'red'
+        },
+        {
+            id: 'l105',
+            title: '',
+            color: '#c377e0',
+            colorName: 'purple'
+        },
+        {
+            id: 'l106',
+            title: '',
+            color: '#0079bf',
+            colorName: 'blue'
+        }],
     "members": [
         {
             "_id": "u102",

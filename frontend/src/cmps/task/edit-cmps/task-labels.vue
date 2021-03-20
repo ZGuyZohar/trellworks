@@ -1,6 +1,6 @@
 <template>
   <section class="task-labels" v-if="!labelEditToggler.isOpen">
-    <input type="text" class="pop-up-input" placeholder="Search labels..." />
+    <input type="text" class="pop-up-input" v-model="filterTxt" @input="filterLabels"  placeholder="Search labels..." />
     <h3 class="pop-up-title">Labels</h3>
     <ul class="labels-list">
       <li
@@ -17,21 +17,22 @@
     </ul>
     <button @click="setEditToggler(true)">Create a new label</button>
   </section>
-  <section v-else>
+  <section class="label-edit" v-else>
+    <i @click="setEditToggler(false)" class="fas fa-angle-left"></i>
     <h5>Name</h5>
     <input type="text" v-model="newLabel.title" class="pop-up-input" />
     <h5>Select a color</h5>
     <div class="colors">
       <div v-for="color in colorsToAdd" 
-      :style="{backgroundColor: color}" 
-      :key="color" 
+      :style="{backgroundColor: color.color}" 
+      :key="color.color" 
       class="color-picker"
       @click="setColor(color)"
       ></div>
     </div>
     <div class="label-buttons">
-      <button @click="addLabelToBoard" class="btn-success">Create</button>
-      <button v-if="labelEditToggler.type === 'edit'" class="btn-danger">Delete</button>
+      <button @click="addLabelToBoard" class="btn-success">{{btnSuccessTxtToShow}}</button>
+      <button v-if="labelEditToggler.type === 'edit'" class="btn-danger" @click="removeLabelFromBoard">Delete</button>
     </div>
   </section>
 </template>
@@ -42,13 +43,14 @@ import { boardService } from "@/services/board.service.js";
 export default {
   data() {
     return {
-      labels: [],
+      // labels: [],
       newLabel: boardService.getEmptyLabel(),
       labelEditToggler: {
         type: '',
         isOpen: false
       },
-      colorsToAdd: this.getColorsToAdd()
+      colorsToAdd: boardService.getAllColors(),
+      filterTxt: ''
     };
   },
   computed: {
@@ -64,6 +66,12 @@ export default {
     labelIds(){
       return JSON.parse(JSON.stringify(this.currTask.labelIds))
     },
+    btnSuccessTxtToShow(){
+      return this.labelEditToggler.type === 'edit' ? 'Save' : 'Create'
+    },
+    labels(){
+      return this.$store.getters.boardLabelsForShow
+    }
   },
   methods: {
     getTask(){
@@ -95,13 +103,12 @@ export default {
         this.labelEditToggler.type = 'edit'
       } else this.labelEditToggler.type = 'add'
     },
-    getColorsToAdd(){
-      return ['#61bd4f', '#f2d600', '#ff9f1a', '#eb5a46', '#c377e0', '#0079bf', '#00c2e0', '#51e898', '#ff78cb', '#344563'];    
-    },
-    setColor(color){
+    setColor({color, colorName}){
       this.newLabel.color = color
+      this.newLabel.colorName = colorName
     },
     addLabelToBoard(){
+      console.log(this.newLabel);
       const task = this.getTask()
       if(!this.newLabel.id){
         this.newLabel.id = utilService.makeId()
@@ -114,13 +121,23 @@ export default {
         this.currBoard.labels.splice(foundIdx, 1, this.newLabel)
       }
       this.labelEditToggler.isOpen = false;
-      this.labels = this.currBoard.labels;
+      // this.labels = this.currBoard.labels;
       this.$emit('updateBoard', this.currBoard)
       this.newLabel = boardService.getEmptyLabel()
+    },
+    removeLabelFromBoard(){
+      const foundIdx = this.currBoard.labels.findIndex(label => label.id === this.newLabel.id);
+      this.currBoard.labels.splice(foundIdx,1)
+      this.labelEditToggler.isOpen = false;
+      this.$emit('updateBoard', this.currBoard)
+    },
+    filterLabels(){
+      this.$store.commit({type: 'setLabelsFilter', filterTxt: this.filterTxt})
     }
   },
   created() {
-    this.labels = this.currBoard.labels;
+    this.filterTxt = ''
+    this.filterLabels()
   },
 };
 </script>
