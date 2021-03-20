@@ -9,7 +9,7 @@ export const boardService = {
     getById,
     remove,
     save,
-    getEmptyBoard,
+    addBoard,
     getEmptyTask,
     getEmptyGroup,
     getEmptyLabel,
@@ -33,23 +33,34 @@ async function remove(boardId) {
     // return httpService.delete(`board/${boardId}`)
 }
 
+async function addBoard() {
+    await save(_getEmptyBoard())
+}
 
 async function save(board) {
     if (board._id) {
         return storageService.put(BOARD_DB, board)
         // return httpService.put(TOY_URL + toy._id, toy)
     } else {
-        return storageService.post(BOARD_DB, newBoard)
+        return storageService.post(BOARD_DB, board)
         // return httpService.post(TOY_URL, toy)
     }
 }
 
-function getEmptyBoard() {
+function _getEmptyBoard() {
     return {
-        title: '',
+        title: 'My new board',
         createdAt: Date.now(),
         labels: getDefaultLabels(),
-        groups: []
+        groups: [],
+        members: [],
+        activities: [
+            {
+                id: utilService.makeId(),
+                title: 'This board was created',
+                byMember: {fullname: 'Guest'}
+            }
+        ]
     }
 }
 
@@ -78,7 +89,7 @@ function getLabelColorById(board, labelId) {
 }
 
 function getDefaultLabels() {
-    const defaultColors = [      
+    const defaultColors = [
         {
             color: '#61bd4f',
             colorName: 'green'
@@ -109,47 +120,47 @@ function getDefaultLabels() {
     })
 }
 
-function getAllColors(){
-        return [{
-            color: '#61bd4f',
-            colorName: 'green'
-        },
-        {
-            color: '#f2d600',
-            colorName: 'yellow'
-        },
-        {
-            color: '#ff9f1a',
-            colorName: 'orange'
-        },
-        {
-            color: '#eb5a46',
-            colorName: 'red'
-        },
-        {
-            color: '#c377e0',
-            colorName: 'purple'
-        },
-        {
-            color: '#0079bf',
-            colorName: 'blue'
-        },
-        {
-            color: '#00c2e0',
-            colorName: 'skyblue'
-        },
-        {
-            color: '#51e898',
-            colorName: 'lime'
-        },
-        {
-            color: '#ff78cb',
-            colorName: 'pink'
-        },
-        {
-            color: '#344563',
-            colorName: 'black'
-        }];
+function getAllColors() {
+    return [{
+        color: '#61bd4f',
+        colorName: 'green'
+    },
+    {
+        color: '#f2d600',
+        colorName: 'yellow'
+    },
+    {
+        color: '#ff9f1a',
+        colorName: 'orange'
+    },
+    {
+        color: '#eb5a46',
+        colorName: 'red'
+    },
+    {
+        color: '#c377e0',
+        colorName: 'purple'
+    },
+    {
+        color: '#0079bf',
+        colorName: 'blue'
+    },
+    {
+        color: '#00c2e0',
+        colorName: 'skyblue'
+    },
+    {
+        color: '#51e898',
+        colorName: 'lime'
+    },
+    {
+        color: '#ff78cb',
+        colorName: 'pink'
+    },
+    {
+        color: '#344563',
+        colorName: 'black'
+    }];
 }
 
 function getEmptyLabel(color = '', colorName) {

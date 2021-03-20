@@ -63,6 +63,11 @@ export default {
 					return `${activity.byMember.fullname} ${activity.title} of "${activity.task.title}"`
 					break;
 				}
+				case "This board was created": {
+					return `${activity.title}`
+					break;
+				}
+
 				default: {
 					return `${activity.byMember.fullname} ${activity.title}`
 				}

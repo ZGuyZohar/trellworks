@@ -1,10 +1,16 @@
 <template>
 	<div class="flex board-header">
-		<div class="flex header-container">
-			<h2>{{ boardTitle }}</h2>
+		<div class="flex header-container" @submit.prevent="editBoardTitle">
+			<form v-if="isEditing">
+			<input class="clean-input"  v-model="titleToEdit"/>
+			</form>
+			<h2 v-else @click="isEditing =!isEditing">{{ boardTitle }}</h2>
 			<button class="header-btn star"><i class="far fa-star"></i></button>
 			<ul class="flex">
-				<span  v-for="member in boardMembers" :key="member._id" class="transition board-header-avatar"
+				<span
+					v-for="member in boardMembers"
+					:key="member._id"
+					class="transition board-header-avatar"
 					><avatar :size="40" :username="member.fullname"></avatar>
 				</span>
 			</ul>
@@ -13,9 +19,9 @@
 		<button @click="menuShown = !menuShown" class="header-btn">
 			Show Menu
 		</button>
-		    <transition name="slide-from-right" >
-		<boardMenu class="board-menu" v-if="menuShown"></boardMenu>
-			</transition>
+		<transition name="slide-from-right">
+			<boardMenu class="board-menu" v-if="menuShown"></boardMenu>
+		</transition>
 	</div>
 </template>
 <script>
@@ -31,7 +37,9 @@ export default {
 	},
 	data() {
 		return {
-			menuShown: false
+			menuShown: false,
+			titleToEdit: this.boardTitle,
+			isEditing:false
 		}
 	},
 	computed: {
@@ -39,7 +47,13 @@ export default {
 			return this.$store.getters.currBoardMembers
 		}
 	},
-  created(){},
+	methods:{
+		editBoardTitle(){
+			this.isEditing =!this.isEditing
+			this.$emit('boardTitleUpdated',this.titleToEdit)
+		}
+	},
+	created() { },
 	components: { boardMenu, Avatar }
 };
 </script>

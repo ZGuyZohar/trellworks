@@ -27,16 +27,15 @@ export const boardStore = {
         activityLog(state) {
             return state.currBoard.activities
         },
-        boardLabelsForShow(state){
+        boardLabelsForShow(state) {
             const labelsForShow = JSON.parse(JSON.stringify(state.currBoard.labels))
             // if(!state.labelFilter) return labelsForShow.sort((label1, label2) => label1.colorName.localeCompare(label2.colorName))
-            if(!state.labelFilter) return labelsForShow
+            if (!state.labelFilter) return labelsForShow
             return labelsForShow.filter(label => {
                 return (label.colorName.includes(state.labelFilter) || label.title.includes(state.labelFilter))
             })
-            
-            // return labelsForShow.sort((label1, label2) => label1.colorName.localeCompare(label2.colorName))
 
+            // return labelsForShow.sort((label1, label2) => label1.colorName.localeCompare(label2.colorName))
         }
     },
     mutations: {
@@ -58,7 +57,7 @@ export const boardStore = {
             const currTask = state.currGroup.task.find(task => task.id === taskId);
             if (currTask) state.currTask = currTask;
         },
-        setLabelsFilter(state, {filterTxt}){
+        setLabelsFilter(state, { filterTxt }) {
             state.labelFilter = filterTxt
         }
     },
@@ -82,6 +81,7 @@ export const boardStore = {
         },
         async newBoard({ commit }) {
             try {
+            await boardService.addBoard()
             }
             catch (err) {
                 console.log('Adding new board: Error', err);
