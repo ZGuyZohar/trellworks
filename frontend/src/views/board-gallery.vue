@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<div class="flex gallery-container">
+			<h1>Gallery</h1>
 			<div class="board-list">
 				<div class="placeholder-preview add">
 					<button @click="createBoard" class="btn-success">Create new</button>
@@ -42,11 +43,13 @@ export default {
 			await this.$store.dispatch({
 				type: 'newBoard'
 			})
+			this.loadBoards()
 		}
 	},
 	async created() {
 		await this.loadBoards()
-		console.log(this.boards);
-	}
+	},
+
+
 }
 </script>

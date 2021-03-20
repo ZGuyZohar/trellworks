@@ -1,6 +1,9 @@
 <template>
 	<section v-if="currBoard" :board="currBoard">
-		<board-header :boardTitle="currBoard.title" />
+		<board-header
+			:boardTitle="currBoard.title"
+			@boardTitleUpdated="updateBoardTitle"
+		/>
 		<div class="flex board">
 			<div class="flex group-container">
 				<draggable
@@ -107,11 +110,17 @@ export default {
 			const group = board.groups.find((group) => group.id === groupId);
 			const groupCopy = JSON.parse(JSON.stringify(group))
 			// await this.saveActivity('changed the title of the list',board,groupCopy,{title:newTitle})
-			this.saveActivity('renamed a group',board,groupCopy)
+			this.saveActivity('renamed a group', board, groupCopy)
 			group.title = newTitle;
 			this.updateBoard(board);
 		},
+		async updateBoardTitle(newTitle) {
 
+			const task =  {newTitle: newTitle, oldTitle: this.currBoard.title}
+			this.saveActivity('changed this board`s name', this.currBoard, {})
+			this.currBoard.title = newTitle
+			this.updateBoard(this.currBoard);
+		}
 	},
 	async created() {
 		await this.loadBoard();
