@@ -39,7 +39,7 @@
 <script>
 export default {
   props: {
-    task: Object,
+    task: Object
   },
   data() {
     return {
