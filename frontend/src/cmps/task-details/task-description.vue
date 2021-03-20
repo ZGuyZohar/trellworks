@@ -4,7 +4,7 @@
     <h1 class="details-title">Description</h1>
     <button
       v-if="!isEditing && taskToEdit.description"
-      @click="isEditing = true"
+      @click="openEdit()"
       class="btn-gray"
     >
       Edit

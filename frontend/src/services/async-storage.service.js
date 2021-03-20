@@ -142,12 +142,16 @@ const boardsDB = [{
         "task": [{
             "id": "c101",
             "title": "Replace logo",
-            "labelIds": []
+            "labelIds": [],
+            "description": '',
+            "checklists": []
         },
         {
             "id": "c102",
             "title": "Add Samples",
-            "labelIds": ["l101", "l102"]
+            "labelIds": ["l101", "l102"],
+            "description": '',
+            "checklists": []
         }
         ],
         "style": {}
@@ -158,7 +162,9 @@ const boardsDB = [{
         "task": [{
             "id": "c103",
             "title": "Do that",
-            "labelIds": ["l103", "l104"]
+            "labelIds": ["l103", "l104"],
+            "description": '',
+            "checklists": []
         },
         {
             "id": "c104",
@@ -262,42 +268,42 @@ const boardsDB = [{
         "imgUrl": "http://some-img"
     },
     "style": {},
-    "labels": [        {
-            id: 'l101',
-            title: '',
-            color: '#61bd4f',
-            colorName: 'green'
-        },
-        {
-            id: 'l102',
-            title: '',
-            color: '#f2d600',
-            colorName: 'yellow'
-        },
-        {
-            id: 'l103',
-            title: '',
-            color: '#ff9f1a',
-            colorName: 'orange'
-        },
-        {
-            id: 'l104',
-            title: '',
-            color: '#eb5a46',
-            colorName: 'red'
-        },
-        {
-            id: 'l105',
-            title: '',
-            color: '#c377e0',
-            colorName: 'purple'
-        },
-        {
-            id: 'l106',
-            title: '',
-            color: '#0079bf',
-            colorName: 'blue'
-        }],
+    "labels": [{
+        id: 'l101',
+        title: '',
+        color: '#61bd4f',
+        colorName: 'green'
+    },
+    {
+        id: 'l102',
+        title: '',
+        color: '#f2d600',
+        colorName: 'yellow'
+    },
+    {
+        id: 'l103',
+        title: '',
+        color: '#ff9f1a',
+        colorName: 'orange'
+    },
+    {
+        id: 'l104',
+        title: '',
+        color: '#eb5a46',
+        colorName: 'red'
+    },
+    {
+        id: 'l105',
+        title: '',
+        color: '#c377e0',
+        colorName: 'purple'
+    },
+    {
+        id: 'l106',
+        title: '',
+        color: '#0079bf',
+        colorName: 'blue'
+    }],
     "members": [
         {
             "_id": "u102",
@@ -314,217 +320,226 @@ const boardsDB = [{
             "fullname": "Guy Zohar",
             "imgUrl": "https://www.google.com"
         }],
-"groups": [
-    {"id": "735dg",
-    "title": "Front-End",
-    "task": [{
-        "id": "XrPqi",
-        "title": "Add user support",
-        "labelIds": [],
+    "groups": [
+        {
+            "id": "735dg",
+            "title": "Front-End",
+            "task": [{
+                "id": "XrPqi",
+                "title": "Add user support",
+                "labelIds": [],
+                "description": '',
+                "checklists": []
+            },
+            {
+                "id": "RAEDU",
+                "title": "Add board gallery",
+                "labelIds": [],
+                "description": "add clickable previews, and an option to create new boards",
+                "checklists": []
+            }]
+        },
+        {
+            id: "gycb5",
+            title: "Back End",
+            task: [{
+                "id": "0zJp9",
+                "title": "switch local-storage requests with HTTP requests",
+                "labelIds": [],
+                "description": "",
+                "checklists": []
+            }]
+        },
+        {
+            title: "Design",
+            id: "32cb0",
+            task: [{
+                "id": "KIVoL",
+                "labelIds": ["l101"],
+                "title": "add animations",
+                "description": "",
+                "checklists": []
+            },
+            {
+                "description": "Check google fonts for reference",
+                "id": "gDYKM",
+                "labelIds": ["39RVz", "l101"],
+                "title": "import font for logo",
+                "checklists": []
+            },
+            {
+                title: "implement basic color scheme",
+                id: "qbehr",
+                "labelIds": [],
+                "checklists": [],
+                "description": "Check google fonts for reference",
+            }]
+        },
+
+    ],
+    'activities': [{
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616190794476,
+        "group": "My new list",
+        "id": "toSgy",
+        "task": {}
+    },
+    { "byMember": { "fullname": "Guest" }, "title": "added the task", "createdAt": 1616190786014, "group": "Design", "id": "OGCgq", "task": { "id": "qbehr", "title": "implement basic color scheme" } },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "changed the description",
+        "createdAt": 1616190756788,
+        "group": "Front-End",
+        "id": "WB3XN",
+        "task": {
+            "id": "RAEDU",
+            "title": "Add board gallery\n"
+        }
     },
     {
-        "id": "RAEDU",
-        "title": "Add board gallery",
-        "labelIds": [],
-        "description": "add clickable previews, and an option to create new boards"
-    }]
-},
-{
-    id: "gycb5",
-    title: "Back End",
-    task: [{
-        id: "0zJp9",
-        title: "switch local-storage requests with HTTP requests",
-        "labelIds": [],
-
-    }]
-},
-{
-    title: "Design",
-    id: "32cb0",
-    task: [{
-        id: "KIVoL",
-        labelIds: ["l101"],
-        title: "add animations"
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616190735745,
+        "group": "Front-End",
+        "id": "PktOn",
+        "task": {
+            "id": "RAEDU",
+            "title": "Add board gallery\n"
+        }
     },
     {
-        description: "Check google fonts for reference",
-        id: "gDYKM",
-        labelIds: ["39RVz", "l101"],
-        title: "import font for logo"
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616190690475,
+        "group": "Front-End",
+        "id": "gidPI",
+        "task": {
+            "id": "XrPqi",
+            "title": "Add user support"
+        }
     },
     {
-        title: "implement basic color scheme",
-        id: "qbehr",
-        "labelIds": [],
-
-    }]
-},
-
-],
-'activities': [{
-    "byMember": {
-        "fullname": "Guest"
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "changed the description",
+        "createdAt": 1616190651202,
+        "group": "Design",
+        "id": "DPCpN",
+        "task": {
+            "id": "gDYKM",
+            "title": "import font for logo"
+        }
     },
-    "title": "added the group",
-    "createdAt": 1616190794476,
-    "group": "My new list",
-    "id": "toSgy",
-    "task": {}
-},
-{ "byMember": { "fullname": "Guest" }, "title": "added the task", "createdAt": 1616190786014, "group": "Design", "id": "OGCgq", "task": { "id": "qbehr", "title": "implement basic color scheme" } },
-{
-    "byMember": {
-        "fullname": "Guest"
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616190626746,
+        "group": "Back End",
+        "id": "Bt9Zf",
+        "task": {
+            "id": "0zJp9",
+            "title": "switch local-storage requests with HTTP requests"
+        }
     },
-    "title": "changed the description",
-    "createdAt": 1616190756788,
-    "group": "Front-End",
-    "id": "WB3XN",
-    "task": {
-        "id": "RAEDU",
-        "title": "Add board gallery\n"
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616190607166,
+        "group": "Design",
+        "id": "zt3LN",
+        "task": {
+            "id": "gDYKM",
+            "title": "import font for logo"
+        }
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616190569961,
+        "group": "Design",
+        "id": "DrRGv",
+        "task": {
+            "id": "KIVoL",
+            "title": "add animations"
+        }
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616190551423,
+        "group": "Design",
+        "id": "RrihJ",
+        "task": {}
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616190546987,
+        "group": "My new list",
+        "id": "YIQ9w",
+        "task": {}
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616190457471,
+        "group": "Back End",
+        "id": "EQ60R",
+        "task": {}
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616190454919,
+        "group": "My new list",
+        "id": "QhqK2",
+        "task": {}
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616190453133,
+        "group": "Front-End",
+        "id": "TXbzz",
+        "task": {}
+    },
+    {
+        "byMember": {
+            "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616190359896,
+        "group": "My new list",
+        "id": "xtEqE",
+        "task": {}
     }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the task",
-    "createdAt": 1616190735745,
-    "group": "Front-End",
-    "id": "PktOn",
-    "task": {
-        "id": "RAEDU",
-        "title": "Add board gallery\n"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the task",
-    "createdAt": 1616190690475,
-    "group": "Front-End",
-    "id": "gidPI",
-    "task": {
-        "id": "XrPqi",
-        "title": "Add user support"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "changed the description",
-    "createdAt": 1616190651202,
-    "group": "Design",
-    "id": "DPCpN",
-    "task": {
-        "id": "gDYKM",
-        "title": "import font for logo"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the task",
-    "createdAt": 1616190626746,
-    "group": "Back End",
-    "id": "Bt9Zf",
-    "task": {
-        "id": "0zJp9",
-        "title": "switch local-storage requests with HTTP requests"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the task",
-    "createdAt": 1616190607166,
-    "group": "Design",
-    "id": "zt3LN",
-    "task": {
-        "id": "gDYKM",
-        "title": "import font for logo"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the task",
-    "createdAt": 1616190569961,
-    "group": "Design",
-    "id": "DrRGv",
-    "task": {
-        "id": "KIVoL",
-        "title": "add animations"
-    }
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "renamed a group",
-    "createdAt": 1616190551423,
-    "group": "Design",
-    "id": "RrihJ",
-    "task": {}
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the group",
-    "createdAt": 1616190546987,
-    "group": "My new list",
-    "id": "YIQ9w",
-    "task": {}
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "renamed a group",
-    "createdAt": 1616190457471,
-    "group": "Back End",
-    "id": "EQ60R",
-    "task": {}
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the group",
-    "createdAt": 1616190454919,
-    "group": "My new list",
-    "id": "QhqK2",
-    "task": {}
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "renamed a group",
-    "createdAt": 1616190453133,
-    "group": "Front-End",
-    "id": "TXbzz",
-    "task": {}
-},
-{
-    "byMember": {
-        "fullname": "Guest"
-    },
-    "title": "added the group",
-    "createdAt": 1616190359896,
-    "group": "My new list",
-    "id": "xtEqE",
-    "task": {}
-}
-]
+    ]
 }
 ]
 
