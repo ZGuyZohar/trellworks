@@ -58,7 +58,7 @@ function _getEmptyBoard() {
             {
                 id: utilService.makeId(),
                 title: 'This board was created',
-                byMember: {fullname: 'Guest'}
+                byMember: { fullname: 'Guest' }
             }
         ]
     }
@@ -81,6 +81,7 @@ function getEmptyTask() {
         title: '',
         labelIds: [],
         description: '',
+        checklists: [],
         members: []
     }
 }

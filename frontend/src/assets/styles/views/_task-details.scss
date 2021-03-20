@@ -112,7 +112,6 @@
         display: flex;
         justify-content: center;
         position: relative;
-        color: #5e6c84;
 
         i {
             position: absolute;
@@ -125,11 +124,12 @@
 
     .pop-up-title {
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: .04em;
         line-height: 16px;
         margin-top: 16px;
         text-transform: uppercase;
+        color: #5e6c84c2;
     }
 
     input {
@@ -243,6 +243,10 @@
     background-color: $lightgray;
     width: 100%;
     padding: 10px 0 30px 10px;
+
+    &:focus {
+        background-color: white;
+    }
 }
 
 .uppercase-title {
