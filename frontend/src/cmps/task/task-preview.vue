@@ -13,7 +13,7 @@
         :fromPreview="true"
       />
     </div>
-    <p>{{ task.title }}</p>
+    <p class="task-preview-title">{{ task.title }}</p>
     <i v-if="task.description" class="fas fa-align-left fa-sm"></i>
     <i
       v-if="isEditPenShown"
