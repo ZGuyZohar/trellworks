@@ -29,8 +29,10 @@
       <span
         v-if="!isAddingTask"
         @click="openAddTask(group.id)"
-        class="clickable"
-        >+add task</span
+        class="open-task-composer clickable"
+        >
+        <i class="fas fa-plus"></i>
+        Add another task</span
       >
       <div v-if="isAddingTask">
         <textarea
@@ -40,7 +42,7 @@
           class="task-preview add-task"
           v-model="taskToAdd.title"
         ></textarea>
-        <button @click="addTask(group.id)">Add</button>
+        <button class="btn-success" @click="addTask(group.id)">Add</button>
         <span class="clickable" @click="closeAddTask"> X</span>
       </div>
     </div>
