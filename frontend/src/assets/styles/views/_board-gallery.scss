@@ -2,16 +2,16 @@
     width: 70%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    grid-auto-rows: 300px;
     color: #fff;
     h2,
     h3,
     h4 {
         margin: 0;
-        padding: 7px;
+        padding: 14px;
         color: #fff;
-    
+        font-weight: 400;
     }
     .add {
         display: flex;
@@ -29,22 +29,19 @@
 .placeholder-preview {
     height: 250px;
     width: 300px;
-    background-color: gray;
+    background-color: #EBECF0;
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
-
+    border: 1px solid rgb(195, 195, 195);
     &:hover .preview-header {
-        opacity: 100%;
+        opacity: 80%;
     }
-
     .preview-header {
-        background-color: #000;
+        background-color: rgb(146, 146, 146);
         position: relative;
         height: 20%;
         opacity: 25%;
-
-
     }
 }
 

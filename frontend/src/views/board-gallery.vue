@@ -1,11 +1,9 @@
 <template>
 	<section>
 		<div class="flex gallery-container">
-			<h1>Gallery</h1>
-			<!-- <h1>{{boards}}</h1> -->
 			<div class="board-list">
 				<div class="placeholder-preview add">
-					<button @click="createBoard" class="cta-btn">Create new</button>
+					<button @click="createBoard" class="btn-success">Create new</button>
 				</div>
 				<router-link
 					v-for="board in boards"
