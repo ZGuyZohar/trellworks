@@ -22,21 +22,16 @@
 import Avatar from "vue-avatar";
 
 export default {
+	props: {
+		task: Object
+	},
 	data() {
 		return {
-			filterTxt: ''
+			filterTxt: '',
+			taskToEdit: JSON.parse(JSON.stringify(this.task))
 		}
 	},
 	computed: {
-		currBoard() {
-			return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-		},
-		currGroup() {
-			return this.$store.getters.currGroup
-		},
-		currTask() {
-			return JSON.parse(JSON.stringify(this.$store.getters.currTask))
-		},
 		membersToShow() {
 			return this.$store.getters.boardMembersForShow
 		},
@@ -48,31 +43,12 @@ export default {
 		}
 	},
 	methods: {
-		getTask() {
-			const group = this.currBoard.groups.find(
-				(group) => group.id === this.currGroup.id
-			);
-			const task = group.task.find((task) => task.id === this.currTask.id);
-			return task;
-		},
 		filterMembers() {
 			this.$store.commit({ type: 'setMembersFilter', filterTxt: this.filterTxt })
 		},
 		addMember(member) {
-				this.currTask.members.push(member)
-			// for (let i = 0; i < this.members.length; i++) {
-			// 	if (memberId === this.members[i]) {
-			// 		const foundIdx = this.labelIds.findIndex(
-			// 			(currLabelId) => currLabelId === labelId);
-			// 		this.labelIds.splice(foundIdx, 1);
-			// 		task.labelIds = this.labelIds
-			// 		return this.$emit('updateBoard', this.currBoard)
-			// 	}
-			// }
-			// this.labelIds.push(labelId);
-			// task.labelIds = this.labelIds
-			// this.$emit('updateBoard', this.currBoard)
-      console.log(this.currTask);
+			this.taskToEdit.members.push(member)
+			this.$emit('updateTask', this.taskToEdit)
 		}
 	},
 	created() {
