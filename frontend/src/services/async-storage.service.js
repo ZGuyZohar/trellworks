@@ -83,871 +83,1007 @@ function getDefaultLabels() {
     })
 }
 
-const boardsDB = [{
-    "title": "Trellworks progress",
-    "createdAt": 1616261612006,
-    "labels": [
-      {
-        "title": "",
-        "color": "#61bd4f",
-        "colorName": "green"
-      },
-      {
-        "title": "",
-        "color": "#f2d600",
-        "colorName": "yellow"
-      },
-      {
-        "title": "",
-        "color": "#ff9f1a",
-        "colorName": "orange"
-      },
-      {
-        "title": "",
-        "color": "#eb5a46",
-        "colorName": "red"
-      },
-      {
-        "title": "",
-        "color": "#c377e0",
-        "colorName": "purple"
-      },
-      {
-        "title": "",
-        "color": "#0079bf",
-        "colorName": "blue"
-      }
-    ],
-    "groups": [
-      {
-        "id": "bkubm",
-        "style": {},
-        "title": "Frontend",
-        "task": [
-          {
-            "id": "CNJ7e",
-            "title": "add more activity logs",
-            "labelIds": [],
-            "description": "",
-            "checklists": [],
-            "members": []
-          },
-          {
-            "id": "eflQk",
-            "title": "add quick-menu for tasks\n",
-            "labelIds": [],
-            "description": "",
-            "checklists": [],
-            "members": []
-          }
-        ]
-      },
-      {
-        "id": "Bl57w",
-        "style": {},
-        "title": "Backend",
-        "task": [
-          {
-            "id": "bC6yp",
-            "title": "implement HTTP server",
-            "labelIds": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null
-            ],
-            "description": "",
-            "checklists": [],
-            "members": []
-          }
-        ]
-      },
-      {
-        "id": "43s9G",
-        "style": {},
-        "title": "Design",
-        "task": [
-          {
-            "id": "9q8lZ",
-            "title": "add padding to buttons",
-            "labelIds": [
-              null
-            ],
-            "description": "",
-            "checklists": [],
-            "members": []
-          }
-        ]
-      },
-      {
-        "id": "IdiwC",
-        "style": {},
-        "title": "Done",
-        "task": [
-          {
-            "id": "pXulq",
-            "title": "Animate menu ",
-            "labelIds": [],
-            "description": "",
-            "checklists": [],
-            "members": []
-          },
-          {
-            "id": "rCLhY",
-            "title": "Change page font",
-            "labelIds": [],
-            "description": "",
-            "checklists": [],
-            "members": []
-          }
-        ]
-      }
-    ],
-    "members": [
-        {
-            "_id": "u102",
-            "fullname": "Almog Lemberg",
-            "imgUrl": "https://www.google.com"
-        },
-        {
-            "_id": "u103",
-            "fullname": "Gali Nickel",
-            "imgUrl": "https://www.google.com"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Guy Zohar",
-            "imgUrl": "https://www.google.com"
-        }],    "activities": [
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267511292,
-        "group": "Frontend",
-        "id": "yEKN7",
-        "task": {
-          "id": "eflQk",
-          "title": "add quick-menu for tasks\n"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267477907,
-        "group": "Frontend",
-        "id": "V2htL",
-        "task": {
-          "id": "CNJ7e",
-          "title": "add more activity logs"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267469195,
-        "group": "Backend",
-        "id": "AGZ6R",
-        "task": {
-          "id": "bC6yp",
-          "title": "implement HTTP server"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267461813,
-        "group": "Design",
-        "id": "3wJxr",
-        "task": {
-          "id": "9q8lZ",
-          "title": "add padding to buttons"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267410136,
-        "group": "Done",
-        "id": "HpWq8",
-        "task": {
-          "id": "rCLhY",
-          "title": "Change page font"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616267396958,
-        "group": "Done",
-        "id": "zcl85",
-        "task": {
-          "id": "pXulq",
-          "title": "Animate menu "
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616267384392,
-        "group": "Done",
-        "id": "ve25N",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616267382286,
-        "group": "My new list",
-        "id": "OK5jL",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616267382245,
-        "group": "Design",
-        "id": "pL8cP",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616267379306,
-        "group": "My new list",
-        "id": "HCaY2",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616267379245,
-        "group": "Backend",
-        "id": "dz02i",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616267376160,
-        "group": "My new list",
-        "id": "UjocG",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616267374769,
-        "group": "Frontend",
-        "id": "bjwzm",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616267369795,
-        "group": "My new list",
-        "id": "LPc92",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "changed this board`s name",
-        "createdAt": 1616267368331,
-        "id": "dfUWG",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "removed the group",
-        "createdAt": 1616267355768,
-        "group": "My new list564654",
-        "id": "7hJhe",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616261622448,
-        "group": "My new list564654",
-        "id": "kRraF",
-        "task": {
-          "id": "E67Wy",
-          "title": "shalom almog"
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616261618546,
-        "group": "My new list564654",
-        "id": "QvfeK",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616261617123,
-        "group": "My new list",
-        "id": "wzuR5",
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      },
-      {
-        "id": "eXIp0",
-        "title": "This board was created",
-        "byMember": {
-          "fullname": "Guest"
-        },
-        "task": {
-          "id": "",
-          "title": ""
-        }
-      }
-    ],
-    "_id": "0n6fP"
-  },{
-    "_id": "b101",
-    "title": "Robot dev proj",
-    "createdAt": 1589983468418,
-    "createdBy": {
-        "_id": "u101",
-        "fullname": "Abi Abambi",
-        "imgUrl": "http://some-img"
-    },
-    "style": {},
-    "labels": [
-        {
-            id: 'l101',
-            title: '',
-            color: '#61bd4f',
-            colorName: 'green'
-        },
-        {
-            id: 'l102',
-            title: '',
-            color: '#f2d600',
-            colorName: 'yellow'
-        },
-        {
-            id: 'l103',
-            title: '',
-            color: '#ff9f1a',
-            colorName: 'orange'
-        },
-        {
-            id: 'l104',
-            title: '',
-            color: '#eb5a46',
-            colorName: 'red'
-        },
-        {
-            id: 'l105',
-            title: '',
-            color: '#c377e0',
-            colorName: 'purple'
-        },
-        {
-            id: 'l106',
-            title: '',
-            color: '#0079bf',
-            colorName: 'blue'
-        }
-    ],
-    "members": [{
-        "_id": "u101",
-        "fullname": "Tal Tarablus",
-        "imgUrl": "https://www.google.com"
-    }],
-    "groups": [{
-        "id": "g101",
-        "title": "list 1",
-        "task": [{
-            "id": "c101",
-            "title": "Replace logo",
-            "labelIds": [],
-            "description": '',
-            "checklists": []
-        },
-        {
-            "id": "c102",
-            "title": "Add Samples",
-            "labelIds": ["l101", "l102"],
-            "description": '',
-            "checklists": []
-        }
-        ],
-        "style": {}
-    },
+const boardsDB = [
     {
-        "id": "g102",
-        "title": "list 2",
-        "task": [{
-            "id": "c103",
-            "title": "Do that",
-            "labelIds": ["l103", "l104"],
-            "description": '',
-            "checklists": []
-        },
-        {
-            "id": "c104",
-            "title": "Help me",
-            "description": "description",
-            "comments": [{
-                "id": "ZdPnm",
-                "txt": "also @yaronb please CR this",
-                "createdAt": 1590999817436.0,
+        "title": "Birthday party",
+        "createdAt": 1616273048951,
+        "labels": [
+            {
+                "title": "",
+                "color": "#61bd4f",
+                "colorName": "green",
+                "id": "l101"
+            },
+            {
+                "title": "",
+                "color": "#f2d600",
+                "colorName": "yellow",
+                "id": "l102"
+            },
+            {
+                "title": "",
+                "color": "#ff9f1a",
+                "colorName": "orange",
+                "id": "l103"
+            },
+            {
+                "title": "",
+                "color": "#eb5a46",
+                "colorName": "red",
+                "id": "l104"
+            },
+            {
+                "title": "done!",
+                "color": "#c377e0",
+                "colorName": "purple",
+                "id": "l105"
+            },
+            {
+                "title": "",
+                "color": "#0079bf",
+                "colorName": "blue",
+                "id": "l106"
+            }
+        ],
+        "groups": [
+            {
+                "id": "nXDyF",
+                "style": {},
+                "title": "event planning",
+                "task": [
+                    {
+                        "id": "fsYRk",
+                        "title": "write guest list",
+                        "labelIds": [],
+                        "description": "",
+                        "checklists": [],
+                        "members": []
+                    },
+                    {
+                        "id": "bAOiy",
+                        "title": "book catering",
+                        "labelIds": [
+                            "l101",
+                            "l105",
+                            "l102"
+                        ],
+                        "description": "find out if any of the guests have allergies.",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u101",
+                                "fullname": "Guy Zohar",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "v0jNx",
+                        "title": "book an activity",
+                        "labelIds": [
+                            "l104"
+                        ],
+                        "description": "dont book a clown. some of the guests are afraid of clowns",
+                        "checklists": [],
+                        "members": []
+                    }
+                ]
+            },
+            {
+                "id": "CCQ7s",
+                "style": {},
+                "title": "decor",
+                "task": [
+                    {
+                        "id": "4mgZy",
+                        "title": "buy birthday cake",
+                        "labelIds": [
+                            "l104"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": []
+                    },
+                    {
+                        "id": "75jrr",
+                        "title": "buy balloons",
+                        "labelIds": [],
+                        "description": "note that gali hates balloons.",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bXwEG",
+                        "title": "make birthday banner",
+                        "labelIds": [
+                            "l105"
+                        ],
+                        "description": "",
+                        "checklists": [
+                            {
+                                "title": "birthday banner",
+                                "todos": [],
+                                "id": "AYBLX"
+                            }
+                        ],
+                        "members": []
+                    }
+                ]
+            },
+            {
+                "id": "xSPX3",
+                "style": {},
+                "title": "done",
+                "task": [
+                    {
+                        "id": "AH78x",
+                        "title": "find out birthday date",
+                        "labelIds": [
+                            "l106",
+                            "l105"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "members": [
+            {
+                "_id": "u102",
+                "fullname": "Almog Lemberg",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Gali Nickel",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u101",
+                "fullname": "Guy Zohar",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        "activities": [
+            {
                 "byMember": {
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                    "fullname": "Guest"
+                },
+                "title": "changed the description",
+                "createdAt": 1616274136901,
+                "group": "decor",
+                "id": "KWxbP",
+                "task": {
+                    "id": "75jrr",
+                    "title": "buy balloons"
                 }
-            }],
-            "checklists": [{
-                "id": "YEhmF",
-                "title": "Checklist",
-                "todos": [{
-                    "id": "212jX",
-                    "title": "To Do 1",
-                    "isDone": false
-                }]
-            }],
-            "members": [{
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-            }],
-            "labelIds": [],
-            "createdAt": 1590999730348,
-            "dueDate": 16156215211,
-            "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
             },
-        }
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "changed the description",
+                "createdAt": 1616273285642,
+                "group": "event planning",
+                "id": "O0h1X",
+                "task": {
+                    "id": "v0jNx",
+                    "title": "book an activity"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273256385,
+                "group": "event planning",
+                "id": "ScUMv",
+                "task": {
+                    "id": "v0jNx",
+                    "title": "book an activity"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "changed the description",
+                "createdAt": 1616273203031,
+                "group": "event planning",
+                "id": "WofEY",
+                "task": {
+                    "id": "bAOiy",
+                    "title": "book catering"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273141368,
+                "group": "done",
+                "id": "PWuRL",
+                "task": {
+                    "id": "AH78x",
+                    "title": "find out birthday date"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273131019,
+                "group": "done",
+                "id": "bPPqH",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273125533,
+                "group": "My new list",
+                "id": "XDMgv",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "removed the group",
+                "createdAt": 1616273123575,
+                "group": "party supplies",
+                "id": "yh927",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273110177,
+                "group": "event planning",
+                "id": "Hgpi1",
+                "task": {
+                    "id": "bAOiy",
+                    "title": "book catering"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273103498,
+                "group": "event planning",
+                "id": "isGyY",
+                "task": {
+                    "id": "fsYRk",
+                    "title": "write guest list"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273098746,
+                "group": "decor",
+                "id": "eZzVp",
+                "task": {
+                    "id": "bXwEG",
+                    "title": "make birthday banner"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273093897,
+                "group": "decor",
+                "id": "Iq9gp",
+                "task": {
+                    "id": "75jrr",
+                    "title": "buy balloons"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273089914,
+                "group": "decor",
+                "id": "daRZ5",
+                "task": {
+                    "id": "4mgZy",
+                    "title": "buy birthday cake"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273086035,
+                "group": "decor",
+                "id": "sp7J8",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273081517,
+                "group": "My new list",
+                "id": "7O4jY",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273081456,
+                "group": "event planning",
+                "id": "UMVld",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273068545,
+                "group": "My new list",
+                "id": "9qHzh",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273067362,
+                "group": "party supplies",
+                "id": "PtUcx",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273062016,
+                "group": "My new list",
+                "id": "glgif",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "changed this board`s name",
+                "createdAt": 1616273060810,
+                "id": "PLgDb",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "id": "tkjIj",
+                "title": "This board was created",
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            }
         ],
-    }
-    ],
-    "activities": [{
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:24:07.695Z",
-        group: "list 2",
-        id: "yIblp",
-        task: { id: "PTbnQ", title: "Test task" },
-        title: "added the task"
+        "_id": "lttPn"
     },
     {
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:25:10.956Z",
-        group: "My new list",
-        id: "1NFLT",
-        task: {},
-        title: "added the group"
-    },
-    {
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:41:00.555Z",
-        group: "My new list",
-        id: "Vr0Y4",
-        task: {},
-        title: "added the group"
-    },
-    {
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:41:02.921Z",
-        group: "My new list",
-        id: "68Z5V",
-        task: {},
-        title: "added the group",
-    },
-    {
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:41:18.200Z",
-        group: "My new list",
-        id: "Gug1T",
-        task: { id: "hwe7X", title: "Change label description" },
-        title: "added the task"
-    },
-    {
-        byMember: { fullname: "Guest" },
-        createdAt: "2021-03-19T10:42:04.397Z",
-        group: "list 1",
-        id: "0qwBa",
-        task: {},
-        title: "removed the group"
-    }
-    ]
-},
-{
-    "_id": "b102",
-    "title": "Sprint 4 Trellworks",
-    "createdAt": 1589983468418,
-    "createdBy": {
-        "_id": "u101",
-        "fullname": "Abi Abambi",
-        "imgUrl": "http://some-img"
-    },
-    "style": {},
-    "labels": [{
-        id: 'l101',
-        title: '',
-        color: '#61bd4f',
-        colorName: 'green'
-    },
-    {
-        id: 'l102',
-        title: '',
-        color: '#f2d600',
-        colorName: 'yellow'
-    },
-    {
-        id: 'l103',
-        title: '',
-        color: '#ff9f1a',
-        colorName: 'orange'
-    },
-    {
-        id: 'l104',
-        title: '',
-        color: '#eb5a46',
-        colorName: 'red'
-    },
-    {
-        id: 'l105',
-        title: '',
-        color: '#c377e0',
-        colorName: 'purple'
-    },
-    {
-        id: 'l106',
-        title: '',
-        color: '#0079bf',
-        colorName: 'blue'
-    }],
-    "members": [
-        {
-            "_id": "u102",
-            "fullname": "Almog Lemberg",
-            "imgUrl": "https://www.google.com"
-        },
-        {
-            "_id": "u103",
-            "fullname": "Gali Nickel",
-            "imgUrl": "https://www.google.com"
-        },
-        {
-            "_id": "u101",
-            "fullname": "Guy Zohar",
-            "imgUrl": "https://www.google.com"
-        }],
-    "groups": [
-        {
-            "id": "735dg",
-            "title": "Front-End",
-            "task": [{
-                "id": "XrPqi",
-                "title": "Add user support",
-                "labelIds": [],
-                "description": '',
-                "checklists": []
+        "title": "Trellworks development",
+        "createdAt": 1616273668853,
+        "labels": [
+            {
+                "title": "done!!!",
+                "color": "#61bd4f",
+                "colorName": "green",
+                "id": "l101"
             },
             {
-                "id": "RAEDU",
-                "title": "Add board gallery",
-                "labelIds": [],
-                "description": "add clickable previews, and an option to create new boards",
-                "checklists": []
-            }]
-        },
-        {
-            id: "gycb5",
-            title: "Back End",
-            task: [{
-                "id": "0zJp9",
-                "title": "switch local-storage requests with HTTP requests",
-                "labelIds": [],
-                "description": "",
-                "checklists": []
-            }]
-        },
-        {
-            title: "Design",
-            id: "32cb0",
-            task: [{
-                "id": "KIVoL",
-                "labelIds": ["l101"],
-                "title": "add animations",
-                "description": "",
-                "checklists": []
+                "title": "",
+                "color": "#f2d600",
+                "colorName": "yellow",
+                "id": "l102"
             },
             {
-                "description": "Check google fonts for reference",
-                "id": "gDYKM",
-                "labelIds": ["39RVz", "l101"],
-                "title": "import font for logo",
-                "checklists": []
+                "title": "",
+                "color": "#ff9f1a",
+                "colorName": "orange",
+                "id": "l103"
             },
             {
-                title: "implement basic color scheme",
-                id: "qbehr",
-                "labelIds": [],
-                "checklists": [],
-                "description": "Check google fonts for reference",
-            }]
-        },
-
-    ],
-    'activities': [{
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616190794476,
-        "group": "My new list",
-        "id": "toSgy",
-        "task": {}
-    },
-    { "byMember": { "fullname": "Guest" }, "title": "added the task", "createdAt": 1616190786014, "group": "Design", "id": "OGCgq", "task": { "id": "qbehr", "title": "implement basic color scheme" } },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "changed the description",
-        "createdAt": 1616190756788,
-        "group": "Front-End",
-        "id": "WB3XN",
-        "task": {
-            "id": "RAEDU",
-            "title": "Add board gallery\n"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616190735745,
-        "group": "Front-End",
-        "id": "PktOn",
-        "task": {
-            "id": "RAEDU",
-            "title": "Add board gallery\n"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616190690475,
-        "group": "Front-End",
-        "id": "gidPI",
-        "task": {
-            "id": "XrPqi",
-            "title": "Add user support"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "changed the description",
-        "createdAt": 1616190651202,
-        "group": "Design",
-        "id": "DPCpN",
-        "task": {
-            "id": "gDYKM",
-            "title": "import font for logo"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616190626746,
-        "group": "Back End",
-        "id": "Bt9Zf",
-        "task": {
-            "id": "0zJp9",
-            "title": "switch local-storage requests with HTTP requests"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616190607166,
-        "group": "Design",
-        "id": "zt3LN",
-        "task": {
-            "id": "gDYKM",
-            "title": "import font for logo"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the task",
-        "createdAt": 1616190569961,
-        "group": "Design",
-        "id": "DrRGv",
-        "task": {
-            "id": "KIVoL",
-            "title": "add animations"
-        }
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616190551423,
-        "group": "Design",
-        "id": "RrihJ",
-        "task": {}
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616190546987,
-        "group": "My new list",
-        "id": "YIQ9w",
-        "task": {}
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616190457471,
-        "group": "Back End",
-        "id": "EQ60R",
-        "task": {}
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616190454919,
-        "group": "My new list",
-        "id": "QhqK2",
-        "task": {}
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "renamed a group",
-        "createdAt": 1616190453133,
-        "group": "Front-End",
-        "id": "TXbzz",
-        "task": {}
-    },
-    {
-        "byMember": {
-            "fullname": "Guest"
-        },
-        "title": "added the group",
-        "createdAt": 1616190359896,
-        "group": "My new list",
-        "id": "xtEqE",
-        "task": {}
+                "title": "",
+                "color": "#eb5a46",
+                "colorName": "red",
+                "id": "l104"
+            },
+            {
+                "title": "",
+                "color": "#c377e0",
+                "colorName": "purple",
+                "id": "l105"
+            },
+            {
+                "title": "",
+                "color": "#0079bf",
+                "colorName": "blue",
+                "id": "l106"
+            }
+        ],
+        "groups": [
+            {
+                "id": "uqfMo",
+                "style": {},
+                "title": "Front-end",
+                "task": [
+                    {
+                        "id": "yExk0",
+                        "title": "add more activity-logs",
+                        "labelIds": [],
+                        "description": "needs more activity logs.",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "puKP0",
+                        "title": "Make dashboard component",
+                        "labelIds": [],
+                        "description": "",
+                        "checklists": [],
+                        "members": []
+                    },
+                    {
+                        "id": "Em6SY",
+                        "title": "implement user support",
+                        "labelIds": [
+                            "l104",
+                            "l105"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": []
+                    }
+                ]
+            },
+            {
+                "id": "U3SKt",
+                "style": {},
+                "title": "back end",
+                "task": [
+                    {
+                        "id": "nnig0",
+                        "title": "change local storage service with HTTP service",
+                        "labelIds": [
+                            "l106"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": []
+                    },
+                    {
+                        "id": "Ww7uG",
+                        "title": "set up mongoDB",
+                        "labelIds": [
+                            "l102",
+                            "l103"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u101",
+                                "fullname": "Guy Zohar",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "gcKuC",
+                        "title": "prepare test-data",
+                        "labelIds": [],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "YmIP0",
+                "style": {},
+                "title": "done!",
+                "task": [
+                    {
+                        "id": "BzJuY",
+                        "title": "animate main menu",
+                        "labelIds": [
+                            "l101"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "0GqS8",
+                        "title": "lay out design basics",
+                        "labelIds": [
+                            "l101"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u101",
+                                "fullname": "Guy Zohar",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vob1b",
+                        "title": "decide on a logo font",
+                        "labelIds": [
+                            "l101"
+                        ],
+                        "description": "",
+                        "checklists": [],
+                        "members": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Almog Lemberg",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u103",
+                                "fullname": "Gali Nickel",
+                                "imgUrl": "https://www.google.com"
+                            },
+                            {
+                                "_id": "u101",
+                                "fullname": "Guy Zohar",
+                                "imgUrl": "https://www.google.com"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "members": [
+            {
+                "_id": "u102",
+                "fullname": "Almog Lemberg",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Gali Nickel",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u101",
+                "fullname": "Guy Zohar",
+                "imgUrl": "https://www.google.com"
+            }
+        ],
+        "activities": [
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273986937,
+                "group": "done!",
+                "id": "PnxXf",
+                "task": {
+                    "id": "vob1b",
+                    "title": "decide on a logo font"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "removed the group",
+                "createdAt": 1616273973264,
+                "group": "My new list",
+                "id": "zOAb2",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273972069,
+                "group": "My new list",
+                "id": "JabYx",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273961480,
+                "group": "Front-end",
+                "id": "4ASp9",
+                "task": {
+                    "id": "Em6SY",
+                    "title": "implement user support"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273956629,
+                "group": "back end",
+                "id": "kOJhs",
+                "task": {
+                    "id": "gcKuC",
+                    "title": "prepare test-data"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273945620,
+                "group": "done!",
+                "id": "7smVg",
+                "task": {
+                    "id": "0GqS8",
+                    "title": "lay out design basics"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "removed the group",
+                "createdAt": 1616273938958,
+                "group": "My new list",
+                "id": "Q1ZGu",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273936882,
+                "group": "My new list",
+                "id": "nAEZm",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "removed the group",
+                "createdAt": 1616273917962,
+                "group": "My new list",
+                "id": "yinXB",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273913729,
+                "group": "My new list",
+                "id": "g8sYN",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273909558,
+                "group": "done!",
+                "id": "L44JZ",
+                "task": {
+                    "id": "BzJuY",
+                    "title": "animate main menu"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273905205,
+                "group": "done!",
+                "id": "raR5o",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273902490,
+                "group": "My new list",
+                "id": "6eZiv",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273901146,
+                "group": "back end",
+                "id": "5S04o",
+                "task": {
+                    "id": "Ww7uG",
+                    "title": "set up mongoDB"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273896627,
+                "group": "back end",
+                "id": "CFjMi",
+                "task": {
+                    "id": "nnig0",
+                    "title": "change local storage service with HTTP service"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273884636,
+                "group": "back end",
+                "id": "TenRx",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273882049,
+                "group": "My new list",
+                "id": "hfAEE",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273881243,
+                "group": "Front-end",
+                "id": "krGMO",
+                "task": {
+                    "id": "puKP0",
+                    "title": "Make dashboard component"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "changed the description",
+                "createdAt": 1616273813769,
+                "group": "Front-end",
+                "id": "cDdHh",
+                "task": {
+                    "id": "yExk0",
+                    "title": "add more activity-logs"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the task",
+                "createdAt": 1616273798044,
+                "group": "Front-end",
+                "id": "C8KoJ",
+                "task": {
+                    "id": "yExk0",
+                    "title": "add more activity-logs"
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "renamed a group",
+                "createdAt": 1616273773980,
+                "group": "Front-end",
+                "id": "l1EOq",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "added the group",
+                "createdAt": 1616273764012,
+                "group": "My new list",
+                "id": "G9LbQ",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "title": "changed this board`s name",
+                "createdAt": 1616273677484,
+                "id": "YsKX3",
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            },
+            {
+                "id": "DEzGT",
+                "title": "This board was created",
+                "byMember": {
+                    "fullname": "Guest"
+                },
+                "task": {
+                    "id": "",
+                    "title": ""
+                }
+            }
+        ],
+        "_id": "YhJ2l"
     }
-    ]
-}
 ]
-
-
-
-
-
-
 
 function getBoards() {
     var boards = JSON.parse(localStorage.getItem('boards'))

@@ -53,15 +53,29 @@ function _getEmptyBoard() {
         createdAt: Date.now(),
         labels: getDefaultLabels(),
         groups: [],
-        members: [],
-        activities: [
+        members: [
             {
-                id: utilService.makeId(),
-                title: 'This board was created',
-                byMember: { fullname: 'Guest' },
-                task: {id: '',title:''}
-            }
-        ]
+                "_id": "u102",
+                "fullname": "Almog Lemberg",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u103",
+                "fullname": "Gali Nickel",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u101",
+                "fullname": "Guy Zohar",
+                "imgUrl": "https://www.google.com"
+            }], activities: [
+                {
+                    id: utilService.makeId(),
+                    title: 'This board was created',
+                    byMember: { fullname: 'Guest' },
+                    task: { id: '', title: '' }
+                }
+            ]
     }
 }
 
