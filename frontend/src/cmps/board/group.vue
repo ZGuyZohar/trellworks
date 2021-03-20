@@ -34,7 +34,7 @@
         <i class="fas fa-plus"></i>
         Add another task</span
       >
-      <div v-if="isAddingTask">
+      <div class="add-task-container" v-if="isAddingTask">
         <textarea
           placeholder="Your task title here..."
           rows="2"
@@ -42,8 +42,8 @@
           class="task-preview add-task"
           v-model="taskToAdd.title"
         ></textarea>
-        <button class="btn-success" @click="addTask(group.id)">Add</button>
-        <span class="clickable" @click="closeAddTask"> X</span>
+        <button class="btn-success" @click="addTask(group.id)">Add task</button>
+        <span class="clickable" @click="closeAddTask"> <i class="fas fa-times"> </i></span>
       </div>
     </div>
   </section>

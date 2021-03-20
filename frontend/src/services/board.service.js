@@ -95,31 +95,37 @@ function getDefaultLabels() {
     const defaultColors = [
         {
             color: '#61bd4f',
-            colorName: 'green'
+            colorName: 'green',
+            id: 'l101'
         },
         {
             color: '#f2d600',
-            colorName: 'yellow'
+            colorName: 'yellow',
+            id: 'l102'
         },
         {
             color: '#ff9f1a',
-            colorName: 'orange'
+            colorName: 'orange',
+            id: 'l103'
         },
         {
             color: '#eb5a46',
-            colorName: 'red'
+            colorName: 'red',
+            id: 'l104'
         },
         {
             color: '#c377e0',
-            colorName: 'purple'
+            colorName: 'purple',
+            id: 'l105'
         },
         {
             color: '#0079bf',
-            colorName: 'blue'
+            colorName: 'blue',
+            id: 'l106'
         }
     ]
     return defaultColors.map(color => {
-        return getEmptyLabel(color.color, color.colorName)
+        return getEmptyLabel(color.color, color.colorName, color.id)
     })
 }
 
@@ -166,11 +172,12 @@ function getAllColors() {
     }];
 }
 
-function getEmptyLabel(color = '', colorName) {
+function getEmptyLabel(color = '', colorName, colorId) {
     return {
         title: '',
         color,
-        colorName
+        colorName,
+        id: colorId
     }
 }
 // async function update(board) {

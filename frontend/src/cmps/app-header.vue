@@ -1,8 +1,8 @@
 <template>
   <header class="flex">
     <nav class="flex">
-      <router-link class="header-btn transition" to="/boards">Gallery</router-link>
-      <router-link class="header-btn transition" to="/board">Board</router-link>
+      <router-link class="header-btn transition" to="/">Home</router-link>
+      <router-link class="header-btn transition" to="/boards">Boards</router-link>
     </nav>
     <router-link  to="/">
     <span class="main-logo" aria-label="logo">Trellworks</span>

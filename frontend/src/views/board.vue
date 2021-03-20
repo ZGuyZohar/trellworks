@@ -123,6 +123,7 @@ export default {
 	},
 	async created() {
 		await this.loadBoard();
+		console.log(this.currBoard);
 	},
 	components: {
 		boardHeader,

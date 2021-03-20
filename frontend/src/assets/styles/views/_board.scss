@@ -1,6 +1,5 @@
 .board {
     overflow-y: hidden;
-    min-height: 94vh;
     flex: 1;
 }
 
@@ -23,11 +22,20 @@
 
         h2 {
             color: white;
+            margin-left: 0;
         }
 
         input {
             width: 200px;
             color: white;
+        }
+
+        .avatars-show {
+            margin-left: 26px;
+        }
+
+        .invite {
+            margin-left: -47px;
         }
     }
 
@@ -136,13 +144,36 @@
         }
     }
 
+}
+
+
+.add-task-container {
+    position: relative;
+
     .add-task {
         margin-top: 0;
         width: 96%;
+        color: #516079;
+        outline: none;
+        border: none;
+        margin-bottom: 8px;
 
         &:hover {
             background-color: white;
         }
+    }
+
+    button {
+        margin-bottom: 8px;
+        margin-left: 5px;
+    }
+
+    span {
+        position: absolute;
+        font-size: 22px;
+        top: 57px;
+        left: 101px;
+        color: #7688a5;
     }
 }
 
