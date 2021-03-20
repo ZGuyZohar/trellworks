@@ -6,7 +6,8 @@ export const boardStore = {
         currBoard: null,
         currGroup: null,
         currTask: null,
-        labelFilter: ''
+        labelFilter: '',
+        membersFilter: ''
     },
     getters: {
         boards(state) {
@@ -34,8 +35,14 @@ export const boardStore = {
             return labelsForShow.filter(label => {
                 return (label.colorName.includes(state.labelFilter) || label.title.includes(state.labelFilter))
             })
-
             // return labelsForShow.sort((label1, label2) => label1.colorName.localeCompare(label2.colorName))
+        },
+        boardMembersForShow(state){
+            const membersForShow = JSON.parse(JSON.stringify(state.currBoard.members))
+            if (!state.membersFilter) return membersForShow
+            return membersForShow.filter(member => {
+                return (member.fullname.toLowerCase().includes(state.membersFilter.toLowerCase()))
+            })
         }
     },
     mutations: {
@@ -59,7 +66,10 @@ export const boardStore = {
         },
         setLabelsFilter(state, { filterTxt }) {
             state.labelFilter = filterTxt
-        }
+        },
+        setMembersFilter(state, { filterTxt }) {
+            state.membersFilter = filterTxt
+        },
     },
     actions: {
         async loadBoards({ commit }) {
