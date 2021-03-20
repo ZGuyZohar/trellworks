@@ -62,6 +62,7 @@
                 @updateBoard="updateBoard"
                 @updateTask="updateTask"
                 @changeMade="changeTaskDetails"
+                @close="togglePopUp(false)"
                 :task="currTask"
               />
             </pop-up>
