@@ -36,7 +36,7 @@
     background-color: #EBECF0;
     display: inline-block;
     margin: 0 4px;
-    padding: 0 10px 10px 10px;
+    padding: 0 10px 0 10px;
     width: 272px;
     height: fit-content;
     border-radius: 3px;
@@ -44,7 +44,7 @@
 
     .group-header {
         justify-content: space-between;
-        
+
         input {
             margin: 6px 0;
         }
@@ -95,6 +95,16 @@
             right: 3px;
             top: 5px;
         }
+
+    }
+
+    .open-task-composer {
+        margin: 2px 0 8px 8px;
+        padding: 4px 8px;
+        color: #5e6c84;
+        display: inline-block;
+        width: 100%;
+        font-size: 14px;
     }
 
     .add-task {
