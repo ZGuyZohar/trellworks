@@ -84,6 +84,406 @@ function getDefaultLabels() {
 }
 
 const boardsDB = [{
+    "title": "Trellworks progress",
+    "createdAt": 1616261612006,
+    "labels": [
+      {
+        "title": "",
+        "color": "#61bd4f",
+        "colorName": "green"
+      },
+      {
+        "title": "",
+        "color": "#f2d600",
+        "colorName": "yellow"
+      },
+      {
+        "title": "",
+        "color": "#ff9f1a",
+        "colorName": "orange"
+      },
+      {
+        "title": "",
+        "color": "#eb5a46",
+        "colorName": "red"
+      },
+      {
+        "title": "",
+        "color": "#c377e0",
+        "colorName": "purple"
+      },
+      {
+        "title": "",
+        "color": "#0079bf",
+        "colorName": "blue"
+      }
+    ],
+    "groups": [
+      {
+        "id": "bkubm",
+        "style": {},
+        "title": "Frontend",
+        "task": [
+          {
+            "id": "CNJ7e",
+            "title": "add more activity logs",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": []
+          },
+          {
+            "id": "eflQk",
+            "title": "add quick-menu for tasks\n",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": []
+          }
+        ]
+      },
+      {
+        "id": "Bl57w",
+        "style": {},
+        "title": "Backend",
+        "task": [
+          {
+            "id": "bC6yp",
+            "title": "implement HTTP server",
+            "labelIds": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "description": "",
+            "checklists": [],
+            "members": []
+          }
+        ]
+      },
+      {
+        "id": "43s9G",
+        "style": {},
+        "title": "Design",
+        "task": [
+          {
+            "id": "9q8lZ",
+            "title": "add padding to buttons",
+            "labelIds": [
+              null
+            ],
+            "description": "",
+            "checklists": [],
+            "members": []
+          }
+        ]
+      },
+      {
+        "id": "IdiwC",
+        "style": {},
+        "title": "Done",
+        "task": [
+          {
+            "id": "pXulq",
+            "title": "Animate menu ",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": []
+          },
+          {
+            "id": "rCLhY",
+            "title": "Change page font",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": []
+          }
+        ]
+      }
+    ],
+    "members": [
+        {
+            "_id": "u102",
+            "fullname": "Almog Lemberg",
+            "imgUrl": "https://www.google.com"
+        },
+        {
+            "_id": "u103",
+            "fullname": "Gali Nickel",
+            "imgUrl": "https://www.google.com"
+        },
+        {
+            "_id": "u101",
+            "fullname": "Guy Zohar",
+            "imgUrl": "https://www.google.com"
+        }],    "activities": [
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267511292,
+        "group": "Frontend",
+        "id": "yEKN7",
+        "task": {
+          "id": "eflQk",
+          "title": "add quick-menu for tasks\n"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267477907,
+        "group": "Frontend",
+        "id": "V2htL",
+        "task": {
+          "id": "CNJ7e",
+          "title": "add more activity logs"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267469195,
+        "group": "Backend",
+        "id": "AGZ6R",
+        "task": {
+          "id": "bC6yp",
+          "title": "implement HTTP server"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267461813,
+        "group": "Design",
+        "id": "3wJxr",
+        "task": {
+          "id": "9q8lZ",
+          "title": "add padding to buttons"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267410136,
+        "group": "Done",
+        "id": "HpWq8",
+        "task": {
+          "id": "rCLhY",
+          "title": "Change page font"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616267396958,
+        "group": "Done",
+        "id": "zcl85",
+        "task": {
+          "id": "pXulq",
+          "title": "Animate menu "
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616267384392,
+        "group": "Done",
+        "id": "ve25N",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616267382286,
+        "group": "My new list",
+        "id": "OK5jL",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616267382245,
+        "group": "Design",
+        "id": "pL8cP",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616267379306,
+        "group": "My new list",
+        "id": "HCaY2",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616267379245,
+        "group": "Backend",
+        "id": "dz02i",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616267376160,
+        "group": "My new list",
+        "id": "UjocG",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616267374769,
+        "group": "Frontend",
+        "id": "bjwzm",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616267369795,
+        "group": "My new list",
+        "id": "LPc92",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "changed this board`s name",
+        "createdAt": 1616267368331,
+        "id": "dfUWG",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "removed the group",
+        "createdAt": 1616267355768,
+        "group": "My new list564654",
+        "id": "7hJhe",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task",
+        "createdAt": 1616261622448,
+        "group": "My new list564654",
+        "id": "kRraF",
+        "task": {
+          "id": "E67Wy",
+          "title": "shalom almog"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group",
+        "createdAt": 1616261618546,
+        "group": "My new list564654",
+        "id": "QvfeK",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group",
+        "createdAt": 1616261617123,
+        "group": "My new list",
+        "id": "wzuR5",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "id": "eXIp0",
+        "title": "This board was created",
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      }
+    ],
+    "_id": "0n6fP"
+  },{
     "_id": "b101",
     "title": "Robot dev proj",
     "createdAt": 1589983468418,

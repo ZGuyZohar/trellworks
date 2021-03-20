@@ -225,3 +225,12 @@
         }
     }
 }
+
+.preview-avatar-container {
+    float: right;
+
+    .avatar {
+        padding: unset;
+        margin-right:-10%
+    }
+}
