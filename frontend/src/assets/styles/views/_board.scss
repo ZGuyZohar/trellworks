@@ -47,6 +47,8 @@
 
         input {
             margin: 6px 0;
+            font-family: Opensans;
+            color: #2f528b;
         }
 
         span {
@@ -66,7 +68,7 @@
         margin: 7px 5px;
         padding: 6px 8px 2px;
         border-radius: 3px;
-        box-shadow: 0px 1px 0px 0px rgba(114, 114, 114, 0.79);
+        box-shadow: 0px 1px 0px 0px rgba(181, 181, 181, 0.79);
         position: relative;
 
         &:hover {
@@ -84,7 +86,7 @@
             text-decoration: none;
             color: #546ba1;
             font-size: 14px;
-            line-height: 20px;
+            line-height: 23px;
             font-weight: 400;
         }
 
@@ -103,8 +105,17 @@
         padding: 4px 8px;
         color: #5e6c84;
         display: inline-block;
-        width: 100%;
+        width: 95%;
+        border-radius: 3px;
         font-size: 14px;
+
+        &:hover {
+            background-color: rgba(9, 30, 66, .08);
+        }
+
+        i {
+            margin-right: 5px;
+        }
     }
 
     .add-task {
