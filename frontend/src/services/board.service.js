@@ -80,7 +80,8 @@ function getEmptyTask() {
         id: utilService.makeId(),
         title: '',
         labelIds: [],
-        description: ''
+        description: '',
+        members: []
     }
 }
 
