@@ -273,10 +273,12 @@
 
 .task-members-edit .flex {
     align-items: baseline;
-
+justify-content: space-between;
     p {
         margin-left: 15px;
     }
+    cursor: pointer;
+
 }
 
 .details-title {
