@@ -1,13 +1,13 @@
 <template>
-  <section class="task-checklist">
-    <h3 class="pop-up-title">Attachment</h3>
-
+  <section class="task-attachment">
+    <h3 class="pop-up-title">Attach a link</h3>
+   <input type="text" class="pop-up-input" placeholder="Paste any link here..." @paste="addFile">
   </section>
 </template>
 
 
 <script>
-import { utilService } from "../../../services/util.service";
+import { imgUploadService } from "../../../services/img-upload.service";
 export default {
   props: {
     task: Object,
@@ -18,14 +18,10 @@ export default {
     };
   },
   methods: {
-    addChecklist() {
-      this.checklist.id = utilService.makeId();
-      this.taskToEdit.checklists.push(this.checklist);
-      // this.$emit("changeMade", `added the checklist ${this.checklist.title}`);
-      this.$emit("updateTask", this.taskToEdit);
-      this.$emit("close");
-      this.checklist = { title: "", todos: [] };
-    },
+    addFile() {
+      
+
+    } 
   },
 };
 </script>
