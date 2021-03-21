@@ -47,8 +47,6 @@
             @changeMade="changeTaskDetails"
           />
           <div v-if="currTask.checklists.length">
-            <i class="fas fa-tasks fa-lg"></i>
-            <h1 class="details-title">Checklists</h1>
             <checklist
               v-for="checklist in currTask.checklists"
               :key="checklist.id"
