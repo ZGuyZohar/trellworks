@@ -13,7 +13,6 @@
 				</p>
 			</div>
 			<main class="details-body">
-				<!--add here grid -->
 				<section class="main-details">
 					<div class="members-preview container">
 						<i class="fas fa-user"></i>
