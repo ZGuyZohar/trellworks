@@ -1,8 +1,15 @@
 <template>
   <section class="task-checklist">
-    <p><i class="fas fa-tasks fa-lg"></i> {{ checklist.title }}</p>
-    <div class="progress-bar">
-      <div class="progress-done"></div>
+    <div>
+      <i class="fas fa-tasks fa-lg"></i>
+      <h1 class="details-title">{{ checklist.title }}</h1>
+    </div>
+
+    <div class="progress-container flex">
+      <span>{{ completed }}</span>
+      <div class="progress-bar">
+        <div class="progress-done" ref="progress"></div>
+      </div>
     </div>
 
     <div v-for="todo in checklist.todos" :key="todo.id">
@@ -19,6 +26,11 @@
     <form v-if="isAddingItem" @submit.prevent="addTodo">
       <input placeholder="Add an item" v-model="todoToAdd.title" />
       <button type="submit" class="btn-success">Add</button>
+      <i
+        class="fas fa-times clickable close-desc"
+        @click="isAddingItem = false"
+      >
+      </i>
     </form>
   </section>
 </template>
@@ -39,9 +51,11 @@ export default {
       taskToEdit: JSON.parse(JSON.stringify(this.task)),
       checklistToEdit: JSON.parse(JSON.stringify(this.checklist)),
       todoToAdd: { title: "", isDone: false },
+      completed: 0,
     };
   },
   methods: {
+    /// updates
     updateTask() {
       const idx = this.taskToEdit.checklists.findIndex(
         (cl) => cl.id === this.checklist.id
@@ -56,9 +70,13 @@ export default {
       const doneLength = this.checklistToEdit.todos.filter(
         (todo) => todo.isDone === true
       ).length;
-      document.querySelector(".progress-done").style.width =
-        (doneLength / todosLength) * 100 + "%";
+      if (!todosLength) this.completed = "0%";
+      else this.completed = Math.round((doneLength / todosLength) * 100) + "%";
+      this.$refs.progress.style.width = this.completed;
+      this.$refs.progress.style.background =
+        doneLength / todosLength === 1 ? "#64916a" : "#0079bf";
     },
+    /// actions
     addTodo() {
       this.isAddingItem = false;
       this.todoToAdd.id = utilService.makeId();
@@ -66,19 +84,23 @@ export default {
       this.updateTask();
     },
     removeTodo(todoId) {
-      const idx = this.checklistToEdit.todos.findIndex(
-        (todo) => todo.id === todoId
-      );
+      const idx = this.getIdx(todoId);
       this.checklistToEdit.todos.splice(idx, 1);
       this.updateTask();
     },
     updateTodo(updatedTodo) {
-      const idx = this.checklistToEdit.todos.findIndex(
-        (todo) => todo.id === updatedTodo.id
-      );
+      const idx = this.getIdx(updatedTodo.id);
       this.checklistToEdit.todos.splice(idx, 1, updatedTodo);
       this.updateTask();
     },
+    /// helpers
+    getIdx(todoId) {
+      return this.checklistToEdit.todos.findIndex((todo) => todo.id === todoId);
+    },
+  },
+  mounted() {
+    console.log("hi");
+    this.updateProgress();
   },
   components: { todoItem },
 };
