@@ -1,10 +1,12 @@
 <template>
   <section class="task-checklist">
-    <div>
-      <i class="fas fa-tasks fa-lg"></i>
-      <h1 class="details-title">{{ checklist.title }}</h1>
+    <div class="checklist-header flex">
+      <div>
+        <i class="fas fa-tasks fa-lg"></i>
+        <h1 class="details-title">{{ checklist.title }}</h1>
+      </div>
+      <button class="btn-gray" @click="removeChecklist">Delete</button>
     </div>
-
     <div class="progress-container flex">
       <span>{{ completed }}</span>
       <div class="progress-bar">
@@ -12,7 +14,7 @@
       </div>
     </div>
 
-    <div v-for="todo in checklist.todos" :key="todo.id">
+    <div v-for="todo in checklistToEdit.todos" :key="todo.id">
       <todo-item
         :todo="todo"
         @updateTodo="updateTodo"
@@ -48,8 +50,9 @@ export default {
   data() {
     return {
       isAddingItem: false,
-      taskToEdit: JSON.parse(JSON.stringify(this.task)),
-      checklistToEdit: JSON.parse(JSON.stringify(this.checklist)),
+      taskToEdit: null,
+      checklistToEdit: null,
+      checklistIdx: null,
       todoToAdd: { title: "", isDone: false },
       completed: 0,
     };
@@ -57,12 +60,12 @@ export default {
   methods: {
     /// updates
     updateTask() {
-      const idx = this.taskToEdit.checklists.findIndex(
-        (cl) => cl.id === this.checklist.id
+      this.taskToEdit.checklists.splice(
+        this.checklistIdx,
+        1,
+        this.checklistToEdit
       );
-      this.taskToEdit.checklists.splice(idx, 1, this.checklistToEdit);
       this.$emit("updateTask", this.taskToEdit);
-      this.todoToAdd = { title: "", isDone: false };
       this.updateProgress();
     },
     updateProgress() {
@@ -77,29 +80,40 @@ export default {
         doneLength / todosLength === 1 ? "#64916a" : "#0079bf";
     },
     /// actions
+    removeChecklist() {
+      this.$emit("removeChecklist", this.checklistIdx);
+    },
+    /// actions coming from todo emits
     addTodo() {
       this.isAddingItem = false;
       this.todoToAdd.id = utilService.makeId();
       this.checklistToEdit.todos.push(this.todoToAdd);
       this.updateTask();
+      this.todoToAdd = { title: "", isDone: false };
     },
     removeTodo(todoId) {
-      const idx = this.getIdx(todoId);
+      const idx = this.getTodoIdx(todoId);
       this.checklistToEdit.todos.splice(idx, 1);
       this.updateTask();
     },
     updateTodo(updatedTodo) {
-      const idx = this.getIdx(updatedTodo.id);
+      const idx = this.getTodoIdx(updatedTodo.id);
       this.checklistToEdit.todos.splice(idx, 1, updatedTodo);
       this.updateTask();
     },
     /// helpers
-    getIdx(todoId) {
+    getTodoIdx(todoId) {
       return this.checklistToEdit.todos.findIndex((todo) => todo.id === todoId);
     },
   },
+  created() {
+    this.taskToEdit = JSON.parse(JSON.stringify(this.task));
+    this.checklistToEdit = JSON.parse(JSON.stringify(this.checklist));
+    this.checklistIdx = this.taskToEdit.checklists.findIndex(
+      (cl) => cl.id === this.checklist.id
+    );
+  },
   mounted() {
-    console.log("hi");
     this.updateProgress();
   },
   components: { todoItem },

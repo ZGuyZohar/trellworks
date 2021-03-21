@@ -252,7 +252,7 @@
 }
 
 .description {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .description-input {
@@ -310,4 +310,46 @@
 
 .el-picker-panel{
     background-color: whitesmoke;
+}
+.attachments-preview {
+
+    .image-preview {
+        display: flex;
+
+        .image-cover {
+            height: 80px;
+            width: 112px;
+            margin-bottom: 8px;
+            @include aspect-ratio(16, 9);
+            border-radius: 3px;
+
+            .img {
+                width: 100%;
+            }
+        }
+    }
+
+    .image-name {
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .image-details {
+        margin-left: 12px;
+        padding: 8px;
+
+        span:first-child {
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+    }
+
+    .image-info {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .cover-maker {
+        display: block;
+    }
 }

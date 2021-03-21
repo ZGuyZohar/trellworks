@@ -5,6 +5,9 @@
 		@click="getDetails"
 		class="task-preview clickable"
 	>
+		<div class="task-preview-image">
+			<img :src="task.imgs[0].src" alt="">
+		</div>
 		<div class="task-preview-labels" v-if="task.labelIds.length && currBoard">
 			<labels-preview
 				v-for="labelId in task.labelIds"

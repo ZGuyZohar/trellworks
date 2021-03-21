@@ -7,9 +7,11 @@
     flex: 1;
     min-height: 89vh;
 }
-.group-container{
+
+.group-container {
     position: fixed;
 }
+
 .group-ghost {
     transition: transform 0.18s ease;
     // &:before { 
@@ -28,7 +30,10 @@
         background-color: #c6c8cc;
         border-radius: 3px;
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 }
 
@@ -149,6 +154,18 @@
 
         &:first-of-type {
             margin-top: 0;
+        }
+
+        .task-preview-image {
+            height: 245px;
+            width: 100%;
+            margin-bottom: 8px;
+            @include aspect-ratio(1, 1);
+            border-radius: 3px;
+
+            img {
+                width: 100%;
+            }
         }
 
         .task-preview-title {
