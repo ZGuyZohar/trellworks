@@ -1,7 +1,10 @@
 <template>
-  <section class="todo-item">
-    <i :class="isDoneClass" class="clickable" @click="toggleDone"></i>
-    <span> {{ todo.title }} </span>
+  <section class="todo-item flex">
+    <div>
+      <i :class="isDoneClass" class="clickable" @click="toggleDone"></i>
+      <span> {{ todo.title }} </span>
+    </div>
+    <i class="fas fa-trash-alt clickable" @click="removeTodo"></i>
   </section>
 </template>
 
@@ -25,7 +28,10 @@ export default {
   methods: {
     toggleDone() {
       this.todoToEdit.isDone = !this.todoToEdit.isDone;
-      console.log(this.todoToEdit);
+      this.$emit("updateTodo", this.todoToEdit);
+    },
+    removeTodo() {
+      this.$emit("removeTodo", this.todoToEdit.id);
     },
   },
 };

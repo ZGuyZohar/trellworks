@@ -1,13 +1,18 @@
 <template>
   <section class="task-checklist">
-    <p><i class="far fa-check-square fa-lg"></i> {{ checklist.title }}</p>
+    <p><i class="fas fa-tasks fa-lg"></i> {{ checklist.title }}</p>
+    <p>here will be progress bar</p>
 
     <div v-for="todo in checklist.todos" :key="todo.id">
-      <todo-item :todo="todo" />
+      <todo-item
+        :todo="todo"
+        @updateTodo="updateTodo"
+        @removeTodo="removeTodo"
+      />
     </div>
 
     <button v-if="!isAddingItem" class="btn-gray" @click="isAddingItem = true">
-      Add item
+      Add an item
     </button>
     <form v-if="isAddingItem" @submit.prevent="addTodo">
       <input placeholder="Add an item" v-model="todoToAdd.title" />
@@ -35,21 +40,33 @@ export default {
     };
   },
   methods: {
+    updateTask() {
+      const idx = this.taskToEdit.checklists.findIndex(
+        (cl) => cl.id === this.checklist.id
+      );
+      this.taskToEdit.checklists.splice(idx, 1, this.checklistToEdit);
+      this.$emit("updateTask", this.taskToEdit);
+      this.todoToAdd = { title: "", isDone: false };
+    },
     addTodo() {
       this.isAddingItem = false;
       this.todoToAdd.id = utilService.makeId();
       this.checklistToEdit.todos.push(this.todoToAdd);
       this.updateTask();
     },
-    updateTask() {
-      const idx = this.taskToEdit.checklists.findIndex(
-        (cl) => cl.id === this.checklist.id
+    removeTodo(todoId) {
+      const idx = this.checklistToEdit.todos.findIndex(
+        (todo) => todo.id === todoId
       );
-      if (idx !== -1) {
-        this.taskToEdit.checklists.splice(idx, 1, this.checklistToEdit);
-        this.$emit("updateTask", this.taskToEdit);
-        this.todoToAdd = { title: "", isDone: false };
-      }
+      this.checklistToEdit.todos.splice(idx, 1);
+      this.updateTask();
+    },
+    updateTodo(updatedTodo) {
+      const idx = this.checklistToEdit.todos.findIndex(
+        (todo) => todo.id === updatedTodo.id
+      );
+      this.checklistToEdit.todos.splice(idx, 1, updatedTodo);
+      this.updateTask();
     },
   },
   components: { todoItem },
