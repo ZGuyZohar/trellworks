@@ -22,15 +22,18 @@
 					<div class="colors-title">Colors</div>
 				</div>
 			</div>
-			<!-- <div v-else>
-				asd
-			</div> -->
+			<div class="color-list" v-else>
+				<li class="color-preview clickable" @click="setBoardColor(color.color)" v-for="color in colorList" :key="color.color" >
+					<div :style="{backgroundColor: color.color}"></div>
+				</li>
+			</div>
 		</section>
 		<i @click="toggleColorMenu(false)" v-if="!menuToggler" class="fas fa-angle-left back-btn clickable"></i>
 	</section>
 </template>
 
 <script>
+import { boardService } from '@/services/board.service.js'
 import activityLog from '../recurring-cmps/activity-list.vue'
 export default {
 	data(){
@@ -38,7 +41,8 @@ export default {
 			openMenu: {
 				colorMenu: false
 			},
-			colorPicker: false
+			colorPicker: false,
+			colorList: boardService.getAllColors()
 		}
 	},
 	computed: {
@@ -50,6 +54,9 @@ export default {
 		},
 		setTitle(){
 			return this.openMenu.colorMenu ?  'Change background' : 'Menu'
+		},
+		currBoard(){
+			return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
 		}
 
 	},
@@ -62,8 +69,19 @@ export default {
 		},
 		toggleColorMenu(colorMenuToggler){
 			this.openMenu.colorMenu = colorMenuToggler;
+			this.colorPicker = false
+		},
+		toggleColorList(colorListToggler){
+			this.colorPicker = colorListToggler
+		},
+		setBoardColor(color){
+			this.currBoard.styles.backgroundColor = color;
+			this.$store.dispatch({type: "saveBoardChanges", editedBoard: this.currBoard});
+			console.log(this.currBoard);
 		}
 	},
-	components: { activityLog }
+	components: { activityLog },
+	created(){
+	}
 }
 </script>

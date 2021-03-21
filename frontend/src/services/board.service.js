@@ -53,6 +53,9 @@ function _getEmptyBoard() {
         createdAt: Date.now(),
         labels: getDefaultLabels(),
         groups: [],
+        styles: {
+            backgroundColor: '#61bd4f'
+        },
         members: [
             {
                 "_id": "u102",
@@ -68,14 +71,16 @@ function _getEmptyBoard() {
                 "_id": "u101",
                 "fullname": "Guy Zohar",
                 "imgUrl": "https://www.google.com"
-            }], activities: [
+            }], 
+            activities: [
                 {
                     id: utilService.makeId(),
                     title: 'This board was created',
                     byMember: { fullname: 'Guest' },
                     task: { id: '', title: '' }
                 }
-            ]
+            ],
+            
     }
 }
 

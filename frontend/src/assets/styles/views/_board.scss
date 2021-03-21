@@ -1,6 +1,11 @@
+// .board-main {
+//     height: 100%;
+// }
+
 .board {
     overflow-y: hidden;
     flex: 1;
+    min-height: 89vh;
 }
 
 .board-header {
@@ -256,12 +261,15 @@
         }
     }
 }
-.preview-footer-container{
-justify-content: space-between;
+
+.preview-footer-container {
+    justify-content: space-between;
 }
+
 .preview-avatar-container {
     justify-content: flex-end;
-    width:95%;
+    width: 95%;
+
     .avatar {
         padding: unset;
         display: inline;

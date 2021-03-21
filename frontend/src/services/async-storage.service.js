@@ -126,6 +126,9 @@ const boardsDB = [
                 "id": "l106"
             }
         ],
+        "styles": {
+            "backgroundColor": "#61bd4f"
+        },
         "groups": [
             {
                 "id": "uqfMo",

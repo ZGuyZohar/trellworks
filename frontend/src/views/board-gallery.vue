@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<app-header/>
 		<div class="flex main-container gallery">
 			<h1>Your boards</h1>
 			<div class="board-list">
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import appHeader from '@/cmps/app-header'
 export default {
 	data() {
 		return {}
@@ -51,6 +53,9 @@ export default {
 	async created() {
 		await this.loadBoards()
 	},
+	components: {
+		appHeader
+	}
 
 
 }

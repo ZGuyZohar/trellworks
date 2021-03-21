@@ -1,5 +1,6 @@
 <template>
   <section class="container home text-center">
+    <app-header />
     <h1>TRELLWORKS</h1>
     <h5 class="text-center">
       manage your tasks manage your tasks manage your tasks manage your tasks
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import appHeader from '@/cmps/app-header'
 import boardHeader from "../cmps/board/board-header.vue";
 export default {
   name: "home",
@@ -22,6 +24,7 @@ export default {
   created() {},
   methods: {},
   components: {
+    appHeader,
     boardHeader,
   },
 };

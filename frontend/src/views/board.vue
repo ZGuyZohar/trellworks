@@ -1,5 +1,6 @@
 <template>
-	<section v-if="currBoard" :board="currBoard">
+	<section :style="{backgroundColor: currBoard.styles.backgroundColor}" v-if="currBoard" :board="currBoard">
+		<app-header />
 		<board-header
 			:boardTitle="currBoard.title"
 			@boardTitleUpdated="updateBoardTitle"
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import appHeader from '@/cmps/app-header'
 import boardHeader from "@/cmps/board/board-header";
 import group from "@/cmps/board/group";
 import draggable from "vuedraggable";
@@ -129,6 +131,7 @@ export default {
 		boardHeader,
 		group,
 		draggable,
+		appHeader
 	},
 };
 </script>
