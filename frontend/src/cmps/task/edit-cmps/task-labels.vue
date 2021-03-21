@@ -41,9 +41,12 @@
 import {utilService} from '@/services/util.service.js'
 import { boardService } from "@/services/board.service.js";
 export default {
+  props: {
+    task: Object
+  },
   data() {
     return {
-      // labels: [],
+      taskToEdit: JSON.parse(JSON.stringify(this.task)),
       newLabel: boardService.getEmptyLabel(),
       labelEditToggler: {
         type: '',
@@ -54,17 +57,11 @@ export default {
     };
   },
   computed: {
-    currBoard() {
-      return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-    },
-    currGroup(){
-      return this.$store.getters.currGroup
-    },
-    currTask() {
-      return this.$store.getters.currTask
+    currBoard(){
+      return JSON.parse(JSON.stringify(this.$store.getters.currBoard))
     },
     labelIds(){
-      return JSON.parse(JSON.stringify(this.currTask.labelIds))
+      return this.taskToEdit.labelIds
     },
     btnSuccessTxtToShow(){
       return this.labelEditToggler.type === 'edit' ? 'Save' : 'Create'
@@ -74,28 +71,20 @@ export default {
     }
   },
   methods: {
-    getTask(){
-      const group = this.currBoard.groups.find(
-        (group) => group.id === this.currGroup.id
-      );
-      const task = group.task.find((task) => task.id === this.currTask.id);
-      return task;
-    },
     addLabel(labelId) {
-      const task = this.getTask()
       for (let i = 0; i < this.labelIds.length; i++) {
         if (labelId === this.labelIds[i]) {
           const foundIdx = this.labelIds.findIndex(
             (currLabelId) => currLabelId === labelId );
           this.labelIds.splice(foundIdx, 1);
-          task.labelIds = this.labelIds
-          return this.$emit('updateBoard', this.currBoard)
+          this.taskToEdit.labelIds = this.labelIds
+          return this.$emit('updateTask', this.taskToEdit)
         }
       }
           this.labelIds.push(labelId);
-          task.labelIds = this.labelIds  
+          this.taskToEdit.labelIds = this.labelIds  
           console.log(labelId);
-          this.$emit('updateBoard', this.currBoard)
+          this.$emit('updateTask', this.taskToEdit)
     },
     setEditToggler(toggle, label){
       this.labelEditToggler.isOpen = toggle
@@ -108,13 +97,13 @@ export default {
       this.newLabel.color = color
       this.newLabel.colorName = colorName
     },
-    addLabelToBoard(){
-      console.log(this.newLabel);
-      const task = this.getTask()
+    async addLabelToBoard(){
+      console.log(this.currBoard,'before');
       if(!this.newLabel.id){
         this.newLabel.id = utilService.makeId()
         this.labelIds.push(this.newLabel.id);
-        task.labelIds = this.labelIds;
+        this.taskToEdit.labelIds = this.labelIds;
+        this.$emit('updateTask', this.taskToEdit)
         this.currBoard.labels.push(this.newLabel)
       } else {
         const foundIdx = this.labels.findIndex(label => label.id === this.newLabel.id);
@@ -122,7 +111,8 @@ export default {
         this.currBoard.labels.splice(foundIdx, 1, this.newLabel)
       }
       this.labelEditToggler.isOpen = false;
-      this.$emit('updateBoard', this.currBoard)
+      await this.$emit('updateBoard', this.currBoard)
+      console.log(this.currBoard,'after');
       this.newLabel = boardService.getEmptyLabel()
     },
     removeLabelFromBoard(){
@@ -136,6 +126,7 @@ export default {
     }
   },
   created() {
+    console.log(this.colorsToAdd, 'colorstoadd');
     this.filterTxt = ''
     this.filterLabels()
   },

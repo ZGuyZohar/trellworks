@@ -236,26 +236,27 @@
     }
     
     
-    .colors {
-        display: flex;
-        flex-wrap: wrap;
-        
-        .color-picker {
-            height: 32px;
-            margin: 0 8px 8px 0;
-            padding: 0;
-            width: 48px;
-            border-radius: 4px;
-            cursor: pointer;
-            
-            &:hover {
-                opacity: .8
-            }
-        }
-    }
-    
     
 }
+.colors {
+    display: flex;
+    flex-wrap: wrap;
+    
+    .color-picker {
+        height: 32px;
+        margin: 0 8px 8px 0;
+        padding: 0;
+        width: 48px;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover {
+            opacity: .8
+        }
+    }
+}
+
+
 .preview-footer-container {
     justify-content: space-between;
     padding-bottom: 6px;
@@ -271,8 +272,9 @@
         margin-left: -2%;
     }
 }
-.group-header{
-    &:hover .fa-trash-alt{
+
+.group-header {
+    &:hover .fa-trash-alt {
         opacity: 100%;
     }
     
@@ -294,3 +296,7 @@
             margin: 0 4px 4px 0;
         }
     }
+
+.group-header .fa-trash-alt {
+    opacity: 0;
+}
