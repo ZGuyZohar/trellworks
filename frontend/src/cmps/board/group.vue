@@ -16,6 +16,7 @@
         @end="itemsDragged"
         group="task"
         animation="400"
+        ghostClass="task-ghost"
         v-model="group.task"
       >
         <task-preview

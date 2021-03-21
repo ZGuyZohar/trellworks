@@ -116,7 +116,6 @@ export default {
 			this.updateBoard(board);
 		},
 		async updateBoardTitle(newTitle) {
-
 			const task =  {newTitle: newTitle, oldTitle: this.currBoard.title}
 			this.saveActivity('changed this board`s name', this.currBoard, {})
 			this.currBoard.title = newTitle
