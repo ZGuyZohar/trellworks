@@ -1,6 +1,7 @@
 <template>
   <section @mousedown.self="closeModal" class="task-details-modal">
     <div @click="togglePopUp(false)" class="task-details">
+      <i class="fas fa-times details-close clickable" @click="closeModal"></i>
       <div class="details-header">
         <input
           v-model="taskCopy.title"
