@@ -9,7 +9,10 @@
       </div>
       <div class="image-details">
         <p class="image-name">{{img.name}}</p>
-        <small>Added a few seconds ago - <span class="image-info">Comment</span> - <span class="image-info">Delete</span> - <span class="image-info">Edit</span></small>
+        <small>Added a few seconds ago - <span class="image-info">Comment</span> - 
+            <span class="image-info">Delete</span> - 
+            <span @click="editImg" class="image-info">Edit</span>
+        </small>
         <small class="image-info cover-maker">Make cover</small>
       </div>
     </div>
