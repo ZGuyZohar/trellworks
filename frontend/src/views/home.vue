@@ -3,7 +3,7 @@
     <app-header />
     <img src="../assets/img/main.jpg" class="main-img" />
     <h5 class="text-center">Manage your tasks easily</h5>
-    <router-link to="/board/YhJ2l" class="action-call">Try it now!</router-link>
+    <router-link to="/board/LIHlf" class="action-call">Try it now!</router-link>
   </section>
 </template>
 
@@ -15,7 +15,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    boards(){
+      this.$store.getters.boards
+    }
+  },
   created() {},
   methods: {},
   components: {
