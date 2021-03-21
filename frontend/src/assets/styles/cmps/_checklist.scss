@@ -1,0 +1,17 @@
+.todo-item {
+    justify-content: space-between;
+    padding: 5px;
+    margin: 7px;
+
+    &:hover {
+        background-color: $lightgray;
+
+        .fa-trash-alt {
+            opacity: 100%;
+        }
+    }
+}
+
+.fa-trash-alt {
+    opacity: 0;
+}
