@@ -18,6 +18,7 @@
 		</div>
 		<p class="task-preview-title">{{ task.title }}</p>
     <div class="preview-footer-container flex">
+		<dueDate v-if="task.dueDate" :task="task" />
 		<i v-if="task.description" class="fas fa-align-left fa-sm"></i>
 		<i
 			v-if="isEditPenShown"
@@ -38,6 +39,8 @@
 import labelsPreview from "../task-details/labels-preview.vue";
 import quickEdit from "./task-quick-edit";
 import Avatar from "vue-avatar";
+import dueDate from "@/cmps/task-details/due-date.vue";
+
 
 export default {
 	props: {
@@ -89,7 +92,8 @@ export default {
 	components: {
 		quickEdit,
 		labelsPreview,
-		Avatar
+		Avatar,
+		dueDate
 	},
 };
 </script>

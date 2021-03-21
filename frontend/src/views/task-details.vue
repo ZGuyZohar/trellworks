@@ -13,6 +13,7 @@
         </p>
       </div>
       <main class="details-body">
+        <dueDate v-if="currTask.dueDate" :from="details" :task="currTask"></dueDate>
         <section class="main-details">
           <div class="members-preview container">
             <i class="fas fa-user"></i>
@@ -116,11 +117,13 @@ import taskAttachment from "@/cmps/task/edit-cmps/attachment-add";
 import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
 import attachmentsPreview from "@/cmps/task-details/attachments-preview.vue";
+import dueDate from "@/cmps/task-details/due-date.vue";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
 import Avatar from "vue-avatar";
 import memberProfile from "../cmps/recurring-cmps/user-miniprofile.vue";
+
 
 export default {
   data() {
@@ -259,11 +262,11 @@ export default {
     hideProfile() {
       this.showMemberProfile = false;
     },
+
   },
   created() {
     this.$store.commit({ type: "setTask", taskId: this.taskId });
     this.taskCopy = JSON.parse(JSON.stringify(this.currTask));
-    console.log(this.currTask, "currtask");
   },
   components: {
     popUp,
@@ -279,6 +282,7 @@ export default {
     Avatar,
     memberProfile,
     attachmentsPreview,
+    dueDate
   },
 };
 </script>
