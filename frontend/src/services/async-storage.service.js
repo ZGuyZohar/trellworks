@@ -615,6 +615,7 @@ const boardsDB = [
             {
                 "id": "DEzGT",
                 "title": "This board was created",
+                "createdAt": 1616273677484,
                 "byMember": {
                     "fullname": "Guest"
                 },
