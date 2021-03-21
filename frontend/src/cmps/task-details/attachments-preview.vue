@@ -26,7 +26,7 @@ export default {
         return {
             taskToEdit: JSON.parse(JSON.stringify(this.task))
         }
-    }
+    },
     created(){
     }
 }
