@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div v-for="todo in checklistToEdit.todos" :key="todo.id">
+    <div v-for="todo in checklist.todos" :key="todo.id">
       <todo-item
         :todo="todo"
         @updateTodo="updateTodo"
@@ -52,10 +52,16 @@ export default {
       isAddingItem: false,
       taskToEdit: null,
       checklistToEdit: null,
-      checklistIdx: null,
       todoToAdd: { title: "", isDone: false },
       completed: 0,
     };
+  },
+  computed: {
+    checklistIdx() {
+      return this.task.checklists.findIndex(
+        (cl) => cl.id === this.checklist.id
+      );
+    },
   },
   methods: {
     /// updates
@@ -105,13 +111,11 @@ export default {
     getTodoIdx(todoId) {
       return this.checklistToEdit.todos.findIndex((todo) => todo.id === todoId);
     },
+    getChecklistIdx() {},
   },
   created() {
     this.taskToEdit = JSON.parse(JSON.stringify(this.task));
     this.checklistToEdit = JSON.parse(JSON.stringify(this.checklist));
-    this.checklistIdx = this.taskToEdit.checklists.findIndex(
-      (cl) => cl.id === this.checklist.id
-    );
   },
   mounted() {
     this.updateProgress();
