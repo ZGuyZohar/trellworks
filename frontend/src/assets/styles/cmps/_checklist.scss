@@ -15,3 +15,19 @@
 .fa-trash-alt {
     opacity: 0;
 }
+
+.progress-bar {
+    background-color: rgb(214, 210, 210);
+    height: 15px;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 15px;
+
+    .progress-done {
+        background-color: rgb(106, 117, 165);
+        height: 100%;
+        width: 0;
+        border-radius: 20px;
+        transition: 1s ease;
+    }
+}
