@@ -269,6 +269,7 @@
 
 
 }
+
 .preview-footer-container {
     justify-content: space-between;
     padding-bottom: 6px;
@@ -284,13 +285,14 @@
         margin-left: -2%;
     }
 }
-.group-header{
-    &:hover .fa-trash-alt{
+
+.group-header {
+    &:hover .fa-trash-alt {
         opacity: 100%;
     }
 
 }
-    .group-header.fa-trash-alt {
-        opacity: 0;
-    }
 
+.group-header .fa-trash-alt {
+    opacity: 0;
+}
