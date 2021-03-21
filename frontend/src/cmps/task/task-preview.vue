@@ -82,7 +82,7 @@ export default {
 	},
 	created() {
 		this.currBoard = this.$store.getters.currBoard;
-		// console.log(this.currBoard);
+		console.log(this.task);
 	},
 	components: {
 		quickEdit,

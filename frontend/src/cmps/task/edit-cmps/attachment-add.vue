@@ -23,10 +23,8 @@ export default {
   },
   methods: {
     async addFile(ev) {
-      console.log(ev);
       const imgUploaded = await uploadImg(ev)
-      console.log(imgUploaded.url);
-
+      this.taskToEdit.imgs.push(imgUploaded)
     } 
   },
 };
