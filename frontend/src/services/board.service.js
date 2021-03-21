@@ -103,7 +103,8 @@ function getEmptyTask() {
         labelIds: [],
         description: '',
         checklists: [],
-        members: []
+        members: [],
+        imgs: []
     }
 }
 
@@ -202,12 +203,3 @@ function getEmptyLabel(color = '', colorName, colorId) {
         id: colorId
     }
 }
-// async function update(board) {
-//     return storageService.put(BOARD_DB, board)
-//     // board = await httpService.put(`board/${board._id}`, board)
-//     // Handle case in which admin updates other board's details
-// }
-
-// ***** CHANGED UPDATE FUNCTION FROM STARTER TO SAVE FUNCTION,
-// COMMENTING BECAUSE IM NOT SURE WHY IT WASNT ADDED ALREADY IN THE STARTER,
-// MIGHT NEED TO CHANGE BACK  

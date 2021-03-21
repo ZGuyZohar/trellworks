@@ -1,13 +1,17 @@
 <template>
   <section class="task-attachment">
     <h3 class="pop-up-title">Attach a link</h3>
-   <input type="text" class="pop-up-input" placeholder="Paste any link here..." @paste="addFile">
+    <label>
+      Upload file
+    <input type="file" id="file-upload" @change="addFile" />
+    </label>
+   <!-- <input type="text" class="pop-up-input" placeholder="Paste any link here..." @paste="addFile"> -->
   </section>
 </template>
 
 
 <script>
-import { imgUploadService } from "../../../services/img-upload.service";
+import {uploadImg} from "@/services/img-upload.service.js";
 export default {
   props: {
     task: Object,
@@ -18,8 +22,10 @@ export default {
     };
   },
   methods: {
-    addFile() {
-      
+    async addFile(ev) {
+      console.log(ev);
+      const imgUploaded = await uploadImg(ev)
+      console.log(imgUploaded.url);
 
     } 
   },
