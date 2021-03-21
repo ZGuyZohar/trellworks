@@ -23,6 +23,11 @@
         padding: 0;
         width: 100%;
     }
+
+    .menu-close {
+        position: absolute;
+        right: 10px;
+    }
 }
 
 .board-header .clean-input {
