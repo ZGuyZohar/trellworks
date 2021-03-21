@@ -30,8 +30,7 @@ export default {
 		},
 	},
 	created() {
-		console.log('createddddd');
-		console.log(this.task);
+
 	}
 };
 </script>
