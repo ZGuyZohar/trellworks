@@ -15,7 +15,21 @@
       <main class="details-body">
         <!--add here grid -->
         <section class="main-details">
-          <div class="members-preview"><!--HERE WILL BE MEMBERS PREVIEW--></div>
+          <div class="members-preview container">
+            <i class="fas fa-user"></i>
+            <h1 class="details-title">Members</h1>
+            <section
+              v-if="currTask.members.length"
+              class="flex members-preview"
+            >
+              <span
+                class="flex avatar"
+                v-for="member in currTask.members"
+                :key="member._id"
+                ><avatar :username="member.fullname" :size="40"></avatar
+              ></span>
+            </section>
+          </div>
           <div class="labels-preview flex" v-if="currTask.labelIds.length">
             <span class="uppercase-title">labels</span>
             <span class="flex">
@@ -33,6 +47,8 @@
             @changeMade="changeTaskDetails"
           />
           <div v-if="currTask.checklists.length">
+            <i class="fas fa-tasks fa-lg"></i>
+            <h1 class="details-title">Checklists</h1>
             <checklist
               v-for="checklist in currTask.checklists"
               :key="checklist.id"
@@ -41,7 +57,6 @@
               @updateTask="updateTask"
             />
           </div>
-
           <activityLog
             class="task-details-activity"
             :activities="getTaskActivity()"
@@ -92,6 +107,7 @@ import popUp from "@/cmps/task/pop-up";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
+import Avatar from "vue-avatar";
 
 export default {
   data() {
@@ -227,6 +243,7 @@ export default {
     checklistAdd,
     checklist,
     taskAttachment,
+    Avatar,
   },
 };
 </script>
