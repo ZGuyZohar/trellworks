@@ -79,10 +79,6 @@ export default {
       this.checklistToEdit.todos.splice(idx, 1, updatedTodo);
       this.updateTask();
     },
-    created() {
-      console.log(this.checklistToEdit);
-      this.updateProgress();
-    },
   },
   components: { todoItem },
 };
