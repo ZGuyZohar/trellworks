@@ -29,7 +29,6 @@ export default {
     },
     created(){
         this.getColorByLabelId(this.currBoard, this.labelId);
-        console.log(this.currBoard, 'labelId');
     }
 }
 
