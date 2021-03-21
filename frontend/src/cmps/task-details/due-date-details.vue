@@ -1,16 +1,9 @@
 <template>
 	<section>
-		<section v-if="from === 'details'">
 			<button class="uppercase-title" :class="dueClass">
 				{{ dueTime(task.dueDate) }}
 			</button>
 			<span> {{ fullDate(task.dueDate) }}</span>
-		</section>
-        <section v-else>
-            <button class="uppercase-title" :class="dueClass">
-				{{ previewDate(task.dueDate) }}
-			</button>
-        </section>
 	</section>
 </template>
 
@@ -20,12 +13,10 @@ import moment from "moment";
 export default ({
 	props: {
 		task: Object,
-		from: String
 	},
 	data() {
 		return {
-			dueClass: null,
-            fromCmp: this.from
+			dueClass: ''
 		}
 	},
 	methods: {
@@ -49,10 +40,7 @@ export default ({
 			else if (dateStr.includes('months')) this.dueClass = "months"
 			else if (dateStr.includes('hours')) this.dueClass = "hours"
 		}
-	},
-	created() {
-		this.deteremineDate()
-		console.log(this.from);
-	}
+	},created() { this.deteremineDate() }
+
 })
 </script>

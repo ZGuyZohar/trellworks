@@ -13,7 +13,7 @@
         </p>
       </div>
       <main class="details-body">
-        <dueDate v-if="currTask.dueDate" :from="details" :task="currTask"></dueDate>
+        <dueDateDetails v-if="currTask.dueDate"  :task="currTask"></dueDateDetails>
         <section class="main-details">
           <div class="members-preview container">
             <i class="fas fa-user"></i>
@@ -117,7 +117,7 @@ import taskAttachment from "@/cmps/task/edit-cmps/attachment-add";
 import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
 import attachmentsPreview from "@/cmps/task-details/attachments-preview.vue";
-import dueDate from "@/cmps/task-details/due-date.vue";
+import dueDateDetails from "@/cmps/task-details/due-date-details.vue";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
@@ -282,7 +282,7 @@ export default {
     Avatar,
     memberProfile,
     attachmentsPreview,
-    dueDate
+    dueDateDetails
   },
 };
 </script>

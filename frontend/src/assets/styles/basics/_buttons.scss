@@ -63,27 +63,42 @@ button {
     font-size: 14px;
     margin: 0 0 0 5px;
 }
-.hours { 
+
+.hours {
     background-color: #eb5a46;
 
 }
-.days { 
+
+.days {
     background-color: #eb5946b7;
 
 }
-.weeks { 
+
+.weeks {
     background-color: #eb594678;
 
 }
 
-.months { 
+
+.task-details .overdue::before {
+    content: 'overdue!   ';
+    color: #fff;
+}
+
+.overdue {
+    background-color: #eb5a46;
+    color: #fff;
+
 
 }
-.overdue::before{
-    content: 'overdue!   ';
-color: #fff;
+.months{
+    background-color: rgb(233, 233, 233);
 }
-.overdue{
-    background-color: #eb5a46;
+.task-preview .preview-timedue {
+
+    font-size: 12px;
+    width: 75px;
+    padding: 5px 6px;
+
 
 }
