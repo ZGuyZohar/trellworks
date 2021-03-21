@@ -39,6 +39,8 @@
               v-for="checklist in currTask.checklists"
               :key="checklist.id"
               :checklist="checklist"
+              :task="currTask"
+              @updateTask="updateTask"
             />
           </div>
 
