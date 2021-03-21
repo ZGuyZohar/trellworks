@@ -7,6 +7,7 @@ export const uploadImg = async (ev) => {
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
     const FORM_DATA = new FormData();
     // Building the request body
+    console.log(FORM_DATA);
     FORM_DATA.append('file', ev.target.files[0])
     FORM_DATA.append('upload_preset', UPLOAD_PRESET)
     // Sending a post method request to Cloudniarys' API
