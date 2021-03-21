@@ -68,8 +68,8 @@ export default {
           return `${activity.title}`;
           break;
         }
-
         default: {
+          console.log('returning default for', activity.title);
           return `${activity.byMember.fullname} ${activity.title}`;
         }
       }

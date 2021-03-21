@@ -169,7 +169,7 @@ export default {
       return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
     },
     currTask() {
-      return this.$store.getters.currTask;
+      return JSON.parse(JSON.stringify(this.$store.getters.currTask));
     },
     currGroup() {
       return this.$store.getters.currGroup;
