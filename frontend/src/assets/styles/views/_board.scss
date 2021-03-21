@@ -271,12 +271,12 @@
 }
 .preview-footer-container {
     justify-content: space-between;
+    padding-bottom: 6px;
 }
 
 .preview-avatar-container {
     justify-content: flex-end;
     width: 95%;
-    padding: 7px 0;
 
     .avatar {
         padding: unset;
