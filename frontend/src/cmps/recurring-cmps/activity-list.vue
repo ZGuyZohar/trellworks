@@ -1,7 +1,7 @@
 <template>
   <section class="activity-log">
     <i class="far fa-list-alt fa-lg"></i>
-    <h1 class="details-title">Activity Log</h1>
+    <h2 class="details-title">Activity Log</h2>
     <section
       v-for="activity in activities"
       :key="activity.id"
