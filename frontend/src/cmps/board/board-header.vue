@@ -11,6 +11,7 @@
           v-for="member in boardMembers"
           :key="member._id"
           class="transition board-header-avatar"
+          @click="showMemberProfile=!showMemberProfile"
           ><avatar :size="40" :username="member.fullname"></avatar>
         </span>
       </ul>
@@ -26,10 +27,12 @@
         @closeMenu="menuShown = !menuShown"
       ></boardMenu>
     </transition>
+    <memberProfile v-if="showMemberProfile"></memberProfile>
   </div>
 </template>
 <script>
 import boardMenu from "./menu.vue";
+import memberProfile from "../recurring-cmps/user-miniprofile.vue"
 import Avatar from "vue-avatar";
 
 export default {
@@ -44,6 +47,7 @@ export default {
       menuShown: false,
       titleToEdit: this.boardTitle,
       isEditing: false,
+      showMemberProfile: false
     };
   },
   computed: {
@@ -58,6 +62,6 @@ export default {
     },
   },
   created() {},
-  components: { boardMenu, Avatar },
+  components: { boardMenu, Avatar,memberProfile },
 };
 </script>
