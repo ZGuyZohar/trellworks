@@ -1,14 +1,9 @@
 <template>
   <section class="container home text-center">
     <app-header />
-    <h1>TRELLWORKS</h1>
-    <h5 class="text-center">
-      manage your tasks manage your tasks manage your tasks manage your tasks
-      manage your tasks manage your tasks
-    </h5>
-    <h1>
-      <router-link to="/board/YhJ2l">Try it now!</router-link>
-    </h1>
+    <img src="../assets/img/main.jpg" class="main-img" />
+    <h5 class="text-center">Manage your tasks easily</h5>
+    <router-link to="/board/YhJ2l" class="action-call">Try it now!</router-link>
   </section>
 </template>
 
