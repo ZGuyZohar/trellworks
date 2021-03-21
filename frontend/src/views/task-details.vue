@@ -56,8 +56,7 @@
             @updateTask="updateTask"
             @changeMade="changeTaskDetails"
           />
-          <attachments-preview
-            :task="currTask"/>
+          <attachments-preview :task="currTask" />
           <div v-if="currTask.checklists.length">
             <checklist
               v-for="checklist in currTask.checklists"
@@ -65,6 +64,7 @@
               :checklist="checklist"
               :task="currTask"
               @updateTask="updateTask"
+              @removeChecklist="removeChecklist"
             />
           </div>
           <activityLog
@@ -115,7 +115,7 @@ import taskDueDate from "@/cmps/task/edit-cmps/due-date";
 import taskAttachment from "@/cmps/task/edit-cmps/attachment-add";
 import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
-import attachmentsPreview from '@/cmps/task-details/attachments-preview.vue'
+import attachmentsPreview from "@/cmps/task-details/attachments-preview.vue";
 import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
@@ -179,6 +179,11 @@ export default {
     },
   },
   methods: {
+    removeChecklist(idx) {
+      const task = this.currTask;
+      task.checklists.splice(idx, 1);
+      this.updateTask(task);
+    },
     saveActivity(activityTitle) {
       this.$store.dispatch({
         type: "saveActivity",
@@ -273,7 +278,7 @@ export default {
     taskDueDate,
     Avatar,
     memberProfile,
-    attachmentsPreview
+    attachmentsPreview,
   },
 };
 </script>
