@@ -1,9 +1,15 @@
 <template>
-	<section class="board-main" :style="{backgroundColor: currBoard.styles.backgroundColor}" v-if="currBoard" :board="currBoard">
+	<section
+		class="board-main"
+		:style="{ backgroundColor: currBoard.styles.backgroundColor }"
+		v-if="currBoard"
+		:board="currBoard"
+	>
 		<app-header />
 		<board-header
 			:boardTitle="currBoard.title"
 			@boardTitleUpdated="updateBoardTitle"
+			@changeBgc="bgcChanged"
 		/>
 		<div class="flex board">
 			<div class="flex group-container">
@@ -28,7 +34,9 @@
 				</draggable>
 				<section @click="addGroup" class="transition group group-add">
 					<section class="flex group-header">
-						<p class="group-title"><i class="fas fa-plus"></i>Add another list</p>
+						<p class="group-title">
+							<i class="fas fa-plus"></i>Add another list
+						</p>
 					</section>
 				</section>
 			</div>
@@ -87,7 +95,7 @@ export default {
 			this.saveActivity('added the task', board, group, task)
 			this.updateBoard(board);
 		},
-		saveActivity(activityTitle, board, group, task = {id:'',title:''}) {
+		saveActivity(activityTitle, board, group, task = { id: '', title: '' }) {
 			this.$store.dispatch({
 				type: "saveActivity",
 				activity: activityTitle,
@@ -95,6 +103,11 @@ export default {
 				board: board,
 				task: task
 			});
+		},
+		bgcChanged() {
+			this.saveActivity('changed this board`s background color', this.currBoard, {})
+						this.updateBoard(this.currBoard);
+
 		},
 		draggingEnd() {
 			const board = this.currBoard;
@@ -116,7 +129,7 @@ export default {
 			this.updateBoard(board);
 		},
 		async updateBoardTitle(newTitle) {
-			const task =  {newTitle: newTitle, oldTitle: this.currBoard.title}
+			const task = { newTitle: newTitle, oldTitle: this.currBoard.title }
 			this.saveActivity('changed this board`s name', this.currBoard, {})
 			this.currBoard.title = newTitle
 			this.updateBoard(this.currBoard);

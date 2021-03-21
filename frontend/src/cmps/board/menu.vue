@@ -88,7 +88,7 @@ export default {
         type: "saveBoardChanges",
         editedBoard: this.currBoard,
       });
-      console.log(this.currBoard);
+      this.$emit('bgcChanged')
     },
     closeMenu() {
       this.$emit("closeMenu");
