@@ -56,7 +56,7 @@
             @updateTask="updateTask"
             @changeMade="changeTaskDetails"
           />
-          <attachments-preview :task="currTask" />
+          <attachments-preview v-if="currTask.imgs.length" @updateTask="updateTask" :task="currTask" />
           <div v-if="currTask.checklists.length">
             <checklist
               v-for="checklist in currTask.checklists"

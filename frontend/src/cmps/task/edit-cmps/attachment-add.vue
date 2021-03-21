@@ -11,6 +11,7 @@
 
 
 <script>
+import {utilService} from '@/services/util.service.js'
 import {uploadImg} from "@/services/img-upload.service.js";
 export default {
   props: {
@@ -25,14 +26,16 @@ export default {
     async addFile(ev) {
       const imgUploaded = await uploadImg(ev)
       const img = {
+        id: utilService.makeId(),
         src: imgUploaded.url,
         name: `${imgUploaded.original_filename}.${imgUploaded.format}`,
-        isCover: false
+        isCover: false,
+        createdAt: Date.now()
       }
-      // if(this.taskToEdit.imgs.length === 0) img.isCover = true;
+      if(this.taskToEdit.imgs.length === 0) img.isCover = true;
       this.taskToEdit.imgs.push(img)
       this.$emit("updateTask", this.taskToEdit);
-      console.log(imgUploaded);
+      console.log(ev.target.file);
     } 
   },
 };

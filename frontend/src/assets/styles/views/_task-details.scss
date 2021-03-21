@@ -134,16 +134,6 @@
 
     }
 
-    .pop-up-title {
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .04em;
-        line-height: 16px;
-        margin-top: 16px;
-        text-transform: uppercase;
-        color: #5e6c84c2;
-    }
-
     input {
         width: 100%;
         margin: 10px 0 12px;
@@ -219,6 +209,18 @@
 }
 
 
+.pop-up-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    color: #5e6c84c2;
+}
+
+
+
 .labels-preview {
     flex-direction: column;
     margin-bottom: 10px;
@@ -251,9 +253,6 @@
     margin-top: 10px;
 }
 
-.description {
-    margin-bottom: 30px;
-}
 
 .description-input {
     background-color: $lightgray;
@@ -354,14 +353,64 @@
         display: block;
     }
 
-    .edit {
-        position: relative;
+    .edit {}
+}
 
-        .edit-window {
-            position: absolute;
-            width: 304px;
-            background-color: #fff;
+.edit-window {
+    position: fixed;
+    bottom: 300px;
+    left: 300px;
+    width: 304px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 0 12px 12px;
+    z-index: 2;
 
-        }
+    h3 {
+        text-align: center;
+        font-weight: 400;
+        font-size: 16px;
+
+    }
+
+    i {
+        position: absolute;
+        right: 19px;
+        top: 17px;
+    }
+
+    .edit-window-title {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .04em;
+        line-height: 16px;
+        margin-top: 16px;
+        text-transform: uppercase;
+        color: #5e6c84c2;
+        text-align: left;
+        margin-left: 4px;
+    }
+
+    input {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+}
+
+.image-window {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 5;
+
+    div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
