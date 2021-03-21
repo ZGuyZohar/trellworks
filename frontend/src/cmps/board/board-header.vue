@@ -69,7 +69,6 @@ export default {
     },
     hideProfile(){
             this.showMemberProfile=false
-
     }
 	},
 	created() { },
