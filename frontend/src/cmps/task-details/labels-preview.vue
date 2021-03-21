@@ -19,6 +19,7 @@ export default {
     methods: {
         getColorByLabelId(){
             const color = boardService.getLabelColorById(this.currBoard, this.labelId)
+            console.log(this.color,'folor');
             this.color = color
         }
     },
@@ -29,7 +30,7 @@ export default {
     },
     created(){
         this.getColorByLabelId(this.currBoard, this.labelId);
-        console.log(this.labelId, 'labelId');
+        console.log(this.currBoard, 'labelId');
     }
 }
 

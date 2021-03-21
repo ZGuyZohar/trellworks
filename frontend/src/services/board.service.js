@@ -108,7 +108,10 @@ function getEmptyTask() {
 }
 
 function getLabelColorById(board, labelId) {
-    return board.labels.find(label => label.id === labelId)
+    return board.labels.find(label =>{
+        console.log(label.id, 'lalablab..', labelId);
+        return label.id === labelId
+    })
 }
 
 function getDefaultLabels() {
