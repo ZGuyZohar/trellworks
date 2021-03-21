@@ -13,10 +13,15 @@
 					class="clickable transition board-header-avatar"
 					@click="showProfile(member)"
 				>
-        <span @click="currMember=member">	<avatar  :size="40" :username="member.fullname"></avatar></span>
-				
+					<span @click="currMember = member">
+						<avatar :size="40" :username="member.fullname"></avatar
+					></span>
 				</span>
-        <memberProfile :currMember="currMember" v-if="showMemberProfile" @closeProfile="hideProfile" />
+				<memberProfile
+					:currMember="currMember"
+					v-if="showMemberProfile"
+					@closeProfile="hideProfile"
+				/>
 			</ul>
 			<button class="header-btn invite">Invite to Board</button>
 		</div>
@@ -51,7 +56,7 @@ export default {
 			titleToEdit: this.boardTitle,
 			isEditing: false,
 			showMemberProfile: false,
-      currMember: null
+			currMember: null
 		};
 	},
 	computed: {
@@ -64,16 +69,16 @@ export default {
 			this.isEditing = !this.isEditing;
 			this.$emit("boardTitleUpdated", this.titleToEdit);
 		},
-    showProfile(member){
-      this.currMember = member
-      this.showMemberProfile=true
-    },
-    hideProfile(){
-            this.showMemberProfile=false
-    },
-	changeBgc(){
-		this.$emit('changeBgc')
-	}
+		showProfile(member) {
+			this.currMember = member
+			this.showMemberProfile = true
+		},
+		hideProfile() {
+			this.showMemberProfile = false
+		},
+		changeBgc() {
+			this.$emit('changeBgc')
+		}
 	},
 	created() { },
 	components: { boardMenu, Avatar, memberProfile },

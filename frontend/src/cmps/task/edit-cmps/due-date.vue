@@ -25,7 +25,7 @@ export default {
 	},
 	methods: {
 		setDate() {
-			this.taskToEdit.dueDate=this.value
+			this.taskToEdit.dueDate=Date.parse(this.value)
 			this.$emit('updateTask', this.taskToEdit)
 		},
 	},
