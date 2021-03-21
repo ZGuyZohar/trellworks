@@ -11,7 +11,12 @@
         <p class="image-name">{{img.name}}</p>
         <small>Added a few seconds ago - <span class="image-info">Comment</span> - 
             <span class="image-info">Delete</span> - 
-            <span @click="editImg" class="image-info">Edit</span>
+            <span @click="toggleEdit = !toggleEdit" class="image-info edit">Edit
+                <div class="edit-window pop-up-header" v-if="toggleEdit">
+                    <h3 class="pop-up-title">Edit attachment</h3>
+                    <hr>
+                </div>
+            </span>
         </small>
         <small class="image-info cover-maker">Make cover</small>
       </div>
@@ -27,7 +32,13 @@ export default {
     },
     data(){
         return {
-            taskToEdit: JSON.parse(JSON.stringify(this.task))
+            taskToEdit: JSON.parse(JSON.stringify(this.task)),
+            toggleEdit: false
+        }
+    },
+    methods: {
+        editImg(){
+            console.log('edditing coming soon');
         }
     },
     created(){

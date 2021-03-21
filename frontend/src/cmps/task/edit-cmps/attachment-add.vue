@@ -29,7 +29,7 @@ export default {
         name: `${imgUploaded.original_filename}.${imgUploaded.format}`,
         isCover: false
       }
-      if(this.taskToEdit.imgs.length === 0) img.isCover = true;
+      // if(this.taskToEdit.imgs.length === 0) img.isCover = true;
       this.taskToEdit.imgs.push(img)
       this.$emit("updateTask", this.taskToEdit);
       console.log(imgUploaded);
