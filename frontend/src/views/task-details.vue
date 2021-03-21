@@ -117,6 +117,7 @@ import memberProfile from "../cmps/recurring-cmps/user-miniprofile.vue"
 export default {
   data() {
     return {
+      showMemberProfile: false,
       actions: [
         {
           txt: "Members",
@@ -254,144 +255,8 @@ export default {
     checklist,
     taskAttachment,
     taskDueDate,
-    Avatar
-  },
-	data() {
-		return {
-			showMemberProfile: false,
-			actions: [
-				{
-					txt: "Members",
-					type: "taskMembers",
-					iconClass: "far fa-user",
-				},
-				{
-					txt: "Labels",
-					type: "taskLabels",
-					iconClass: "far fa-bookmark",
-				},
-				{
-					txt: "Add checklist",
-					type: "checklistAdd",
-					iconClass: "fas fa-tasks",
-				},
-				{
-					txt: "Attachment",
-					type: "taskAttachment",
-					iconClass: "fas fa-paperclip",
-				},
-				{
-					txt: "Cover",
-					type: "taskCover",
-					iconClass: "fas fa-square",
-				},
-			],
-			currAction: null,
-			openPopUp: false,
-			taskCopy: null,
-		};
-	},
-	computed: {
-		currBoard() {
-			return JSON.parse(JSON.stringify(this.$store.getters.currBoard));
-		},
-		currTask() {
-			return this.$store.getters.currTask;
-		},
-		currGroup() {
-			return this.$store.getters.currGroup;
-		},
-		taskId() {
-			return this.$route.params.taskId;
-		},
-	},
-	methods: {
-		saveActivity(activityTitle) {
-			this.$store.dispatch({
-				type: "saveActivity",
-				activity: activityTitle,
-				group: this.currGroup,
-				board: this.currBoard,
-				task: this.getTask(this.currBoard),
-			});
-		},
-		getTask(board, isIdx) {
-			const group = board.groups.find(
-				(group) => group.id === this.currGroup.id
-			);
-			let res;
-			if (isIdx) res = group.task.findIndex((task) => task.id === this.taskId);
-			else res = group.task.find((task) => task.id === this.taskId);
-			return res;
-		},
-		async updateBoard(board) {
-			await this.$store.dispatch({
-				type: "saveBoardChanges",
-				editedBoard: board,
-			});
-			this.$store.commit({ type: "setTask", taskId: this.taskId });
-		},
-		closeModal() {
-			this.$router.push(`/board/${this.$route.params.boardId}`);
-		},
-		togglePopUp(boolean, actionType) {
-			this.openPopUp = boolean;
-			this.currAction = actionType;
-		},
-		removeTask() {
-			const board = this.currBoard;
-			const taskIdx = this.getTask(board, true);
-			const group = board.groups.find(
-				(group) => group.id === this.currGroup.id
-			);
-			this.saveActivity("removed the task");
-			group.task.splice(taskIdx, 1);
-			this.updateBoard(board);
-			this.$router.push("../");
-		},
-		updateTask(task) {
-			const updatedTask = JSON.parse(JSON.stringify(task));
-			const board = this.currBoard;
-			const group = board.groups.find(
-				(group) => group.id === this.currGroup.id
-			);
-			const taskIdx = this.getTask(board, true);
-			group.task.splice(taskIdx, 1, updatedTask);
-			if (this.currTask.title !== updatedTask.title)
-				this.saveActivity(
-					`changed the task "${this.currTask.title}" to "${updatedTask.title}"`
-				);
-			this.updateBoard(board);
-		},
-		getTaskActivity() {
-			const filteredActivities = this.currBoard.activities.filter(
-				(activity) => {
-					return activity.task.id === this.currTask.id;
-				}
-			);
-			return filteredActivities;
-		},
-		changeTaskDetails(activityTitle) {
-			this.saveActivity(activityTitle);
-		},
-	},
-	created() {
-		this.$store.commit({ type: "setTask", taskId: this.taskId });
-		this.taskCopy = JSON.parse(JSON.stringify(this.currTask));
-		console.log(this.currTask, "currtask");
-	},
-	components: {
-		popUp,
-		taskLabels,
-		labelsPreview,
-		taskDescription,
-		activityLog,
-		taskMembers,
-		checklistAdd,
-		checklist,
-		taskAttachment,
-		Avatar,
+    Avatar,
 		memberProfile
-	},
+  },
 };
 </script>
