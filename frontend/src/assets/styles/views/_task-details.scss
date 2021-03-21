@@ -308,9 +308,10 @@
     margin-left: 7px;
 }
 
-.el-picker-panel{
+.el-picker-panel {
     background-color: whitesmoke;
 }
+
 .attachments-preview {
 
     .image-preview {
@@ -351,5 +352,16 @@
 
     .cover-maker {
         display: block;
+    }
+
+    .edit {
+        position: relative;
+
+        .edit-window {
+            position: absolute;
+            width: 304px;
+            background-color: #fff;
+
+        }
     }
 }
