@@ -13,7 +13,6 @@
         </p>
       </div>
       <main class="details-body">
-        <!--add here grid -->
         <section class="main-details">
           <div class="members-preview container">
             <i class="fas fa-user"></i>
@@ -103,6 +102,7 @@
 import taskLabels from "@/cmps/task/edit-cmps/task-labels";
 import taskMembers from "@/cmps/task/edit-cmps/member";
 import checklistAdd from "@/cmps/task/edit-cmps/checklist-add";
+import taskDueDate from "@/cmps/task/edit-cmps/due-date";
 import taskAttachment from "@/cmps/task/edit-cmps/attachment-add";
 import activityLog from "@/cmps/recurring-cmps/activity-list";
 import popUp from "@/cmps/task/pop-up";
@@ -131,6 +131,11 @@ export default {
           txt: "Add checklist",
           type: "checklistAdd",
           iconClass: "fas fa-tasks",
+        },
+        {
+          txt: "Due date",
+          type: "taskDueDate",
+          iconClass: "far fa-clock",
         },
         {
           txt: "Attachment",
@@ -247,6 +252,7 @@ export default {
     checklistAdd,
     checklist,
     taskAttachment,
+    taskDueDate,
     Avatar,
     memberProfile,
   },
