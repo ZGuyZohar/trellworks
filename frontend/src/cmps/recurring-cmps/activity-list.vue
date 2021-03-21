@@ -9,7 +9,7 @@
     >
       <section class="flex activity">
         <span class="avatar"
-          ><avatar :size="40" :username="activity.byMember.fullname"></avatar>
+          ><avatar :size="32" :username="activity.byMember.fullname"></avatar>
         </span>
         <span class="flex activity-details">
           {{ renderTask(activity) }}

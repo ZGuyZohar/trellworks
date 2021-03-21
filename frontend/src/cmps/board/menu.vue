@@ -11,7 +11,7 @@
 			<activityLog :activities="activities"/>
 		</section>
 		<section v-else class="color-menu">
-			<div v-if="!colorPicker">
+			<div class="background-options" v-if="!colorPicker">
 				<div class="templates">
 					<div class="templates-image"></div>
 					<div class="templates-title">Photos</div>
@@ -22,7 +22,9 @@
 					<div class="colors-title">Colors</div>
 				</div>
 			</div>
-			<div v-else=""></div>
+			<!-- <div v-else>
+				asd
+			</div> -->
 		</section>
 		<i @click="toggleColorMenu(false)" v-if="!menuToggler" class="fas fa-angle-left back-btn clickable"></i>
 	</section>
@@ -36,7 +38,7 @@ export default {
 			openMenu: {
 				colorMenu: false
 			},
-			toggleColorPicker: false
+			colorPicker: false
 		}
 	},
 	computed: {

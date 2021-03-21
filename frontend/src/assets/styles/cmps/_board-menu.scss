@@ -1,13 +1,28 @@
 .board-menu {
     background-color: whitesmoke;
-    max-height: 90vh;
-    width: 400px;
+    height: 95vh;
+    width: 339px;
     position: absolute;
     right: 0;
-    top: 12vh;
-    padding: 25px 35px;
+    top: 5vh;
+    padding: 12px 6px 12px 12px;
     overflow-y: auto;
     z-index: 1;
+    overflow: scroll;
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+
+    hr {
+        background-color: rgba(9, 30, 66, .13);
+        border: 0;
+        height: 1px;
+        margin: 16px 0;
+        padding: 0;
+        width: 100%;
+    }
 }
 
 .board-header .clean-input {
@@ -34,4 +49,93 @@
 
 .slide-from-right-enter {
     right: -300px
+}
+
+.board-menu {
+
+    ul {
+
+        li {
+            cursor: pointer;
+            border-radius: 3px;
+            font-family: 'Opensans';
+            font-size: 15px;
+            padding: 10px;
+
+            &:hover {
+                background-color: rgba(9, 30, 66, .08);
+            }
+        }
+
+    }
+}
+
+.menu {
+
+    .back-btn {
+        position: absolute;
+        top: 15px;
+    }
+}
+
+.color-menu {
+    display: flex;
+
+    .background-options{
+        width: 100%;
+    }
+    
+    .templates {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        float: left;
+        padding: 0 4px;
+        text-align: center;
+        width: 50%;
+
+        &:hover {
+            opacity: .7;
+        }
+
+        .templates-image {
+            background-image: url(https://a.trellocdn.com/prgb/dist/images/photos-thumbnail@3x.8f9c1323c9c16601a9a4.jpg);
+            background-size: cover;
+            border-radius: 8px;
+            height: 96px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .templates-title {
+            font-size: 14px;
+        }
+    }
+
+    .colors {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        float: left;
+        padding: 0 4px;
+        text-align: center;
+        width: 50%;
+
+        &:hover {
+            opacity: .7;
+        }
+
+        .colors-image {
+            background-image: url(https://a.trellocdn.com/prgb/dist/images/colors@2x.ec32a2ed8dd8198b8ef0.jpg);
+            background-size: cover;
+            border-radius: 8px;
+            height: 96px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .colors-title {
+            font-size: 14px;
+        }
+    }
 }
