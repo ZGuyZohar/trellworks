@@ -1,5 +1,5 @@
 <template>
-	<section :style="{backgroundColor: currBoard.styles.backgroundColor}" v-if="currBoard" :board="currBoard">
+	<section class="board-main" :style="{backgroundColor: currBoard.styles.backgroundColor}" v-if="currBoard" :board="currBoard">
 		<app-header />
 		<board-header
 			:boardTitle="currBoard.title"

@@ -1,11 +1,10 @@
-// .board-main {
-//     height: 100%;
-// }
+.board-main {
+    height: 100vh;
+}
 
 .board {
     overflow-y: hidden;
     flex: 1;
-    min-height: 89vh;
 }
 
 .board-header {
