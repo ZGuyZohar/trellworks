@@ -30,6 +30,7 @@ export default {
       this.taskToEdit.checklists.push(this.checklist);
       // this.$emit("changeMade", `added the checklist ${this.checklist.title}`);
       this.$emit("updateTask", this.taskToEdit);
+      this.$emit('logActivity','added a checklist')
       this.$emit("close");
       this.checklist = { title: "", todos: [] };
     },

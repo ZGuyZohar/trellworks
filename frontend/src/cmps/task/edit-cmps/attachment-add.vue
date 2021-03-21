@@ -35,6 +35,7 @@ export default {
       if(this.taskToEdit.imgs.length === 0) img.isCover = true;
       this.taskToEdit.imgs.push(img)
       this.$emit("updateTask", this.taskToEdit);
+      this.$emit('logActivity','added an attachment')
       console.log(ev.target.file);
     } 
   },

@@ -71,6 +71,7 @@
 							:key="checklist.id"
 							:checklist="checklist"
 							:task="currTask"
+							@logActivity="saveActivity"
 							@updateTask="updateTask"
 							@removeChecklist="removeChecklist"
 						/>
@@ -98,6 +99,7 @@
 								@updateBoard="updateBoard"
 								@updateTask="updateTask"
 								@changeMade="changeTaskDetails"
+								@logActivity="saveActivity"
 								@close="togglePopUp(false)"
 								:task="currTask"
 							/>
