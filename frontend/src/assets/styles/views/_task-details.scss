@@ -20,6 +20,10 @@
         border-radius: 2px;
         margin: 48px 0 80px;
 
+        .details-close {
+            position: absolute;
+            right: 30px;
+        }
 
         .details-header {
 
@@ -273,10 +277,12 @@
 
 .task-members-edit .flex {
     align-items: baseline;
-justify-content: space-between;
+    justify-content: space-between;
+
     p {
         margin-left: 15px;
     }
+
     cursor: pointer;
 
 }

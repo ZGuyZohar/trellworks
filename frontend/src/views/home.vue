@@ -7,13 +7,13 @@
       manage your tasks manage your tasks
     </h5>
     <h1>
-      <router-link to="/board/b101">Try it now!</router-link>
+      <router-link to="/board/YhJ2l">Try it now!</router-link>
     </h1>
   </section>
 </template>
 
 <script>
-import appHeader from '@/cmps/app-header'
+import appHeader from "@/cmps/app-header";
 import boardHeader from "../cmps/board/board-header.vue";
 export default {
   name: "home",
