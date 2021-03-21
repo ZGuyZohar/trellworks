@@ -1,7 +1,7 @@
 <template>
   <section v-if="group">
     <div class="group handle">
-      <section class="flex group-header">
+      <section class="flex group-header transition">
         <!-- <p class="group-title">{{ group.title }}</p> -->
         <input
           class="clean-input group-title"
@@ -9,8 +9,7 @@
           v-model="group.title"
           @change="titleChange(group.id)"
         />
-        <span @click="removeGroup(group.id)"
-          ><i class="far fa-trash-alt"></i>
+        <span @click="removeGroup(group.id)"  class="group-header-trash"><i class="far fa-trash-alt transition "></i>
         </span>
       </section>
       <draggable
