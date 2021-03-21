@@ -76,6 +76,7 @@ function _getEmptyBoard() {
                 {
                     id: utilService.makeId(),
                     title: 'This board was created',
+                    createdAt: Date.now(),
                     byMember: { fullname: 'Guest' },
                     task: { id: '', title: '' }
                 }
