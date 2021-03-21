@@ -26,11 +26,18 @@
                 v-for="member in currTask.members"
                 :key="member._id"
                 @click="showProfile(member)"
-                >
-                <span @click="currMember=member"><avatar :username="member.fullname" :size="40"></avatar
-              ></span></span>
-                  <memberProfile v-if="showMemberProfile" :currMember="currMember" @closeProfile="hideProfile"></memberProfile>
-
+              >
+                <span @click="currMember = member"
+                  ><avatar
+                    :username="member.fullname"
+                    :size="40"
+                  ></avatar></span
+              ></span>
+              <memberProfile
+                v-if="showMemberProfile"
+                :currMember="currMember"
+                @closeProfile="hideProfile"
+              ></memberProfile>
             </section>
           </div>
           <div class="labels-preview flex" v-if="currTask.labelIds.length">
@@ -116,7 +123,7 @@ export default {
   data() {
     return {
       showMemberProfile: false,
-      currMember:null,
+      currMember: null,
       actions: [
         {
           txt: "Members",
@@ -237,13 +244,13 @@ export default {
     changeTaskDetails(activityTitle) {
       this.saveActivity(activityTitle);
     },
-        showProfile(member){
-      this.currMember = member
-      this.showMemberProfile=true
+    showProfile(member) {
+      this.currMember = member;
+      this.showMemberProfile = true;
     },
-    hideProfile(){
-            this.showMemberProfile=false
-    }
+    hideProfile() {
+      this.showMemberProfile = false;
+    },
   },
   created() {
     this.$store.commit({ type: "setTask", taskId: this.taskId });

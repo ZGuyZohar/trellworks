@@ -251,10 +251,15 @@
     margin-top: 10px;
 }
 
+.description {
+    margin-bottom: 60px;
+}
+
 .description-input {
     background-color: $lightgray;
     width: 100%;
     padding: 10px 0 30px 10px;
+    margin-bottom: 10px;
 
     &:focus {
         background-color: white;
