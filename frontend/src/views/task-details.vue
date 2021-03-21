@@ -22,12 +22,13 @@
 							v-if="currTask.members.length"
 							class="flex members-preview"
 						>
-							<span
-								class="flex avatar"
-								v-for="member in currTask.members"
-								:key="member._id"
-								@click="showMemberProfile = !showMemberProfile"
-								><avatar :username="member.fullname" :size="40"></avatar
+							<span class="flex avatar" 									v-for="member in currTask.members"
+									:key="member._id"
+								><avatar
+									:username="member.fullname"
+									:size="40"
+
+								></avatar
 							></span>
 						</section>
 					</div>
@@ -95,7 +96,6 @@
 				</div>
 			</main>
 		</div>
-		<memberProfile v-if="showMemberProfile"></memberProfile>
 	</section>
 </template>
 
@@ -110,13 +110,10 @@ import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
 import Avatar from "vue-avatar";
-import memberProfile from "../cmps/recurring-cmps/user-miniprofile.vue"
-
 
 export default {
 	data() {
 		return {
-			showMemberProfile: false,
 			actions: [
 				{
 					txt: "Members",
@@ -248,8 +245,7 @@ export default {
 		checklistAdd,
 		checklist,
 		taskAttachment,
-		Avatar,
-		memberProfile
+		Avatar
 	},
 };
 </script>
