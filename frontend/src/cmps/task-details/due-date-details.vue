@@ -1,9 +1,9 @@
 <template>
 	<section>
-			<button class="uppercase-title" :class="dueClass">
-				{{ dueTime(task.dueDate) }}
-			</button>
-			<span> {{ fullDate(task.dueDate) }}</span>
+		<button class="uppercase-title" :class="dueClass">
+			{{ dueTime(task.dueDate) }}
+		</button>
+		<span> {{ fullDate(task.dueDate) }}</span>
 	</section>
 </template>
 
@@ -35,12 +35,12 @@ export default ({
 		deteremineDate() {
 			const dateStr = (moment(this.task.dueDate).fromNow());
 			if (dateStr.includes('ago')) return this.dueClass = "overdue"
-			else if (dateStr.includes('days')) this.dueClass = "days"
-			else if (dateStr.includes('weeks')) this.dueClass = "weeks"
-			else if (dateStr.includes('months')) this.dueClass = "months"
-			else if (dateStr.includes('hours')) this.dueClass = "hours"
+			else if (dateStr.includes('days') || dateStr.includes('day')) this.dueClass = "days"
+			else if (dateStr.includes('weeks') || dateStr.includes('week')) this.dueClass = "weeks"
+			else if (dateStr.includes('hours') || dateStr.includes('hour')) this.dueClass = "hours"
+			else this.dueClass = "months"
 		}
-	},created() { this.deteremineDate() }
+	}, created() { this.deteremineDate() }
 
 })
 </script>
