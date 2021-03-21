@@ -1,10 +1,11 @@
-.board-main {
-    height: 100vh;
-}
+// .board-main {
+//     height: 100%;
+// }
 
 .board {
     overflow-y: hidden;
     flex: 1;
+    min-height: 89vh;
 }
 
 .board-header {
@@ -265,29 +266,29 @@
         }
     }
 
-    .preview-footer-container {
-        justify-content: space-between;
-    }
 
-    .preview-avatar-container {
-        justify-content: flex-end;
-        width: 95%;
-
-        .avatar {
-            padding: unset;
-            display: inline;
-            margin-left: -2%;
-        }
-    }
+}
+.preview-footer-container {
+    justify-content: space-between;
 }
 
+.preview-avatar-container {
+    justify-content: flex-end;
+    width: 95%;
+
+    .avatar {
+        padding: unset;
+        display: inline;
+        margin-left: -2%;
+    }
+}
 .group-header{
     &:hover .fa-trash-alt{
         opacity: 100%;
     }
 
 }
-    .group-header .fa-trash-alt {
+    .group-header.fa-trash-alt {
         opacity: 0;
     }
 
