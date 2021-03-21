@@ -100,11 +100,12 @@ function getEmptyTask() {
     return {
         id: utilService.makeId(),
         title: '',
+        dueDate: '',
         labelIds: [],
         description: '',
         checklists: [],
         members: [],
-        imgs: []
+        imgs: [],
     }
 }
 

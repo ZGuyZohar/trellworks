@@ -21,6 +21,8 @@
 }
 
 .task-ghost {
+    cursor: grabbing;
+    
     &:before {
         content: '  ';
         background-color: #c6c8cc;
