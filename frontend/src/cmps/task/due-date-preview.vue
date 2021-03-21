@@ -1,7 +1,7 @@
 <template>
 	<section>
-		<button class=" preview-timedue" :class="dueClass">
-			<i class="far fa-clock"></i>  {{ previewDate(task.dueDate) }}
+		<button class="preview-timedue" :class="dueClass">
+			<i class="far fa-clock"></i> {{ previewDate(task.dueDate) }}
 		</button>
 	</section>
 </template>
@@ -34,11 +34,16 @@ export default ({
 		deteremineDate() {
 			const dateStr = (moment(this.task.dueDate).fromNow());
 			if (dateStr.includes('ago')) return this.dueClass = "overdue"
-			else if (dateStr.includes('days')|| dateStr.includes('day')) this.dueClass = "days"
-			else if (dateStr.includes('weeks')|| dateStr.includes('week')) this.dueClass = "weeks"
+			else if (dateStr.includes('days') || dateStr.includes('day')) this.dueClass = "days"
+			else if (dateStr.includes('weeks') || dateStr.includes('week')) this.dueClass = "weeks"
 			else if (dateStr.includes('hours') || dateStr.includes('hour')) this.dueClass = "hours"
-			else   this.dueClass = "months"
+			else this.dueClass = "months"
 		}
-	}, created() { this.deteremineDate() }
+	}, created() {
+		this.deteremineDate()
+		if (this.dueClass = "hours") {
+			console.log('sending');
+			this.$emit('logActivity', `Reminder: You have less than a day to complete`, this.task)}
+	}
 })
 </script>

@@ -27,6 +27,7 @@ export default {
 		setDate() {
 			this.taskToEdit.dueDate=Date.parse(this.value)
 			this.$emit('updateTask', this.taskToEdit)
+			this.$emit('logActivity',`added a due date for "${this.taskToEdit.title}"`,this.taskToEdit)
 		},
 	},
 	created() {

@@ -30,6 +30,7 @@
 						@removeGroup="removeGroup"
 						@addTask="addTask"
 						@titleChange="changeTitle"
+						@timeDueReminder="logTimeDue"
 					/>
 				</draggable>
 				<section @click="addGroup" class="transition group group-add">
@@ -133,6 +134,12 @@ export default {
 			this.saveActivity('changed this board`s name', this.currBoard, {})
 			this.currBoard.title = newTitle
 			this.updateBoard(this.currBoard);
+		},
+		async logTimeDue(activityTitle,task){
+			//FIXME: decide if we even want this
+		// const board = this.currBoard;
+        // console.log('arrived',activityTitle,task.title);
+		// await this.saveActivity(activityTitle, board,{id:'aaa',title:''},task)
 		}
 	},
 	async created() {

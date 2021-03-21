@@ -24,6 +24,7 @@
           :key="task.id"
           :task="task"
           :groupId="group.id"
+          @timeDueReminder="logTimeDue"
         />
       </draggable>
       <span
@@ -91,6 +92,9 @@ export default {
     itemsDragged() {
       this.$emit("taskDragged", this.board);
     },
+    logTimeDue(activityTitle,task){
+            this.$emit("timeDueReminder", activityTitle,task);
+    }
   },
   components: {
     taskPreview,
