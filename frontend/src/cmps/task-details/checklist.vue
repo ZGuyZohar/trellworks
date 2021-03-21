@@ -1,7 +1,9 @@
 <template>
   <section class="task-checklist">
     <p><i class="fas fa-tasks fa-lg"></i> {{ checklist.title }}</p>
-    <p>here will be progress bar</p>
+    <div class="progress-bar">
+      <div class="progress-done"></div>
+    </div>
 
     <div v-for="todo in checklist.todos" :key="todo.id">
       <todo-item
@@ -47,6 +49,15 @@ export default {
       this.taskToEdit.checklists.splice(idx, 1, this.checklistToEdit);
       this.$emit("updateTask", this.taskToEdit);
       this.todoToAdd = { title: "", isDone: false };
+      this.updateProgress();
+    },
+    updateProgress() {
+      const todosLength = this.checklistToEdit.todos.length;
+      const doneLength = this.checklistToEdit.todos.filter(
+        (todo) => todo.isDone === true
+      ).length;
+      document.querySelector(".progress-done").style.width =
+        (doneLength / todosLength) * 100 + "%";
     },
     addTodo() {
       this.isAddingItem = false;

@@ -1,101 +1,101 @@
 <template>
-	<section @mousedown.self="closeModal" class="task-details-modal">
-		<div @click="togglePopUp(false)" class="task-details">
-			<i class="fas fa-times details-close clickable" @click="closeModal"></i>
-			<div class="details-header">
-				<input
-					v-model="taskCopy.title"
-					@change="updateTask(taskCopy)"
-					class="clean-input main-title"
-				/>
-				<p class="sub-title">
-					In list <span>{{ currGroup.title }}</span>
-				</p>
-			</div>
-			<main class="details-body">
-				<section class="main-details">
-					<div class="members-preview container">
-						<i class="fas fa-user"></i>
-						<h1 class="details-title">Members</h1>
-						<section
-							v-if="currTask.members.length"
-							class="flex members-preview"
-						>
-							<span
-								class="flex avatar"
-								v-for="member in currTask.members"
-								:key="member._id"
-								@click="showMemberProfile = !showMemberProfile"
-								><avatar :username="member.fullname" :size="40"></avatar
-							></span>
-						</section>
-					</div>
-					<div class="labels-preview flex" v-if="currTask.labelIds.length">
-						<span class="uppercase-title">labels</span>
-						<span class="flex">
-							<labels-preview
-								v-for="labelId in currTask.labelIds"
-								:key="labelId"
-								:labelId="labelId"
-								:currBoard="currBoard"
-							/>
-						</span>
-					</div>
-					<task-description
-						:task="currTask"
-						@updateTask="updateTask"
-						@changeMade="changeTaskDetails"
-					/>
-					<div v-if="currTask.checklists.length">
-						<i class="fas fa-tasks fa-lg"></i>
-						<h1 class="details-title">Checklists</h1>
-						<checklist
-							v-for="checklist in currTask.checklists"
-							:key="checklist.id"
-							:checklist="checklist"
-							:task="currTask"
-							@updateTask="updateTask"
-						/>
-					</div>
-					<activityLog
-						class="task-details-activity"
-						:activities="getTaskActivity()"
-					/>
-				</section>
-				<div class="action-bar">
-					<ul>
-						<h3 class="uppercase-title">add to task</h3>
-						<li
-							v-for="(action, idx) in actions"
-							:key="idx"
-							@click.stop="togglePopUp(true, action)"
-							class="action"
-						>
-							<i :class="action.iconClass"></i> {{ action.txt }}
-						</li>
-						<pop-up @closePopUp="togglePopUp" v-if="openPopUp">
-							<template v-slot:header>{{ currAction.txt }}</template>
-							<component
-								:is="currAction.type"
-								@updateBoard="updateBoard"
-								@updateTask="updateTask"
-								@changeMade="changeTaskDetails"
-								@close="togglePopUp(false)"
-								:task="currTask"
-							/>
-						</pop-up>
-					</ul>
-					<ul>
-						<h3 class="uppercase-title">Actions</h3>
-						<li class="action" @click="removeTask()">
-							<i class="far fa-trash-alt"></i> Delete Task
-						</li>
-					</ul>
-				</div>
-			</main>
-		</div>
-		<memberProfile v-if="showMemberProfile"></memberProfile>
-	</section>
+  <section @mousedown.self="closeModal" class="task-details-modal">
+    <div @click="togglePopUp(false)" class="task-details">
+      <i class="fas fa-times details-close clickable" @click="closeModal"></i>
+      <div class="details-header">
+        <input
+          v-model="taskCopy.title"
+          @change="updateTask(taskCopy)"
+          class="clean-input main-title"
+        />
+        <p class="sub-title">
+          In list <span>{{ currGroup.title }}</span>
+        </p>
+      </div>
+      <main class="details-body">
+        <section class="main-details">
+          <div class="members-preview container">
+            <i class="fas fa-user"></i>
+            <h1 class="details-title">Members</h1>
+            <section
+              v-if="currTask.members.length"
+              class="flex members-preview"
+            >
+              <span
+                class="flex avatar"
+                v-for="member in currTask.members"
+                :key="member._id"
+                @click="showProfile(member)"
+                >
+                <span @click="currMember=member"><avatar :username="member.fullname" :size="40"></avatar
+              ></span></span>
+                  <memberProfile v-if="showMemberProfile" :currMember="currMember" @closeProfile="hideProfile"></memberProfile>
+
+            </section>
+          </div>
+          <div class="labels-preview flex" v-if="currTask.labelIds.length">
+            <span class="uppercase-title">labels</span>
+            <span class="flex">
+              <labels-preview
+                v-for="labelId in currTask.labelIds"
+                :key="labelId"
+                :labelId="labelId"
+                :currBoard="currBoard"
+              />
+            </span>
+          </div>
+          <task-description
+            :task="currTask"
+            @updateTask="updateTask"
+            @changeMade="changeTaskDetails"
+          />
+          <div v-if="currTask.checklists.length">
+            <checklist
+              v-for="checklist in currTask.checklists"
+              :key="checklist.id"
+              :checklist="checklist"
+              :task="currTask"
+              @updateTask="updateTask"
+            />
+          </div>
+          <activityLog
+            class="task-details-activity"
+            :activities="getTaskActivity()"
+          />
+        </section>
+        <div class="action-bar">
+          <ul>
+            <h3 class="uppercase-title">add to task</h3>
+            <li
+              v-for="(action, idx) in actions"
+              :key="idx"
+              @click.stop="togglePopUp(true, action)"
+              class="action"
+            >
+              <i :class="action.iconClass"></i> {{ action.txt }}
+            </li>
+            <pop-up @closePopUp="togglePopUp" v-if="openPopUp">
+              <template v-slot:header>{{ currAction.txt }}</template>
+              <component
+                :is="currAction.type"
+                @updateBoard="updateBoard"
+                @updateTask="updateTask"
+                @changeMade="changeTaskDetails"
+                @close="togglePopUp(false)"
+                :task="currTask"
+              />
+            </pop-up>
+          </ul>
+          <ul>
+            <h3 class="uppercase-title">Actions</h3>
+            <li class="action" @click="removeTask()">
+              <i class="far fa-trash-alt"></i> Delete Task
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -110,13 +110,13 @@ import labelsPreview from "../cmps/task-details/labels-preview.vue";
 import taskDescription from "../cmps/task-details/task-description.vue";
 import checklist from "../cmps/task-details/checklist";
 import Avatar from "vue-avatar";
-import memberProfile from "../cmps/recurring-cmps/user-miniprofile.vue"
-
+import memberProfile from "../cmps/recurring-cmps/user-miniprofile.vue";
 
 export default {
   data() {
     return {
       showMemberProfile: false,
+      currMember:null,
       actions: [
         {
           txt: "Members",
@@ -136,7 +136,7 @@ export default {
         {
           txt: "Due date",
           type: "taskDueDate",
-          iconClass: "far fa-clock"
+          iconClass: "far fa-clock",
         },
         {
           txt: "Attachment",
@@ -237,6 +237,13 @@ export default {
     changeTaskDetails(activityTitle) {
       this.saveActivity(activityTitle);
     },
+        showProfile(member){
+      this.currMember = member
+      this.showMemberProfile=true
+    },
+    hideProfile(){
+            this.showMemberProfile=false
+    }
   },
   created() {
     this.$store.commit({ type: "setTask", taskId: this.taskId });
@@ -255,7 +262,7 @@ export default {
     taskAttachment,
     taskDueDate,
     Avatar,
-		memberProfile
+    memberProfile,
   },
 };
 </script>

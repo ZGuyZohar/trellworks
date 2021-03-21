@@ -27,7 +27,11 @@
         ></textarea>
         <div>
           <button type="submit" class="btn-success">Save</button>
-          <span @click="isEditing = false" class="clickable close-desc"><i class="fas fa-times"> </i></span>
+          <i
+            class="fas fa-times clickable close-desc"
+            @click="isEditing = false"
+          >
+          </i>
         </div>
       </form>
     </div>
