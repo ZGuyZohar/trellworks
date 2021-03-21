@@ -1,6 +1,6 @@
 <template>
   <section class="task-checklist">
-    <p><i class="far fa-check-square"></i> {{ checklist.title }}</p>
+    <p><i class="far fa-check-square fa-lg"></i> {{ checklist.title }}</p>
 
     <div v-for="todo in checklist.todos" :key="todo.id">
       <todo-item :todo="todo" />
@@ -39,6 +39,9 @@ export default {
       this.isAddingItem = false;
       this.todoToAdd.id = utilService.makeId();
       this.checklistToEdit.todos.push(this.todoToAdd);
+      this.updateTask();
+    },
+    updateTask() {
       const idx = this.taskToEdit.checklists.findIndex(
         (cl) => cl.id === this.checklist.id
       );
