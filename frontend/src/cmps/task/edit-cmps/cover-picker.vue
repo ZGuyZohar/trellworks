@@ -2,7 +2,7 @@
   <section class="task-cover-picker">
     <h3 class="pop-up-title">size</h3>
     <div class="cover-type">
-      <div class="cover-top">
+      <div class="cover-top" @click="setCoverType('top')">
         <div class="color" :style="{background: coverToShow}"></div>
         <div class="line-preview">
           <div class="row1"></div>
@@ -14,7 +14,7 @@
           <div class="dot"></div>
         </div>
       </div>
-      <div class="cover-full" :style="{background: coverToShow}">
+      <div class="cover-full" :style="{background: coverToShow}" @click="setCoverType('full')">
         <div class="line-preview">
           <div class="row1"></div>
           <div class="row2"></div>
@@ -25,7 +25,7 @@
     <div class="colors">
       <div class="color-picker" v-for="color in allColors" 
       :style="{backgroundColor: color.color}" :key="color.color"
-      @click="selectCover(color.color)"></div>
+      @click="selectCoverByColor(color.color)"></div>
     </div>
   </section>
 </template>
@@ -49,13 +49,22 @@ export default {
     },
     coverToShow(){
       if(!this.taskToEdit.cover && !this.coverSelected) return '#344563'
-      else if(this.taskToEdit.cover) return this.taskToEdit.cover
+      else if(this.taskToEdit.cover) return this.taskToEdit.cover.src
     }
   },
   methods: {
-    selectCover(color){
-      this.coverSelected = color;
-      this.taskToEdit.cover = color;
+    setCoverType(type){
+      this.taskToEdit.cover.type = type;
+      this.$emit('updateTask', this.taskToEdit)
+    },
+    selectCoverByColor(color){
+      this.taskToEdit.cover.isImg = false;
+      if(this.taskToEdit.cover.src === color) {
+        this.taskToEdit.cover.src = '';
+        return this.$emit('updateTask', this.taskToEdit)
+      }
+      this.taskToEdit.cover.src = color;
+      this.coverSelected = this.taskToEdit.cover;
       this.$emit('updateTask', this.taskToEdit)
     }
   },
