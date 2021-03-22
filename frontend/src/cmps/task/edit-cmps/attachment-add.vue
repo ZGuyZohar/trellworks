@@ -33,10 +33,9 @@ export default {
         id: utilService.makeId(),
         src: imgUploaded.url,
         name: `${imgUploaded.original_filename}.${imgUploaded.format}`,
-        isCover: false,
         createdAt: Date.now()
       }
-      if(this.taskToEdit.imgs.length === 0) img.isCover = true;
+      if(this.taskToEdit.imgs.length === 0 && !this.taskToEdit.cover) this.taskToEdit.cover = img.src;
       this.taskToEdit.imgs.unshift(img)
       this.$emit("updateTask", this.taskToEdit);
       this.$emit('logActivity','added an attachment')
@@ -49,10 +48,9 @@ export default {
           id: utilService.makeId(),
           src: this.urlToUpload,
           name: `Your Image`,
-          isCover: false,
           createdAt: Date.now()
         }
-        if(this.taskToEdit.imgs.length === 0) img.isCover = true;
+        if(this.taskToEdit.imgs.length === 0 && !this.taskToEdit.cover) this.taskToEdit.cover = img.src;
         this.taskToEdit.imgs.unshift(img)
         this.$emit("updateTask", this.taskToEdit);
         this.$emit('logActivity','added an attachment')

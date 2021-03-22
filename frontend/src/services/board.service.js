@@ -106,6 +106,7 @@ function getEmptyTask() {
         checklists: [],
         members: [],
         imgs: [],
+        cover: ''
     }
 }
 
