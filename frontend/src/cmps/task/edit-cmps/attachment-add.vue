@@ -40,6 +40,7 @@ export default {
       this.taskToEdit.imgs.push(img)
       this.$emit("updateTask", this.taskToEdit);
       this.$emit('logActivity','added an attachment')
+      this.$emit('close')
     },
     addFileUrl(){
       setTimeout(() => {
@@ -55,6 +56,7 @@ export default {
         this.taskToEdit.imgs.push(img)
         this.$emit("updateTask", this.taskToEdit);
         this.$emit('logActivity','added an attachment')
+        this.$emit('close')
       }, 200);
     }
   },

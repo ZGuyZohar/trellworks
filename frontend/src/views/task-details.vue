@@ -65,7 +65,8 @@
 					/>
 					<attachments-preview
 						v-if="currTask.imgs.length"
-						@updateTask="updateTask"
+						@editImg="editImg"
+						@removeImg="removeImg"
 						:task="currTask"
 					/>
 					<div v-if="currTask.checklists.length">
@@ -274,6 +275,20 @@ export default {
 		hideProfile() {
 			this.showMemberProfile = false;
 		},
+		editImg(imgToEdit){
+			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
+			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgToEdit.id)
+            if(foundIdx<0) return console.log('couldnt find idx')
+            taskToEdit.imgs.splice(foundIdx, 1, imgToEdit)
+			this.updateTask(taskToEdit)
+		},
+		removeImg(imgId){
+			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
+			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgId);
+            if(foundIdx<0) return console.log('couldnt find idx')
+            taskToEdit.imgs.splice(foundIdx, 1);
+			this.updateTask(taskToEdit)
+		}
 
 	},
 	created() {

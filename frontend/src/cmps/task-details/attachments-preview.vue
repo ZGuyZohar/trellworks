@@ -51,34 +51,22 @@ export default {
     methods: {
         editImg(){
             this.imgToEdit.name = this.txtToEdit;
-            const foundIdx = this.taskToEdit.imgs.findIndex(img => img.id === this.imgToEdit.id)
-            if(foundIdx<0) return 'couldnt find idx'
-            this.taskToEdit.imgs.splice(foundIdx, 1, this.imgToEdit)
-            this.$emit('updateTask', this.taskToEdit)
             this.editToggler = false
-            console.log(this.editToggler, 'edit');
+            this.$emit('editImg', this.imgToEdit)
         },
         removeImg(imgId){
-            this.loadTask();
-            const foundIdx = this.taskToEdit.imgs.findIndex(img => img.id === imgId);
-            if(foundIdx<0) return 'couldnt find idx'
-            this.taskToEdit.imgs.splice(foundIdx, 1)
-            return this.$emit('updateTask', this.taskToEdit)
+            this.$emit('removeImg', imgId)
         },
         toggleEdit(toggler, img){
             this.editToggler = toggler;
             this.imgToEdit = img;
             this.txtToEdit = img.name
-            console.log(this.editToggler, this.imgToEdit);
         },
         showImage(toggler, img){
             if(!toggler) this.currImg = null
             this.currImg = img;
             
         },
-        loadTask(){
-            this.taskToEdit = JSON.parse(JSON.stringify(this.task));
-        }
     },
     created(){
     }
