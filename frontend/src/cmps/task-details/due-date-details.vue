@@ -1,9 +1,21 @@
 <template>
 	<section>
-		<button class="uppercase-title" :class="dueClass">
+		<button
+			v-if="isDone"
+			class="uppercase-title due success"
+			@click="toggleComlpetion"
+		>
+			completed! {{ dueTime(task.dueDate) }}
+		</button>
+		<button
+			v-else
+			class="uppercase-title due due-details"
+			:class="dueClass"
+			@click="toggleComlpetion"
+		>
 			{{ dueTime(task.dueDate) }}
 		</button>
-		<span> {{ fullDate(task.dueDate) }}</span>
+		<span> Due {{ fullDate(task.dueDate) }}</span>
 	</section>
 </template>
 
@@ -16,7 +28,9 @@ export default ({
 	},
 	data() {
 		return {
-			dueClass: ''
+			taskToEdit: JSON.parse(JSON.stringify(this.task)),
+			dueClass: '',
+			isDone: false
 		}
 	},
 	methods: {
@@ -29,9 +43,6 @@ export default ({
 		fullDate(date) {
 			return moment(date).format('DD-MM-YYYY HH:MM')
 		},
-		previewDate(date) {
-			return moment(date).format('DD MMMM')
-		},
 		deteremineDate() {
 			const dateStr = (moment(this.task.dueDate).fromNow());
 			if (dateStr.includes('ago')) return this.dueClass = "overdue"
@@ -39,8 +50,17 @@ export default ({
 			else if (dateStr.includes('weeks') || dateStr.includes('week')) this.dueClass = "weeks"
 			else if (dateStr.includes('hours') || dateStr.includes('hour')) this.dueClass = "hours"
 			else this.dueClass = "months"
+		},
+		toggleComlpetion() {
+			this.isDone = !this.isDone
+			this.taskToEdit.isCompleted = !this.taskToEdit.isCompleted
+			this.$emit('updateTask', this.taskToEdit)
+			if(this.taskToEdit.isCompleted)this.$emit('logActivity',`marked the task "${this.task.title}" as completed`)
 		}
-	}, created() { this.deteremineDate() }
+	}, created() {
+		this.deteremineDate()
+		this.isDone = this.task.isCompleted
+	},
 
 })
 </script>

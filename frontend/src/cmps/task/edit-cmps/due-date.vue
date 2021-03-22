@@ -1,6 +1,9 @@
 <template class="time-picker">
 	<section class="block">
-		<input type="datetime-local" v-model="value" @change="setDate" />
+		<form @submit.prevent="setDate">
+		<input type="datetime-local" v-model="value"  />
+		<button class="btn-success">Save</button>
+		</form>
 	</section>
 </template>
 

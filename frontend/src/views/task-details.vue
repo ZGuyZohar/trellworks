@@ -15,9 +15,13 @@
 					</p>
 				</div>
 				<main class="details-body">
-					<span v-if="currTask.dueDate"
-						><dueDateDetails :task="currTask"></dueDateDetails
-					></span>
+				<span v-if="currTask.dueDate"
+                    ><dueDateDetails
+                        @logActivity="saveActivity"
+                        :task="currTask"
+                        @updateTask="updateTask"
+                    ></dueDateDetails
+                ></span>
 					<section class="main-details">
 						<div class="member-label-container">
 							<div class="members-preview container" v-if="currTask.members.length">
@@ -70,7 +74,6 @@
 						@removeImg="removeImg"
 						:task="currTask"
 						@logActivity="saveActivity"
-
 					/>
 					<div v-if="currTask.checklists.length">
 						<checklist
@@ -290,18 +293,18 @@ export default {
 		hideProfile() {
 			this.showMemberProfile = false;
 		},
-		editImg(imgToEdit){
+		editImg(imgToEdit) {
 			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
 			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgToEdit.id)
-            if(foundIdx<0) return console.log('couldnt find idx')
-            taskToEdit.imgs.splice(foundIdx, 1, imgToEdit)
+			if (foundIdx < 0) return console.log('couldnt find idx')
+			taskToEdit.imgs.splice(foundIdx, 1, imgToEdit)
 			this.updateTask(taskToEdit)
 		},
-		removeImg(imgId){
+		removeImg(imgId) {
 			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
 			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgId);
-            if(foundIdx<0) return console.log('couldnt find idx')
-            taskToEdit.imgs.splice(foundIdx, 1);
+			if (foundIdx < 0) return console.log('couldnt find idx')
+			taskToEdit.imgs.splice(foundIdx, 1);
 			this.updateTask(taskToEdit)
 		}
 
