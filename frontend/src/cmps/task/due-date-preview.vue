@@ -1,7 +1,15 @@
 <template>
 	<section>
-		<button class="preview-timedue" :class="dueClass">
-			<i class="far fa-clock"></i> {{ previewDate(task.dueDate) }}
+		<button
+			@mouseover="showClock = false"
+			@mouseleave="showClock = true"
+			class="due"
+			:class="[dueClass, { success: isDone }]"
+			@click.stop="toggleComlpetion"
+		>
+			<span :class="{success:isDone}" v-if="!showClock"> </span>
+			<i v-else class="far fa-clock"></i>
+			{{ previewDate(task.dueDate) }}
 		</button>
 	</section>
 </template>
@@ -15,18 +23,15 @@ export default ({
 	},
 	data() {
 		return {
-			dueClass: ''
+			dueClass: '',
+			taskToEdit: JSON.parse(JSON.stringify(this.task)),
+			isDone: false,
+			showClock: true
 		}
 	},
 	methods: {
 		moment: function () {
 			return moment();
-		},
-		dueTime(date) {
-			return moment(date).fromNow();
-		},
-		fullDate(date) {
-			return moment(date).format('DD-MM-YYYY HH:MM')
 		},
 		previewDate(date) {
 			return moment(date).format('DD MMM')
@@ -38,12 +43,16 @@ export default ({
 			else if (dateStr.includes('weeks') || dateStr.includes('week')) this.dueClass = "weeks"
 			else if (dateStr.includes('hours') || dateStr.includes('hour')) this.dueClass = "hours"
 			else this.dueClass = "months"
+		},
+		toggleComlpetion() {
+			this.isDone = !this.isDone
+			// this.taskToEdit.isCompleted = !this.taskToEdit.isCompleted
+			// this.$emit('updateTask', this.taskToEdit)
+			// if (this.taskToEdit.isCompleted) this.$emit('logActivity', `marked the task "${this.task.title}" as completed`)
 		}
 	}, created() {
 		this.deteremineDate()
-		if (this.dueClass = "hours") {
-			console.log('sending');
-			this.$emit('logActivity', `Reminder: You have less than a day to complete`, this.task)}
+		this.isDone = this.task.isCompleted
 	}
 })
 </script>
