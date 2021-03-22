@@ -1,8 +1,12 @@
 <template>
   <section class="todo-item flex">
     <div>
-      <i :class="isDoneClass" class="clickable" @click="toggleDone"></i>
-      <span> {{ todo.title }} </span>
+      <i
+        :class="isDoneClass('checkbox')"
+        class="clickable"
+        @click="toggleDone"
+      ></i>
+      <span :class="isDoneClass('title')"> {{ todo.title }} </span>
     </div>
     <i class="fas fa-trash-alt clickable" @click="removeTodo"></i>
   </section>
@@ -21,9 +25,11 @@ export default {
     };
   },
   computed: {
-    isDoneClass() {
-      return this.todo.isDone ? "far fa-check-square" : "far fa-square";
-    },
+    // isDoneClass(element) {
+    //   if (element === "checkbox")
+    //     return this.todo.isDone ? "far fa-check-square" : "far fa-square";
+    //   if (element === "title") return this.todo.isDone ? "line-through" : "";
+    // },
   },
   methods: {
     toggleDone() {
@@ -32,6 +38,11 @@ export default {
     },
     removeTodo() {
       this.$emit("removeTodo", this.todoToEdit.id);
+    },
+    isDoneClass(element) {
+      if (element === "checkbox")
+        return this.todo.isDone ? "far fa-check-square" : "far fa-square";
+      if (element === "title") return this.todo.isDone ? "line-through" : "";
     },
   },
 };
