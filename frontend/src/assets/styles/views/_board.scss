@@ -24,7 +24,7 @@
 
 .task-ghost {
     cursor: grabbing;
-    
+
     &:before {
         content: '  ';
         background-color: #c6c8cc;
@@ -141,12 +141,11 @@
 
     .task-preview {
         background-color: white;
-        margin: 7px 5px;
-        padding: 6px 8px 2px;
         border-radius: 3px;
         box-shadow: 0px 1px 0px 0px rgba(181, 181, 181, 0.79);
         position: relative;
-
+        margin: 7px 5px;
+        
         &:hover {
             background-color: rgb(245, 245, 245);
 
@@ -155,17 +154,31 @@
         &:first-of-type {
             margin-top: 0;
         }
+        
 
-        .task-preview-image {
-            height: 245px;
-            width: 100%;
-            margin-bottom: 8px;
-            @include aspect-ratio(1, 1);
-            border-radius: 3px;
+        .top-cover {
 
-            img {
-                width: 100%;
+            .cover-color {
+                height: 32px;
+                border-radius: 3px 3px 0 0;
             }
+
+            .cover-img {
+                height: 245px;
+                width: 100%;
+                margin-bottom: 8px;
+                @include aspect-ratio(1, 1);
+                border-radius: 3px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .task-preview-main {
+            
+            padding: 6px 8px 2px;
         }
 
         .task-preview-title {
