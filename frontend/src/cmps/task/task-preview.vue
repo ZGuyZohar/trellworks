@@ -5,9 +5,18 @@
 		@click="getDetails"
 		class="task-preview clickable"
 	>
-		<div class="task-preview-image" v-if="task.imgs.length">
-			<img :src="task.imgs[0].src" alt="">
+		<div class="full-cover" v-if="task.cover.src && task.cover.type==='full'">
+			<div class="cover-color" v-if="!task.cover.isImg"> </div>
+			<div class="cover-img" v-if="task.cover.isImg"> </div>
 		</div>
+		<div class="top-cover" v-if="task.cover.src && task.cover.type==='top'">
+			<div class="cover-color" v-if="!task.cover.isImg" :style="{backgroundColor: task.cover.src}"> </div>
+			<div class="cover-img" v-if="task.cover.isImg"> 
+				<img :src="task.cover.src" />
+			</div>
+		</div>
+
+		<div class="task-preview-main">
 		<div class="task-preview-labels" v-if="task.labelIds.length && currBoard">
 			<labels-preview
 				v-for="labelId in task.labelIds"
@@ -34,6 +43,7 @@
 					></avatar>
 				</span>
 			</span>
+		</div>
 		</div>
 		<!-- <quick-edit @toggleEdit="toggleEdit" v-if="showEdit"/> -->
 	</section>

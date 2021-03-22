@@ -2,7 +2,7 @@
   <section @mousedown.self="closeModal" class="task-details-modal">
     <div @click="togglePopUp(false)" class="task-details">
       <i class="fas fa-times details-close clickable" @click="closeModal"></i>
-      <div class="cover" :style="coverToShow" v-if="currTask.cover"></div>
+      <div class="cover" :style="coverToShow" v-if="currTask.cover.src"></div>
       <div class="task-details-main">
         <div class="details-header">
           <input
@@ -85,12 +85,6 @@
                 @removeChecklist="removeChecklist"
               />
             </div>
-            <attachments-preview
-              v-if="currTask.imgs.length"
-              @editImg="editImg"
-              @removeImg="removeImg"
-              :task="currTask"
-            />
             <activityLog
               class="task-details-activity"
               :activities="getTaskActivity()"
@@ -206,9 +200,8 @@ export default {
       return this.$route.params.taskId;
     },
     coverToShow() {
-      if (this.currTask.cover.length <= 7)
-        return { backgroundColor: this.currTask.cover };
-      else return { backgroundImage: this.currTask.cover };
+      if (this.currTask.cover.isImg) return { backgroundImage: this.currTask.cover.src };
+      else return { backgroundColor: this.currTask.cover.src };
     },
   },
   methods: {
