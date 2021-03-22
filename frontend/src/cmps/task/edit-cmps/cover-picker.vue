@@ -25,7 +25,7 @@
     <div class="colors">
       <div class="color-picker" v-for="color in allColors" 
       :style="{backgroundColor: color.color}" :key="color.color"
-      @click="selectCoverByColor(color.color)"></div>
+      @click.self="selectCoverByColor(color.color)"></div>
     </div>
   </section>
 </template>
@@ -58,6 +58,7 @@ export default {
       this.$emit('updateTask', this.taskToEdit)
     },
     selectCoverByColor(color){
+      console.log(this.taskToEdit);
       this.taskToEdit.cover.isImg = false;
       if(this.taskToEdit.cover.src === color) {
         this.taskToEdit.cover.src = '';
