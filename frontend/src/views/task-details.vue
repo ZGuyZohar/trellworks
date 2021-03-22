@@ -58,29 +58,36 @@
 								</span>
 							</div>
 
-						</div>
-						<task-description
+					</div>
+					<task-description
+						:task="currTask"
+						@updateTask="updateTask"
+						@changeMade="changeTaskDetails"
+					/>
+					<attachments-preview
+						v-if="currTask.imgs.length"
+						@editImg="editImg"
+						@removeImg="removeImg"
+						:task="currTask"
+						@logActivity="saveActivity"
+
+					/>
+					<div v-if="currTask.checklists.length">
+						<checklist
+							v-for="checklist in currTask.checklists"
+							:key="checklist.id"
+							:checklist="checklist"
 							:task="currTask"
 							@updateTask="updateTask"
 							@changeMade="changeTaskDetails"
 						/>
+					</div>
 						<attachments-preview
 							v-if="currTask.imgs.length"
 							@editImg="editImg"
 							@removeImg="removeImg"
 							:task="currTask"
 						/>
-						<div v-if="currTask.checklists.length">
-							<checklist
-								v-for="checklist in currTask.checklists"
-								:key="checklist.id"
-								:checklist="checklist"
-								:task="currTask"
-								@logActivity="saveActivity"
-								@updateTask="updateTask"
-								@removeChecklist="removeChecklist"
-							/>
-						</div>
 						<activityLog
 							class="task-details-activity"
 							:activities="getTaskActivity()"
@@ -215,6 +222,7 @@ export default {
 				board: this.currBoard,
 				task: this.getTask(this.currBoard),
 			});
+			this.updateBoard(this.currBoard)
 		},
 		getTask(board, isIdx) {
 			const group = board.groups.find(

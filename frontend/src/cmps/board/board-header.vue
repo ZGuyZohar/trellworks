@@ -14,7 +14,7 @@
 					@click="showProfile(member)"
 				>
 					<span @click="currMember = member">
-						<avatar :size="40" :username="member.fullname"></avatar
+						<avatar :size="30" :username="member.fullname"></avatar
 					></span>
 				</span>
 				<memberProfile

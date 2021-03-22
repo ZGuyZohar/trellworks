@@ -12,6 +12,10 @@
     padding: 5px;
     margin: 7px;
 
+    .line-through {
+        text-decoration: line-through;
+    }
+
     &:hover {
         background-color: $lightgray;
 

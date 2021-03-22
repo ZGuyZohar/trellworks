@@ -53,8 +53,11 @@ export default {
             this.imgToEdit.name = this.txtToEdit;
             this.editToggler = false
             this.$emit('editImg', this.imgToEdit)
+            this.$emit('logActivity',`changed an attachment in "${this.taskToEdit.title}"`)
+
         },
         removeImg(imgId){
+            this.$emit('logActivity',`removed an attachment from "${this.taskToEdit.title}"`)
             this.$emit('removeImg', imgId)
         },
         toggleEdit(toggler, img){

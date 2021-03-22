@@ -102,12 +102,14 @@ export default {
 			this.checklistToEdit.todos.push(this.todoToAdd);
 			this.updateTask();
 			this.todoToAdd = { title: "", isDone: false };
-			this.$emit('logActivity',`added items in the checklist "${this.checklist.title}" in "${this.taskToEdit.title}"`)
+			this.$emit('logActivity', `added items in the checklist "${this.checklist.title}" in "${this.taskToEdit.title}"`)
 
 		},
 		removeTodo(todoId) {
 			const idx = this.getTodoIdx(todoId);
 			this.checklistToEdit.todos.splice(idx, 1);
+			this.$emit('logActivity', `removed items from the checklist "${this.checklist.title}" in "${this.taskToEdit.title}"`)
+
 			this.updateTask();
 		},
 		updateTodo(updatedTodo) {
