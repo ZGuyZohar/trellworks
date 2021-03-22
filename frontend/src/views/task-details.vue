@@ -238,7 +238,7 @@ export default {
 			const group = board.groups.find(
 				(group) => group.id === this.currGroup.id
 			);
-			this.saveActivity("removed the task");
+			this.saveActivity(`removed the task "${group.task[taskIdx].title}" from "${group.title}"`);
 			group.task.splice(taskIdx, 1);
 			this.updateBoard(board);
 			this.$router.push("../");
