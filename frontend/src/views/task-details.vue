@@ -18,42 +18,45 @@
 				></span>
 
 				<section class="main-details">
-					<div class="members-preview container">
-						<i class="fas fa-user"></i>
-						<h1 class="details-title">Members</h1>
-						<section
-							v-if="currTask.members.length"
-							class="flex members-preview"
-						>
-							<span
-								class="flex avatar"
-								v-for="member in currTask.members"
-								:key="member._id"
-								@click="showProfile(member)"
+					<div class="member-label-container">
+						<div class="members-preview container" v-if="currTask.members.length">
+							<!-- <i class="fas fa-user"></i> -->
+							<h1 class="uppercase-title">Members</h1>
+							<section
+								
+								class="flex members-preview"
 							>
-								<span @click="currMember = member"
-									><avatar
-										:username="member.fullname"
-										:size="40"
-									></avatar></span
-							></span>
-							<memberProfile
-								v-if="showMemberProfile"
-								:currMember="currMember"
-								@closeProfile="hideProfile"
-							></memberProfile>
-						</section>
-					</div>
-					<div class="labels-preview flex" v-if="currTask.labelIds.length">
-						<span class="uppercase-title">labels</span>
-						<span class="flex">
-							<labels-preview
-								v-for="labelId in currTask.labelIds"
-								:key="labelId"
-								:labelId="labelId"
-								:currBoard="currBoard"
-							/>
-						</span>
+								<span
+									class="flex avatar"
+									v-for="member in currTask.members"
+									:key="member._id"
+									@click="showProfile(member)"
+								>
+									<span @click="currMember = member"
+										><avatar
+											:username="member.fullname"
+											:size="32"
+										></avatar></span
+								></span>
+								<memberProfile
+									v-if="showMemberProfile"
+									:currMember="currMember"
+									@closeProfile="hideProfile"
+								></memberProfile>
+							</section>
+						</div>
+						<div class="labels-preview flex" v-if="currTask.labelIds.length">
+							<span class="uppercase-title">labels</span>
+							<span class="flex">
+								<labels-preview
+									v-for="labelId in currTask.labelIds"
+									:key="labelId"
+									:labelId="labelId"
+									:currBoard="currBoard"
+								/>
+							</span>
+						</div>
+
 					</div>
 					<task-description
 						:task="currTask"
