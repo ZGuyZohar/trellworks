@@ -39,7 +39,7 @@ export default {
       if(this.taskToEdit.imgs.length === 0) img.isCover = true;
       this.taskToEdit.imgs.unshift(img)
       this.$emit("updateTask", this.taskToEdit);
-      this.$emit('logActivity','added an attachment')
+        this.$emit('logActivity',`added an attachment to "${this.taskToEdit.title}"`)
       this.$emit('close')
     },
     addFileUrl(){
@@ -54,8 +54,8 @@ export default {
         }
         if(this.taskToEdit.imgs.length === 0) img.isCover = true;
         this.taskToEdit.imgs.unshift(img)
+        this.$emit('logActivity',`added an attachment to "${this.taskToEdit.title}"`)
         this.$emit("updateTask", this.taskToEdit);
-        this.$emit('logActivity','added an attachment')
         this.$emit('close')
       }, 200);
     }

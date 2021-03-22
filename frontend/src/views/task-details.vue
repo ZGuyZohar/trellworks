@@ -68,6 +68,8 @@
 						@editImg="editImg"
 						@removeImg="removeImg"
 						:task="currTask"
+						@logActivity="saveActivity"
+
 					/>
 					<div v-if="currTask.checklists.length">
 						<checklist
@@ -208,6 +210,7 @@ export default {
 				board: this.currBoard,
 				task: this.getTask(this.currBoard),
 			});
+			this.updateBoard(this.currBoard)
 		},
 		getTask(board, isIdx) {
 			const group = board.groups.find(
