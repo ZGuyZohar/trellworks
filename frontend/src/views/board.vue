@@ -79,13 +79,13 @@ export default {
 			const board = this.currBoard;
 			const group = await boardService.getEmptyGroup();
 			board.groups.push(group);
-			this.saveActivity('added the group', board, group)
+			this.saveActivity(`added the group "${group.title}" to the board`, board, group)
 			this.updateBoard(board);
 		},
 		async removeGroup(groupId) {
 			const board = this.currBoard;
 			const groupIdx = board.groups.findIndex((group) => group.id === groupId);
-			this.saveActivity('removed the group', board, board.groups[groupIdx])
+			this.saveActivity(`removed the group "${board.groups[groupIdx].title}" from the board`, board, board.groups[groupIdx])
 			board.groups.splice(groupIdx, 1);
 			this.updateBoard(board);
 		},
@@ -93,7 +93,7 @@ export default {
 			const board = this.currBoard;
 			const group = board.groups.find((group) => group.id === groupId);
 			group.task.push(task);
-			this.saveActivity('added the task', board, group, task)
+			this.saveActivity(`added the task "${task.title}" in "${group.title}"`, board, group, task)
 			this.updateBoard(board);
 		},
 		saveActivity(activityTitle, board, group, task = { id: '', title: '' }) {
@@ -125,7 +125,7 @@ export default {
 			const group = board.groups.find((group) => group.id === groupId);
 			const groupCopy = JSON.parse(JSON.stringify(group))
 			// await this.saveActivity('changed the title of the list',board,groupCopy,{title:newTitle})
-			this.saveActivity('renamed a group', board, groupCopy)
+			this.saveActivity(`renamed a group in the board`, board, groupCopy)
 			group.title = newTitle;
 			this.updateBoard(board);
 		},
