@@ -18,42 +18,45 @@
 				></span>
 
 				<section class="main-details">
-					<div class="members-preview container">
-						<i class="fas fa-user"></i>
-						<h1 class="details-title">Members</h1>
-						<section
-							v-if="currTask.members.length"
-							class="flex members-preview"
-						>
-							<span
-								class="flex avatar"
-								v-for="member in currTask.members"
-								:key="member._id"
-								@click="showProfile(member)"
+					<div class="member-label-container">
+						<div class="members-preview container" v-if="currTask.members.length">
+							<!-- <i class="fas fa-user"></i> -->
+							<h1 class="uppercase-title">Members</h1>
+							<section
+								
+								class="flex members-preview"
 							>
-								<span @click="currMember = member"
-									><avatar
-										:username="member.fullname"
-										:size="40"
-									></avatar></span
-							></span>
-							<memberProfile
-								v-if="showMemberProfile"
-								:currMember="currMember"
-								@closeProfile="hideProfile"
-							></memberProfile>
-						</section>
-					</div>
-					<div class="labels-preview flex" v-if="currTask.labelIds.length">
-						<span class="uppercase-title">labels</span>
-						<span class="flex">
-							<labels-preview
-								v-for="labelId in currTask.labelIds"
-								:key="labelId"
-								:labelId="labelId"
-								:currBoard="currBoard"
-							/>
-						</span>
+								<span
+									class="flex avatar"
+									v-for="member in currTask.members"
+									:key="member._id"
+									@click="showProfile(member)"
+								>
+									<span @click="currMember = member"
+										><avatar
+											:username="member.fullname"
+											:size="32"
+										></avatar></span
+								></span>
+								<memberProfile
+									v-if="showMemberProfile"
+									:currMember="currMember"
+									@closeProfile="hideProfile"
+								></memberProfile>
+							</section>
+						</div>
+						<div class="labels-preview flex" v-if="currTask.labelIds.length">
+							<span class="uppercase-title">labels</span>
+							<span class="flex">
+								<labels-preview
+									v-for="labelId in currTask.labelIds"
+									:key="labelId"
+									:labelId="labelId"
+									:currBoard="currBoard"
+								/>
+							</span>
+						</div>
+
 					</div>
 					<task-description
 						:task="currTask"
@@ -62,7 +65,8 @@
 					/>
 					<attachments-preview
 						v-if="currTask.imgs.length"
-						@updateTask="updateTask"
+						@editImg="editImg"
+						@removeImg="removeImg"
 						:task="currTask"
 					/>
 					<div v-if="currTask.checklists.length">
@@ -271,6 +275,20 @@ export default {
 		hideProfile() {
 			this.showMemberProfile = false;
 		},
+		editImg(imgToEdit){
+			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
+			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgToEdit.id)
+            if(foundIdx<0) return console.log('couldnt find idx')
+            taskToEdit.imgs.splice(foundIdx, 1, imgToEdit)
+			this.updateTask(taskToEdit)
+		},
+		removeImg(imgId){
+			const taskToEdit = JSON.parse(JSON.stringify(this.currTask))
+			const foundIdx = taskToEdit.imgs.findIndex(img => img.id === imgId);
+            if(foundIdx<0) return console.log('couldnt find idx')
+            taskToEdit.imgs.splice(foundIdx, 1);
+			this.updateTask(taskToEdit)
+		}
 
 	},
 	created() {
