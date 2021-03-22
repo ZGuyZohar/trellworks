@@ -37,7 +37,7 @@ export default {
         createdAt: Date.now()
       }
       if(this.taskToEdit.imgs.length === 0) img.isCover = true;
-      this.taskToEdit.imgs.push(img)
+      this.taskToEdit.imgs.unshift(img)
       this.$emit("updateTask", this.taskToEdit);
       this.$emit('logActivity','added an attachment')
       this.$emit('close')
@@ -53,7 +53,7 @@ export default {
           createdAt: Date.now()
         }
         if(this.taskToEdit.imgs.length === 0) img.isCover = true;
-        this.taskToEdit.imgs.push(img)
+        this.taskToEdit.imgs.unshift(img)
         this.$emit("updateTask", this.taskToEdit);
         this.$emit('logActivity','added an attachment')
         this.$emit('close')
