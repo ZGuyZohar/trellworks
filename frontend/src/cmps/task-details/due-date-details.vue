@@ -46,9 +46,9 @@ export default ({
 		deteremineDate() {
 			const dateStr = (moment(this.task.dueDate).fromNow());
 			if (dateStr.includes('ago')) return this.dueClass = "overdue"
-			else if (dateStr.includes('days') || dateStr.includes('day')) this.dueClass = "days"
+			else if (dateStr.includes('days')) this.dueClass = "days"
 			else if (dateStr.includes('weeks') || dateStr.includes('week')) this.dueClass = "weeks"
-			else if (dateStr.includes('hours') || dateStr.includes('hour')) this.dueClass = "hours"
+			else if (dateStr.includes('hours') || dateStr.includes('hour') || dateStr.includes('day')) this.dueClass = "hours"
 			else this.dueClass = "months"
 		},
 		toggleComlpetion() {
