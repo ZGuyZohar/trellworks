@@ -27,7 +27,7 @@
 		</div>
 		<p class="task-preview-title">{{ task.title }}</p>
 		<div class="preview-footer-container flex">
-			<dueDatePreview v-if="task.dueDate" :task="task" />
+			<dueDatePreview v-if="task.dueDate" :task="task" @dueDateUpdated="updateDueDate"/>
 			<i v-if="task.description" class="fas fa-align-left fa-sm"></i>
 			<i
 				v-if="isEditPenShown"
@@ -94,6 +94,9 @@ export default {
 			this.isEditPenShown = false;
 			this.showEdit = boolean;
 		},
+		updateDueDate(task){
+			this.$emit('updateDueDate',task)
+		}
 	},
 	computed: {
 		penToggler() {
