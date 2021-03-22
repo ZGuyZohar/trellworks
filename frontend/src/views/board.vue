@@ -31,6 +31,7 @@
 						@addTask="addTask"
 						@titleChange="changeTitle"
 						@timeDueReminder="logTimeDue"
+						@toggleTaskCompletion="toggleTaskCompleted"
 					/>
 				</draggable>
 				<section @click="addGroup" class="transition group group-add">
@@ -107,7 +108,7 @@ export default {
 		},
 		bgcChanged() {
 			this.saveActivity('changed this board`s background color', this.currBoard, {})
-						this.updateBoard(this.currBoard);
+			this.updateBoard(this.currBoard);
 
 		},
 		draggingEnd() {
@@ -135,11 +136,18 @@ export default {
 			this.currBoard.title = newTitle
 			this.updateBoard(this.currBoard);
 		},
-		async logTimeDue(activityTitle,task){
+		async logTimeDue(activityTitle, task) {
 			//FIXME: decide if we even want this
-		// const board = this.currBoard;
-        // console.log('arrived',activityTitle,task.title);
-		// await this.saveActivity(activityTitle, board,{id:'aaa',title:''},task)
+			// const board = this.currBoard;
+			// console.log('arrived',activityTitle,task.title);
+			// await this.saveActivity(activityTitle, board,{id:'aaa',title:''},task)
+		},
+		toggleTaskCompleted(group,task) {
+			const board = this.currBoard;
+			const groupIdx = board.groups.findIndex((foundGroup) => group.id === foundGroup.id);
+			board.groups.splice(groupIdx, 1,group);
+			this.saveActivity(`marked the task "${task.title}" as completed`,board,group,task)
+			this.updateBoard(board)
 		}
 	},
 	async created() {
