@@ -84,214 +84,262 @@ function getDefaultLabels() {
 }
 
 const boardsDB = [
-    {
-        "title": "My new board",
-        "createdAt": 1616356323361,
-        "labels": [
-          {
-            "title": "",
-            "color": "#61bd4f",
-            "colorName": "green",
-            "id": "l101"
-          },
-          {
-            "title": "",
-            "color": "#f2d600",
-            "colorName": "yellow",
-            "id": "l102"
-          },
-          {
-            "title": "",
-            "color": "#ff9f1a",
-            "colorName": "orange",
-            "id": "l103"
-          },
-          {
-            "title": "",
-            "color": "#eb5a46",
-            "colorName": "red",
-            "id": "l104"
-          },
-          {
-            "title": "",
-            "color": "#c377e0",
-            "colorName": "purple",
-            "id": "l105"
-          },
-          {
-            "title": "",
-            "color": "#0079bf",
-            "colorName": "blue",
-            "id": "l106"
-          }
-        ],
-        "groups": [
-          {
-            "id": "Xy6kf",
-            "style": {},
-            "title": "My new list",
-            "task": [
-              {
-                "id": "FezW6",
-                "title": "גיא אשם",
-                "dueDate": "",
-                "labelIds": [],
-                "description": "",
-                "checklists": [],
-                "members": [],
-                "imgs": []
-              }
-            ]
-          },
-          {
-            "id": "koyJX",
-            "style": {},
-            "title": "My new list",
-            "task": [
-              {
-                "id": "mHLd8",
-                "title": "אלמוג אשמה",
-                "dueDate": "",
-                "labelIds": [],
-                "description": "",
-                "checklists": [],
-                "members": [],
-                "imgs": []
-              }
-            ]
-          },
-          {
-            "id": "DnnNx",
-            "style": {},
-            "title": "My new list",
-            "task": [
-              {
-                "id": "LMz0X",
-                "title": "גלי אשמה",
-                "dueDate": "",
-                "labelIds": [],
-                "description": "",
-                "checklists": [],
-                "members": [],
-                "imgs": []
-              }
-            ]
-          }
-        ],
-        "styles": {
-          "backgroundColor": "#61bd4f"
-        },
-        "members": [
-          {
-            "_id": "u102",
-            "fullname": "Almog Lemberg",
-            "imgUrl": "https://www.google.com"
-          },
-          {
-            "_id": "u103",
-            "fullname": "Gali Nickel",
-            "imgUrl": "https://www.google.com"
-          },
-          {
-            "_id": "u101",
-            "fullname": "Guy Zohar",
-            "imgUrl": "https://www.google.com"
-          }
-        ],
-        "activities": [
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the task",
-            "createdAt": 1616356387230,
-            "group": "My new list",
-            "id": "2pwWE",
-            "task": {
-              "id": "mHLd8",
-              "title": "אלמוג אשמה"
-            }
-          },
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the task",
-            "createdAt": 1616356386544,
-            "group": "My new list",
-            "id": "0aNRC",
-            "task": {
-              "id": "LMz0X",
-              "title": "גלי אשמה"
-            }
-          },
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the group",
-            "createdAt": 1616356382555,
-            "group": "My new list",
-            "id": "gW9a5",
-            "task": {
-              "id": "",
-              "title": ""
-            }
-          },
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the group",
-            "createdAt": 1616356378258,
-            "group": "My new list",
-            "id": "yP0hx",
-            "task": {
-              "id": "",
-              "title": ""
-            }
-          },
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the task",
-            "createdAt": 1616356333079,
-            "group": "My new list",
-            "id": "1DnfR",
-            "task": {
-              "id": "FezW6",
-              "title": "גיא אשם"
-            }
-          },
-          {
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "title": "added the group",
-            "createdAt": 1616356328639,
-            "group": "My new list",
-            "id": "ZnX8K",
-            "task": {
-              "id": "",
-              "title": ""
-            }
-          },
-          {
-            "id": "Au5jd",
-            "title": "This board was created",
-            "createdAt": 1616356323361,
-            "byMember": {
-              "fullname": "Guest"
-            },
-            "task": {
-              "id": "",
-              "title": ""
-            }
-          }
-        ],
-        "_id": "LIHlf"
+  {
+    "title": "My new board",
+    "createdAt": 1616402284269,
+    "labels": [
+      {
+        "title": "",
+        "color": "#61bd4f",
+        "colorName": "green",
+        "id": "l101"
+      },
+      {
+        "title": "",
+        "color": "#f2d600",
+        "colorName": "yellow",
+        "id": "l102"
+      },
+      {
+        "title": "",
+        "color": "#ff9f1a",
+        "colorName": "orange",
+        "id": "l103"
+      },
+      {
+        "title": "",
+        "color": "#eb5a46",
+        "colorName": "red",
+        "id": "l104"
+      },
+      {
+        "title": "",
+        "color": "#c377e0",
+        "colorName": "purple",
+        "id": "l105"
+      },
+      {
+        "title": "",
+        "color": "#0079bf",
+        "colorName": "blue",
+        "id": "l106"
       }
+    ],
+    "groups": [
+      {
+        "id": "wiqIB",
+        "style": {},
+        "title": "My new list",
+        "task": [
+          {
+            "id": "um96X",
+            "title": "Task",
+            "dueDate": "",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": [],
+            "imgs": []
+          },
+          {
+            "id": "0dzCo",
+            "title": "Another task",
+            "dueDate": "",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": [],
+            "imgs": []
+          }
+        ]
+      },
+      {
+        "id": "WKaI5",
+        "style": {},
+        "title": "My new list",
+        "task": [
+          {
+            "id": "2PVU3",
+            "title": "Add tasks here",
+            "dueDate": "",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": [],
+            "imgs": []
+          }
+        ]
+      },
+      {
+        "id": "FgTIF",
+        "style": {},
+        "title": "New list name",
+        "task": [
+          {
+            "id": "h24XH",
+            "title": "We have new tasks",
+            "dueDate": "",
+            "labelIds": [],
+            "description": "",
+            "checklists": [],
+            "members": [],
+            "imgs": []
+          }
+        ]
+      }
+    ],
+    "styles": {
+      "backgroundColor": "#344563"
+    },
+    "members": [
+      {
+        "_id": "u102",
+        "fullname": "Almog Lemberg",
+        "imgUrl": "https://www.google.com"
+      },
+      {
+        "_id": "u103",
+        "fullname": "Gali Nickel",
+        "imgUrl": "https://www.google.com"
+      },
+      {
+        "_id": "u101",
+        "fullname": "Guy Zohar",
+        "imgUrl": "https://www.google.com"
+      }
+    ],
+    "activities": [
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "changed this board`s background color",
+        "createdAt": 1616402326991,
+        "id": "iogIK",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "renamed a group in the board",
+        "createdAt": 1616402317447,
+        "group": "New list name",
+        "id": "ul4GP",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task \"We have new tasks\" in \"My new list\"",
+        "createdAt": 1616402312473,
+        "group": "My new list",
+        "id": "VqbHB",
+        "task": {
+          "id": "h24XH",
+          "title": "We have new tasks"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task \"Add tasks here\" in \"My new list\"",
+        "createdAt": 1616402305381,
+        "group": "My new list",
+        "id": "6Qe2W",
+        "task": {
+          "id": "2PVU3",
+          "title": "Add tasks here"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task \"Another task\" in \"My new list\"",
+        "createdAt": 1616402300387,
+        "group": "My new list",
+        "id": "LmAhq",
+        "task": {
+          "id": "0dzCo",
+          "title": "Another task"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the task \"Task\" in \"My new list\"",
+        "createdAt": 1616402295872,
+        "group": "My new list",
+        "id": "Wbens",
+        "task": {
+          "id": "um96X",
+          "title": "Task"
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group \"My new list\" to the board",
+        "createdAt": 1616402289617,
+        "group": "My new list",
+        "id": "KJrLg",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group \"My new list\" to the board",
+        "createdAt": 1616402288872,
+        "group": "My new list",
+        "id": "6kIEO",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "title": "added the group \"My new list\" to the board",
+        "createdAt": 1616402288192,
+        "group": "My new list",
+        "id": "Ldq16",
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      },
+      {
+        "id": "sJQ8e",
+        "title": "This board was created",
+        "createdAt": 1616402284269,
+        "byMember": {
+          "fullname": "Guest"
+        },
+        "task": {
+          "id": "",
+          "title": ""
+        }
+      }
+    ],
+    "_id": "YhGzf"
+  }
 ]
 
 function getBoards() {

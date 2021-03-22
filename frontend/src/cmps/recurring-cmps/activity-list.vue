@@ -40,36 +40,11 @@ export default {
     },
     renderTask(activity) {
       switch (activity.title) {
-        case "added the task": {
-          return `${activity.byMember.fullname} ${activity.title} "${activity.task.title}" in "${activity.group}" `;
-          break;
-        }
-        case "added the group": {
-          return `${activity.byMember.fullname} ${activity.title} "${activity.group}" to the board `;
-          break;
-        }
-        case "removed the group": {
-          return `${activity.byMember.fullname} ${activity.title} "${activity.group}" from the board `;
-          break;
-        }
-        case "renamed a group": {
-          return `${activity.byMember.fullname} ${activity.title} "${activity.group}" `;
-          break;
-        }
-        case "removed the task": {
-          return `${activity.byMember.fullname} ${activity.title} "${activity.task.title}" from "${activity.group}" `;
-          break;
-        }
-        case "changed the description": {
-          return `${activity.byMember.fullname} ${activity.title} of "${activity.task.title}"`;
-          break;
-        }
         case "This board was created": {
           return `${activity.title}`;
           break;
         }
         default: {
-          console.log('returning default for', activity.title);
           return `${activity.byMember.fullname} ${activity.title}`;
         }
       }
